@@ -40,6 +40,11 @@ class Stage
      */
     private $professionelles;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $niveau;
+
     public function __construct()
     {
         $this->etudiants = new ArrayCollection();
@@ -125,6 +130,18 @@ class Stage
         if ($this->professionelles->removeElement($professionelle)) {
             $professionelle->removeStage($this);
         }
+
+        return $this;
+    }
+
+    public function getNiveau(): ?string
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(string $niveau): self
+    {
+        $this->niveau = $niveau;
 
         return $this;
     }
