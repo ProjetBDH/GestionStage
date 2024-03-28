@@ -35,6 +35,9 @@ class UtilisateurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
+            
             $utilisateurRepository->add($utilisateur, true);
 
             return $this->redirectToRoute('app_utilisateur_index', [], Response::HTTP_SEE_OTHER);
@@ -65,6 +68,9 @@ class UtilisateurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
+            
             $utilisateurRepository->add($utilisateur, true);
 
             return $this->redirectToRoute('app_utilisateur_index', [], Response::HTTP_SEE_OTHER);
