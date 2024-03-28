@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Professionelle{% endblock %}
+
+{% block body %}
+    <h1>Professionelle</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ professionelle.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ professionelle.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ professionelle.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ professionelle.email }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ professionelle.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Metier</th>
+                <td>{{ professionelle.metier }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_professionelle_index') }}">back to list</a>
+
+    <a href="{{ path('app_professionelle_edit', {'id': professionelle.id}) }}">edit</a>
+
+    {{ include('professionelle/_delete_form.html.twig') }}
+{% endblock %}

@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Activite;
 use App\Entity\Entreprise;
+use App\Entity\Specialisation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -22,12 +24,12 @@ class EntrepriseType extends AbstractType
             ->add('cp',TextType::class)
             ->add('num_rue',TextType::class)
             ->add('activite', EntityType::class, [
-                'class' => 'App\Entity\Activite',
+                'class' => Activite::class,
                 'choice_label' => 'labelle',
                 'placeholder' => 'Sélectionner une activité',
             ])
             ->add('specialisations', EntityType::class, [
-                'class' => 'App\Entity\Specialisation',
+                'class' => Specialisation::class,
                 'choice_label' => 'labelle',
                 'multiple' => true,
                 'expanded' => true,
