@@ -27,10 +27,6 @@ echo Creation de la base de donnees...
 rem Creation de la base de donnees si elle n'existe pas
 php bin/console doctrine:database:create --if-not-exists
 
-if %errorlevel% neq 0 (
-    echo Erreur lors de la creation de la base de donnees.
-    exit /b 1
-)
 echo Base de donnees creee.
 echo Generation des entites...
 rem Generation des migrations
