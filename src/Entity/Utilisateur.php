@@ -33,10 +33,11 @@ class Utilisateur
     private $email;
 
     /**
-     * @ORM\OneToOne(targetEntity=Role::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="utilisateurs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $role;
+    
 
     public function getId(): ?int
     {
@@ -84,7 +85,7 @@ class Utilisateur
         return $this->role;
     }
 
-    public function setRole(Role $role): self
+    public function setRole(?Role $role): self
     {
         $this->role = $role;
 
