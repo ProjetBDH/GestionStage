@@ -1,13 +1,23 @@
-<form id="loginForm" action="your_login_endpoint" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Login</button>
-            </div
-</form>
+{# templates/security/login.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <h1>Connexion</h1>
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form method="post" action="{{ path('check_login') }}">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="_password" required>
+
+        <button type="submit">Connexion</button>
+    </form>
+{% endblock %}
