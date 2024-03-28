@@ -22,14 +22,28 @@ class Etudiant
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $specialisation;
+    private $nom;
 
     /**
-     * @ORM\OneToOne(targetEntity=Personne::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $personne;
+    private $prenom;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $numTel;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $specialisation;
+    
     /**
      * @ORM\ManyToMany(targetEntity=Stage::class, inversedBy="etudiants")
      */
@@ -45,6 +59,54 @@ class Etudiant
         return $this->id;
     }
 
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getNumTel(): ?string
+    {
+        return $this->numTel;
+    }
+
+    public function setNumTel(string $numTel): self
+    {
+        $this->numTel = $numTel;
+
+        return $this;
+    }
+
     public function getSpecialisation(): ?string
     {
         return $this->specialisation;
@@ -53,18 +115,6 @@ class Etudiant
     public function setSpecialisation(string $specialisation): self
     {
         $this->specialisation = $specialisation;
-
-        return $this;
-    }
-
-    public function getPersonne(): ?Personne
-    {
-        return $this->personne;
-    }
-
-    public function setPersonne(Personne $Personne): self
-    {
-        $this->personne = $Personne;
 
         return $this;
     }
