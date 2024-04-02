@@ -47,7 +47,7 @@ class LoginController extends AbstractController
 
 
         // Vérifier le mot de passe
-        if ($password === $user->getPassword()) {
+        if (password_verify($password,$user->getPassword())) {
             // Mot de passe correct, vous pouvez autoriser la connexion de l'utilisateur
             return $this->redirectToRoute('app_base');
         } else {
