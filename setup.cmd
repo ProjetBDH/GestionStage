@@ -18,7 +18,7 @@ if not exist composer.json (
 echo Fichier composer.json existe.
 echo Installation des dependances via Composer...
 rem Installation des dependances via Composer
-rem composer install -n
+rem composer install
 
 
 echo Configuration de la base de donnees...
