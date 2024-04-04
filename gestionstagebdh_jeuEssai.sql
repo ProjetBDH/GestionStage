@@ -86,16 +86,16 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
 --
 
 INSERT INTO `entreprise` (`id`, `activite_id`, `nom`, `rue`, `ville`, `pays`, `cp`, `num_rue`) VALUES
-(1, NULL, 'Tech Solutions Inc.', '123 Rue de l\'Innovation', 'Paris', 'France', '75001', '123'),
-(2, NULL, 'Data Experts Ltd.', '456 Data Drive', 'London', 'United Kingdom', 'EC1A ', '456'),
-(3, NULL, 'CyberGuard Technologies', '789 Cybersecurity Street', 'New York', 'United States', '10001', '789'),
-(4, NULL, 'WebSolutions SA', '101 Web Avenue', 'Geneva', 'Switzerland', '1201', '101'),
-(5, NULL, 'Cloud Innovations GmbH', '555 Cloud Way', 'Berlin', 'Germany', '10115', '555'),
-(6, NULL, 'Software Creations Corp.', '777 Software Street', 'San Francisco', 'United States', '94105', '777'),
-(7, NULL, 'Data Systems Ltd.', '888 Data Plaza', 'Sydney', 'Australia', '2000', '888'),
-(8, NULL, 'TechNet Solutions', '999 Tech Road', 'Tokyo', 'Japan', '100-0', '999'),
-(9, NULL, 'InnovaTech Inc.', '321 Innovation Boulevard', 'Toronto', 'Canada', 'M5J 2', '321'),
-(10, NULL, 'Digital Dynamics AG', '444 Digital Street', 'Zurich', 'Switzerland', '8001', '444');
+(1, 1, 'Tech Solutions Inc.', '123 Rue de l\'Innovation', 'Paris', 'France', '75001', '123'),
+(2, 2, 'Data Experts Ltd.', '456 Data Drive', 'London', 'United Kingdom', 'EC1A ', '456'),
+(3, 3, 'CyberGuard Technologies', '789 Cybersecurity Street', 'New York', 'United States', '10001', '789'),
+(4, 1, 'WebSolutions SA', '101 Web Avenue', 'Geneva', 'Switzerland', '1201', '101'),
+(5, 2, 'Cloud Innovations GmbH', '555 Cloud Way', 'Berlin', 'Germany', '10115', '555'),
+(6, 3, 'Software Creations Corp.', '777 Software Street', 'San Francisco', 'United States', '94105', '777'),
+(7, 1, 'Data Systems Ltd.', '888 Data Plaza', 'Sydney', 'Australia', '2000', '888'),
+(8, 2, 'TechNet Solutions', '999 Tech Road', 'Tokyo', 'Japan', '100-0', '999'),
+(9, 3, 'InnovaTech Inc.', '321 Innovation Boulevard', 'Toronto', 'Canada', 'M5J 2', '321'),
+(10, 1, 'Digital Dynamics AG', '444 Digital Street', 'Zurich', 'Switzerland', '8001', '444');
 
 -- --------------------------------------------------------
 
