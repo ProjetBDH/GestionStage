@@ -76,7 +76,7 @@ header .user-role
 .menu-nav ul
 {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     height: 100%;
     align-content: center;
     align-items: center;
