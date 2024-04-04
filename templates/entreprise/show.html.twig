@@ -51,6 +51,7 @@
         <tr>
             <th>Stages</th>
             <td>
+                <a href="{{ path('app_stage_new', {'id_entreprise':entreprise.id}) }}">Create new</a>
                 {% for sta in stages %}
                     {% if sta.etudiants.count == 1 %}
                     {{ sta.date }} - Stagiaire : <a href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par : <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
