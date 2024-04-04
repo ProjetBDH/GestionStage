@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `activite` (
 INSERT INTO `activite` (`id`,`labelle`) VALUES
 (1, 'Ventre Produit Electroménager'),
 (2, 'Agence Web'),
-(3, 'Industrie Automobile')
+(3, 'Industrie Automobile');
 
 -- --------------------------------------------------------
 
