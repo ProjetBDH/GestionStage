@@ -34,6 +34,12 @@ CREATE TABLE IF NOT EXISTS `activite` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+INSERT INTO `activite` (`id`,`labelle`) VALUES
+(1, 'Ventre Produit Electroménager'),
+(2, 'Agence Web'),
+(3, 'Industrie Automobile')
+
 -- --------------------------------------------------------
 
 --
@@ -530,8 +536,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `role_id`, `username`, `password`, `email`) VALUES
-(1, 1, 'Hougooo', '1234', 'hougoo@mail.fr'),
-(2, 2, 'toto', '0+0', 'toto@mail.fr');
+(1, 1, 'admin', '$2y$10$1rqfAZizmHtZ1ZwBFmna4OIPvhKTJ.T03wNh1TkohaUzteWJk95mS', 'admin@localhost.fr'),
+
 
 --
 -- Contraintes pour les tables déchargées
