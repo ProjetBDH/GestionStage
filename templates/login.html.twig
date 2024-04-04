@@ -2,7 +2,11 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }} {# Inclut les feuilles de style du modèle de base #}
+    <link rel="stylesheet" href="style/login.css">
 {% endblock %}
 
 {% block body %}

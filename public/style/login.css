@@ -1,83 +1,10 @@
-@font-face {
-    font-family: 'Poppins'; /* Nom de la police */
-    src: url('/font/Poppins/Poppins-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('/font/Poppins/Poppins-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('/font/Poppins/Poppins-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('/font/Poppins/Poppins-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('/font/Poppins/Poppins-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
-}
-
-:root {
-    --main-color: rgba(244, 127, 11, 1);
-    --second-color : rgba(3, 166, 166, 1);
-    --gris-clair : rgba(202, 202, 202, 1)
-  }
-
-
-*{
-    font: inherit; /* Hérite de toutes les propriétés de police de l'élément parent, (astuce que j'utilise) */
-    padding: 0;
-    margin: 0;
-    border: 0;
-    outline: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif; /* Utilisation de la police définie */
-}
-
 main
 {
-    background-color: rgb( 231, 231, 231);
     height: 100vh;
     width: 100vw;
-
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-h1
-{
-    font-size: 4em;
-    font-weight: bold;
-    padding-bottom: 0.75em;
-}
-
-
-button
-{
-    background-color: transparent;
-    padding: 10px 30px;
-    border-radius: 10px;
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,.2),0px 6px 10px 0px rgba(0,0,0,.14),0px 1px 18px 0px rgba(0,0,0,.12);
 }
 
 .bt-main
