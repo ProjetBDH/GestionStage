@@ -19,7 +19,7 @@
                 <td>{{ jury.id }}</td>
                 <td>{{ jury.date }}</td>
                 <td>
-                    <a href="{{ path('app_jury_show', {'id': jury.id}) }}">show</a>
+                    {{ include('jury/_delete_form.html.twig') }}
                     <a href="{{ path('app_jury_edit', {'id': jury.id}) }}">edit</a>
                 </td>
             </tr>
