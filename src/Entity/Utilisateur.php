@@ -37,7 +37,7 @@ class Utilisateur
      * @ORM\JoinColumn(nullable=false)
      */
     private $role;
-    
+
 
     public function getId(): ?int
     {

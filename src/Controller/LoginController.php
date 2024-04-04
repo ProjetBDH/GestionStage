@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use App\Entity\Utilisateur;
 
-class LoginController extends AbstractController 
+class LoginController extends AbstractController
 {
-    
+
     /**
      * @Route("/login", name="app_login")
      */
@@ -25,7 +25,7 @@ class LoginController extends AbstractController
 
         return $this->render('login.html.twig', [
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ]);
     }
 
@@ -47,7 +47,7 @@ class LoginController extends AbstractController
 
 
         // Vérifier le mot de passe
-        if (password_verify($password,$user->getPassword())) {
+        if (password_verify($password, $user->getPassword())) {
             // Mot de passe correct, vous pouvez autoriser la connexion de l'utilisateur
             return $this->redirectToRoute('app_base');
         } else {

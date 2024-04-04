@@ -7,64 +7,69 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ professionelle.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ professionelle.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ professionelle.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ professionelle.email }}</td>
-            </tr>
-            <tr>
-                <th>NumTel</th>
-                <td>{{ professionelle.numTel }}</td>
-            </tr>
-            <tr>
-                <th>Metier</th>
-                <td>{{ professionelle.metier }}</td>
-            </tr>
-            <tr>
-                <th>Stages</th>
-                <td>
-                    {% for sta in professionelle.stages %}
-                        {% if sta.etudiants.count == 1 %}
-                            {{ sta.date }} - Stagiaire : <a href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par : <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
-                        {% else %}
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Stagiaire</th>
-                                    <th>Niveau</th>
-                                    <th>Gérer par</th>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>{{ sta.date }}</td>
-                                    <td>
-                                        {% for etu in sta.etudiants %}
-                                            <a href="{{ path('app_etudiant_show', {'id': etu.id}) }}">{{ etu.nom }} {{ etu.prenom }}</a><br/>,
-                                        {% endfor %}
-                                    </td>
-                                    <td>{{ sta.niveau }}</td>
-                                    <td><a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        {% endif %}
+        <tr>
+            <th>Id</th>
+            <td>{{ professionelle.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ professionelle.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ professionelle.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ professionelle.email }}</td>
+        </tr>
+        <tr>
+            <th>NumTel</th>
+            <td>{{ professionelle.numTel }}</td>
+        </tr>
+        <tr>
+            <th>Metier</th>
+            <td>{{ professionelle.metier }}</td>
+        </tr>
+        <tr>
+            <th>Stages</th>
+            <td>
+                {% for sta in professionelle.stages %}
+                    {% if sta.etudiants.count == 1 %}
+                        {{ sta.date }} - Stagiaire : <a
+                            href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par :
+                        <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
                     {% else %}
-                        no records found
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Stagiaire</th>
+                                <th>Niveau</th>
+                                <th>Gérer par</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ sta.date }}</td>
+                                <td>
+                                    {% for etu in sta.etudiants %}
+                                        <a href="{{ path('app_etudiant_show', {'id': etu.id}) }}">{{ etu.nom }} {{ etu.prenom }}</a>
+                                        <br/>,
+                                    {% endfor %}
+                                </td>
+                                <td>{{ sta.niveau }}</td>
+                                <td>
+                                    <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% endif %}
+                {% else %}
+                    no records found
 
-                    {% endfor %}
-                </td>
+                {% endfor %}
+            </td>
         </tr>
         </tbody>
     </table>

@@ -43,7 +43,7 @@ class Etudiant
      * @ORM\Column(type="string", length=255)
      */
     private $specialisation;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity=Stage::class, inversedBy="etudiants")
      */
@@ -142,5 +142,5 @@ class Etudiant
 
         return $this;
     }
-    
+
 }

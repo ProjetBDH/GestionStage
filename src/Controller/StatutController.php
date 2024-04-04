@@ -81,7 +81,7 @@ class StatutController extends AbstractController
      */
     public function delete(Request $request, Statut $statut, StatutRepository $statutRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$statut->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $statut->getId(), $request->request->get('_token'))) {
             $statutRepository->remove($statut, true);
         }
 

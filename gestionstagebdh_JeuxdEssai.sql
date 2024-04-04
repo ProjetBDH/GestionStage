@@ -7,9 +7,11 @@
 -- Version du serveur : 8.2.0
 -- Version de PHP : 7.4.33
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET
+SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET
+time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,17 +30,29 @@ SET time_zone = "+00:00";
 --
 
 DROP TABLE IF EXISTS `activite`;
-CREATE TABLE IF NOT EXISTS `activite` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `labelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `activite`
+(
+    `id`
+    int
+    NOT
+    NULL
+    AUTO_INCREMENT,
+    `labelle`
+    varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY
+(
+    `id`
+)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 
-INSERT INTO `activite` (`id`,`labelle`) VALUES
-(1, 'Ventre Produit Electroménager'),
-(2, 'Agence Web'),
-(3, 'Industrie Automobile');
+INSERT INTO `activite` (`id`, `labelle`)
+VALUES (1, 'Ventre Produit Electroménager'),
+       (2, 'Agence Web'),
+       (3, 'Industrie Automobile');
 
 -- --------------------------------------------------------
 
@@ -47,25 +61,58 @@ INSERT INTO `activite` (`id`,`labelle`) VALUES
 --
 
 DROP TABLE IF EXISTS `entreprise`;
-CREATE TABLE IF NOT EXISTS `entreprise` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `activite_id` int DEFAULT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pays` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cp` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `num_rue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_D19FA609B0F88B1` (`activite_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `entreprise`
+(
+    `id`
+    int
+    NOT
+    NULL
+    AUTO_INCREMENT,
+    `activite_id`
+    int
+    DEFAULT
+    NULL,
+    `nom`
+    varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `rue` varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `ville` varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `pays` varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `cp` varchar
+(
+    5
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `num_rue` varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY
+(
+    `id`
+),
+    KEY `IDX_D19FA609B0F88B1`
+(
+    `activite_id`
+)
+    ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `entreprise`
 --
 
-INSERT INTO `entreprise` (`id`, `activite_id`, `nom`, `rue`, `ville`, `pays`, `cp`, `num_rue`) VALUES
-(1, 1, 'Tech Solutions Inc.', '123 Rue de l\'Innovation', 'Paris', 'France', '75001', '123'),
+INSERT INTO `entreprise` (`id`, `activite_id`, `nom`, `rue`, `ville`, `pays`, `cp`, `num_rue`)
+VALUES (1, 1, 'Tech Solutions Inc.', '123 Rue de l\'Innovation', 'Paris', 'France', '75001', '123'),
 (2, 2, 'Data Experts Ltd.', '456 Data Drive', 'London', 'United Kingdom', 'EC1A ', '456'),
 (3, 3, 'CyberGuard Technologies', '789 Cybersecurity Street', 'New York', 'United States', '10001', '789'),
 (4, 1, 'WebSolutions SA', '101 Web Avenue', 'Geneva', 'Switzerland', '1201', '101'),
@@ -374,29 +421,47 @@ INSERT INTO `specialisation` (`id`, `labelle`) VALUES
 --
 
 DROP TABLE IF EXISTS `specialisation_entreprise`;
-CREATE TABLE IF NOT EXISTS `specialisation_entreprise` (
-  `specialisation_id` int NOT NULL,
-  `entreprise_id` int NOT NULL,
-  PRIMARY KEY (`specialisation_id`,`entreprise_id`),
-  KEY `IDX_2B884D7C5627D44C` (`specialisation_id`),
-  KEY `IDX_2B884D7CA4AEAFEA` (`entreprise_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `specialisation_entreprise`
+(
+    `specialisation_id`
+    int
+    NOT
+    NULL,
+    `entreprise_id`
+    int
+    NOT
+    NULL,
+    PRIMARY
+    KEY
+(
+    `specialisation_id`,
+    `entreprise_id`
+),
+    KEY `IDX_2B884D7C5627D44C`
+(
+    `specialisation_id`
+),
+    KEY `IDX_2B884D7CA4AEAFEA`
+(
+    `entreprise_id`
+)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `specialisation_entreprise`
 --
 
-INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`) VALUES
-(1, 1),
-(1, 7),
-(2, 2),
-(2, 8),
-(3, 3),
-(3, 9),
-(4, 4),
-(4, 10),
-(5, 5),
-(6, 6);
+INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`)
+VALUES (1, 1),
+       (1, 7),
+       (2, 2),
+       (2, 8),
+       (3, 3),
+       (3, 9),
+       (4, 4),
+       (4, 10),
+       (5, 5),
+       (6, 6);
 
 -- --------------------------------------------------------
 
@@ -405,39 +470,57 @@ INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`) V
 --
 
 DROP TABLE IF EXISTS `stage`;
-CREATE TABLE IF NOT EXISTS `stage` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `entreprise_id` int NOT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_C27C9369A4AEAFEA` (`entreprise_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `stage`
+(
+    `id`
+    int
+    NOT
+    NULL
+    AUTO_INCREMENT,
+    `entreprise_id`
+    int
+    NOT
+    NULL,
+    `date`
+    varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY
+(
+    `id`
+),
+    KEY `IDX_C27C9369A4AEAFEA`
+(
+    `entreprise_id`
+)
+    ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `stage`
 --
 
-INSERT INTO `stage` (`id`, `entreprise_id`, `date`) VALUES
-(1, 1, '2020-01-01'),
-(2, 2, '2020-01-01'),
-(3, 3, '2020-01-01'),
-(4, 4, '2020-01-01'),
-(5, 5, '2021-01-01'),
-(6, 6, '2021-01-01'),
-(7, 7, '2021-01-01'),
-(8, 8, '2021-01-01'),
-(9, 10, '2022-01-01'),
-(10, 9, '2022-01-01'),
-(11, 5, '2022-01-01'),
-(12, 2, '2022-01-01'),
-(13, 1, '2023-01-01'),
-(14, 7, '2023-01-01'),
-(15, 8, '2023-01-01'),
-(16, 10, '2023-01-01'),
-(17, 4, '2024-01-01'),
-(18, 3, '2024-01-01'),
-(19, 6, '2024-01-01'),
-(20, 5, '2024-01-01');
+INSERT INTO `stage` (`id`, `entreprise_id`, `date`)
+VALUES (1, 1, '2020-01-01'),
+       (2, 2, '2020-01-01'),
+       (3, 3, '2020-01-01'),
+       (4, 4, '2020-01-01'),
+       (5, 5, '2021-01-01'),
+       (6, 6, '2021-01-01'),
+       (7, 7, '2021-01-01'),
+       (8, 8, '2021-01-01'),
+       (9, 10, '2022-01-01'),
+       (10, 9, '2022-01-01'),
+       (11, 5, '2022-01-01'),
+       (12, 2, '2022-01-01'),
+       (13, 1, '2023-01-01'),
+       (14, 7, '2023-01-01'),
+       (15, 8, '2023-01-01'),
+       (16, 10, '2023-01-01'),
+       (17, 4, '2024-01-01'),
+       (18, 3, '2024-01-01'),
+       (19, 6, '2024-01-01'),
+       (20, 5, '2024-01-01');
 
 -- --------------------------------------------------------
 
@@ -446,19 +529,31 @@ INSERT INTO `stage` (`id`, `entreprise_id`, `date`) VALUES
 --
 
 DROP TABLE IF EXISTS `statut`;
-CREATE TABLE IF NOT EXISTS `statut` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `labelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `statut`
+(
+    `id`
+    int
+    NOT
+    NULL
+    AUTO_INCREMENT,
+    `labelle`
+    varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY
+(
+    `id`
+)
+    ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `statut`
 --
 
-INSERT INTO `statut` (`id`, `labelle`) VALUES
-(1, 'Personne à contacter pour envoi CV'),
-(2, 'Tuteur');
+INSERT INTO `statut` (`id`, `labelle`)
+VALUES (1, 'Personne à contacter pour envoi CV'),
+       (2, 'Tuteur');
 
 -- --------------------------------------------------------
 
@@ -467,31 +562,49 @@ INSERT INTO `statut` (`id`, `labelle`) VALUES
 --
 
 DROP TABLE IF EXISTS `statut_professionelle`;
-CREATE TABLE IF NOT EXISTS `statut_professionelle` (
-  `statut_id` int NOT NULL,
-  `professionelle_id` int NOT NULL,
-  PRIMARY KEY (`statut_id`,`professionelle_id`),
-  KEY `IDX_DA7EA46BF6203804` (`statut_id`),
-  KEY `IDX_DA7EA46BB4371B94` (`professionelle_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `statut_professionelle`
+(
+    `statut_id`
+    int
+    NOT
+    NULL,
+    `professionelle_id`
+    int
+    NOT
+    NULL,
+    PRIMARY
+    KEY
+(
+    `statut_id`,
+    `professionelle_id`
+),
+    KEY `IDX_DA7EA46BF6203804`
+(
+    `statut_id`
+),
+    KEY `IDX_DA7EA46BB4371B94`
+(
+    `professionelle_id`
+)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `statut_professionelle`
 --
 
-INSERT INTO `statut_professionelle` (`statut_id`, `professionelle_id`) VALUES
-(1, 1),
-(1, 10),
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10);
+INSERT INTO `statut_professionelle` (`statut_id`, `professionelle_id`)
+VALUES (1, 1),
+       (1, 10),
+       (2, 1),
+       (2, 2),
+       (2, 3),
+       (2, 4),
+       (2, 5),
+       (2, 6),
+       (2, 7),
+       (2, 8),
+       (2, 9),
+       (2, 10);
 
 -- --------------------------------------------------------
 
@@ -500,22 +613,46 @@ INSERT INTO `statut_professionelle` (`statut_id`, `professionelle_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `role_id` int NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_1D1C63B3D60322AC` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `utilisateur`
+(
+    `id`
+    int
+    NOT
+    NULL
+    AUTO_INCREMENT,
+    `role_id`
+    int
+    NOT
+    NULL,
+    `username`
+    varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `password` varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `email` varchar
+(
+    255
+) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY
+(
+    `id`
+),
+    UNIQUE KEY `UNIQ_1D1C63B3D60322AC`
+(
+    `role_id`
+)
+    ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE =utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `role_id`, `username`, `password`, `email`) VALUES
-(1, 1, 'admin', '$2y$10$1rqfAZizmHtZ1ZwBFmna4OIPvhKTJ.T03wNh1TkohaUzteWJk95mS', 'admin@localhost.fr'),
+INSERT INTO `utilisateur` (`id`, `role_id`, `username`, `password`, `email`)
+VALUES (1, 1, 'admin', '$2y$10$1rqfAZizmHtZ1ZwBFmna4OIPvhKTJ.T03wNh1TkohaUzteWJk95mS', 'admin@localhost.fr'),
 
 
 --
@@ -526,66 +663,76 @@ INSERT INTO `utilisateur` (`id`, `role_id`, `username`, `password`, `email`) VAL
 -- Contraintes pour la table `entreprise`
 --
 ALTER TABLE `entreprise`
-  ADD CONSTRAINT `FK_D19FA609B0F88B1` FOREIGN KEY (`activite_id`) REFERENCES `activite` (`id`);
+    ADD CONSTRAINT `FK_D19FA609B0F88B1` FOREIGN KEY (`activite_id`) REFERENCES `activite` (`id`);
 
 --
 -- Contraintes pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD CONSTRAINT `FK_717E22E3A21BD112` FOREIGN KEY (`personne_id`) REFERENCES `personne` (`id`);
+    ADD CONSTRAINT `FK_717E22E3A21BD112` FOREIGN KEY (`personne_id`) REFERENCES `personne` (`id`);
 
 --
 -- Contraintes pour la table `etudiant_stage`
 --
 ALTER TABLE `etudiant_stage`
-  ADD CONSTRAINT `FK_BD46BF752298D193` FOREIGN KEY (`stage_id`) REFERENCES `stage` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_BD46BF75DDEAB1A3` FOREIGN KEY (`etudiant_id`) REFERENCES `etudiant` (`id`) ON DELETE CASCADE;
+    ADD CONSTRAINT `FK_BD46BF752298D193` FOREIGN KEY (`stage_id`) REFERENCES `stage` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_BD46BF75DDEAB1A3` FOREIGN KEY (`etudiant_id`) REFERENCES `etudiant` (`id`) ON
+DELETE
+CASCADE;
 
 --
 -- Contraintes pour la table `jury_professionelle`
 --
 ALTER TABLE `jury_professionelle`
-  ADD CONSTRAINT `FK_FFF3F317B4371B94` FOREIGN KEY (`professionelle_id`) REFERENCES `professionelle` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_FFF3F317E560103C` FOREIGN KEY (`jury_id`) REFERENCES `jury` (`id`) ON DELETE CASCADE;
+    ADD CONSTRAINT `FK_FFF3F317B4371B94` FOREIGN KEY (`professionelle_id`) REFERENCES `professionelle` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_FFF3F317E560103C` FOREIGN KEY (`jury_id`) REFERENCES `jury` (`id`) ON
+DELETE
+CASCADE;
 
 --
 -- Contraintes pour la table `professionelle`
 --
 ALTER TABLE `professionelle`
-  ADD CONSTRAINT `FK_A7CFF384A21BD112` FOREIGN KEY (`personne_id`) REFERENCES `personne` (`id`);
+    ADD CONSTRAINT `FK_A7CFF384A21BD112` FOREIGN KEY (`personne_id`) REFERENCES `personne` (`id`);
 
 --
 -- Contraintes pour la table `professionelle_stage`
 --
 ALTER TABLE `professionelle_stage`
-  ADD CONSTRAINT `FK_30E8B6032298D193` FOREIGN KEY (`stage_id`) REFERENCES `stage` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_30E8B603B4371B94` FOREIGN KEY (`professionelle_id`) REFERENCES `professionelle` (`id`) ON DELETE CASCADE;
+    ADD CONSTRAINT `FK_30E8B6032298D193` FOREIGN KEY (`stage_id`) REFERENCES `stage` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_30E8B603B4371B94` FOREIGN KEY (`professionelle_id`) REFERENCES `professionelle` (`id`) ON
+DELETE
+CASCADE;
 
 --
 -- Contraintes pour la table `specialisation_entreprise`
 --
 ALTER TABLE `specialisation_entreprise`
-  ADD CONSTRAINT `FK_2B884D7C5627D44C` FOREIGN KEY (`specialisation_id`) REFERENCES `specialisation` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_2B884D7CA4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`) ON DELETE CASCADE;
+    ADD CONSTRAINT `FK_2B884D7C5627D44C` FOREIGN KEY (`specialisation_id`) REFERENCES `specialisation` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_2B884D7CA4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`) ON
+DELETE
+CASCADE;
 
 --
 -- Contraintes pour la table `stage`
 --
 ALTER TABLE `stage`
-  ADD CONSTRAINT `FK_C27C9369A4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`);
+    ADD CONSTRAINT `FK_C27C9369A4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`);
 
 --
 -- Contraintes pour la table `statut_professionelle`
 --
 ALTER TABLE `statut_professionelle`
-  ADD CONSTRAINT `FK_DA7EA46BB4371B94` FOREIGN KEY (`professionelle_id`) REFERENCES `professionelle` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_DA7EA46BF6203804` FOREIGN KEY (`statut_id`) REFERENCES `statut` (`id`) ON DELETE CASCADE;
+    ADD CONSTRAINT `FK_DA7EA46BB4371B94` FOREIGN KEY (`professionelle_id`) REFERENCES `professionelle` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_DA7EA46BF6203804` FOREIGN KEY (`statut_id`) REFERENCES `statut` (`id`) ON
+DELETE
+CASCADE;
 
 --
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `FK_1D1C63B3D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
+    ADD CONSTRAINT `FK_1D1C63B3D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -81,7 +81,7 @@ class JuryController extends AbstractController
      */
     public function delete(Request $request, Jury $jury, JuryRepository $juryRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$jury->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $jury->getId(), $request->request->get('_token'))) {
             $juryRepository->remove($jury, true);
         }
 

@@ -130,7 +130,7 @@ class Professionelle
 
         return $this;
     }
-    
+
     /**
      * @return Collection<int, Statut>
      */

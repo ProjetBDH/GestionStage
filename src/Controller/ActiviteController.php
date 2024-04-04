@@ -81,7 +81,7 @@ class ActiviteController extends AbstractController
      */
     public function delete(Request $request, Activite $activite, ActiviteRepository $activiteRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$activite->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $activite->getId(), $request->request->get('_token'))) {
             $activiteRepository->remove($activite, true);
         }
 

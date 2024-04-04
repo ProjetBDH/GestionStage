@@ -13,16 +13,6 @@ class EntrepriseControllerTest extends WebTestCase
     private EntrepriseRepository $repository;
     private string $path = '/entreprise/';
 
-    protected function setUp(): void
-    {
-        $this->client = static::createClient();
-        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Entreprise::class);
-
-        foreach ($this->repository->findAll() as $object) {
-            $this->repository->remove($object, true);
-        }
-    }
-
     public function testIndex(): void
     {
         $crawler = $this->client->request('GET', $this->path);
@@ -149,5 +139,15 @@ class EntrepriseControllerTest extends WebTestCase
 
         self::assertSame($originalNumObjectsInRepository, count($this->repository->findAll()));
         self::assertResponseRedirects('/entreprise/');
+    }
+
+    protected function setUp(): void
+    {
+        $this->client = static::createClient();
+        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Entreprise::class);
+
+        foreach ($this->repository->findAll() as $object) {
+            $this->repository->remove($object, true);
+        }
     }
 }

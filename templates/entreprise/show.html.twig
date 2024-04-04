@@ -54,7 +54,9 @@
                 <a href="{{ path('app_stage_new', {'id_entreprise':entreprise.id}) }}">Create new</a>
                 {% for sta in stages %}
                     {% if sta.etudiants.count == 1 %}
-                    {{ sta.date }} - Stagiaire : <a href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par : <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
+                        {{ sta.date }} - Stagiaire : <a
+                            href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par :
+                        <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
                     {% else %}
                         <table>
                             <thead>
@@ -64,18 +66,21 @@
                                 <th>Niveau</th>
                                 <th>Gérer par</th>
                             </thead>
-                           <tbody>
+                            <tbody>
                             <tr>
                                 <td>{{ sta.date }}</td>
                                 <td>
                                     {% for etu in sta.etudiants %}
-                                        <a href="{{ path('app_etudiant_show', {'id': etu.id}) }}">{{ etu.nom }} {{ etu.prenom }}</a><br/>,
+                                        <a href="{{ path('app_etudiant_show', {'id': etu.id}) }}">{{ etu.nom }} {{ etu.prenom }}</a>
+                                        <br/>,
                                     {% endfor %}
                                 </td>
                                 <td>{{ sta.niveau }}</td>
-                                <td><a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a></td>
+                                <td>
+                                    <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>
+                                </td>
                             </tr>
-                           </tbody>
+                            </tbody>
                         </table>
                     {% endif %}
                 {% else %}

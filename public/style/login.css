@@ -1,5 +1,4 @@
-main
-{
+main {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -7,8 +6,7 @@ main
     justify-content: center;
 }
 
-.bt-main
-{
+.bt-main {
     background-color: var(--main-color);
     color: white;
     font-weight: 600;
@@ -16,33 +14,29 @@ main
 }
 
 
-p
-{
+p {
     font-size: 1.75em;
 }
 
-.section-login
-{
+.section-login {
     height: 100%;
     padding: 10%;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.section-login section  /*elements-login*/
+.section-login section /*elements-login*/
 {
     padding: 10%;
 }
 
-.formulaire-login
-{
-    background: linear-gradient(130deg,#35718B, #80CDDE);
+.formulaire-login {
+    background: linear-gradient(130deg, #35718B, #80CDDE);
     border-radius: 35px;
     max-width: 60vh;
-}   
+}
 
-.formulaire-login form
-{
+.formulaire-login form {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -51,25 +45,21 @@ p
 
 }
 
-.text-input
-{
+.text-input {
     display: flex;
     flex-direction: column;
 }
 
-.text-input label
-{
+.text-input label {
     font-size: 1.5em;
     color: rgb(209, 218, 219)
 }
 
-.text-input input
-{
+.text-input input {
     padding: 10px 20px;
     border-radius: 10px;
 }
 
-form button
-{
+form button {
     margin-top: 1.5em;
 }

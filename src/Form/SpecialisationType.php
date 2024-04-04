@@ -13,8 +13,7 @@ class SpecialisationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('labelle', TextType::class)
-        ;
+            ->add('labelle', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

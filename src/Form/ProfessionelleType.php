@@ -24,8 +24,7 @@ class ProfessionelleType extends AbstractType
                 'choice_label' => 'labelle',
                 'multiple' => true,
                 'by_reference' => false
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

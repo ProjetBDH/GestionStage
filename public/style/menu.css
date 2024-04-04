@@ -1,46 +1,39 @@
-
 /* -------------------- top -------------------- */
 
-header .top
-{
+header .top {
     height: 200px;
     background-color: var(--gris-dark);
     display: flex;
 }
 
 
-header .top .top-p-img
-{
+header .top .top-p-img {
     width: 50%;
 }
-header .top img
-{
+
+header .top img {
     height: 100%;
-    
+
 }
 
-header .top .top-p-text
-{
+header .top .top-p-text {
     color: white;
     font-size: 2em;
     width: 50%;
 }
 
-header .t-bienvenue strong
-{
+header .t-bienvenue strong {
     font-size: 2.25em;
-    display: flex;  
+    display: flex;
     justify-content: center;
 }
 
-header .t-user
-{
+header .t-user {
     display: flex;
     justify-content: space-around;
 }
 
-header .user-role
-{
+header .user-role {
     color: var(--main-color);
 
 }
@@ -48,33 +41,28 @@ header .user-role
 
 /*  ------------------- menu ------------------- */
 
-.menu
-{
+.menu {
     height: 50px;
     display: flex;
     box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.281);
 }
 
-.menu ul
-{
+.menu ul {
     display: flex;
     font-size: 1.25em;
     font-weight: 600;
 }
 
-.fil-ariane
-{
+.fil-ariane {
     width: 43%;
 }
 
-.menu-nav
-{
+.menu-nav {
     width: 57%;
     background-color: rgba(202, 202, 202, 1);
 }
 
-.menu-nav ul
-{
+.menu-nav ul {
     display: flex;
     justify-content: start;
     height: 100%;
@@ -82,7 +70,6 @@ header .user-role
     align-items: center;
 }
 
-.menu-nav ul li
-{
+.menu-nav ul li {
     padding: 0 30px;
 }

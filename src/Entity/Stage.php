@@ -50,7 +50,7 @@ class Stage
         $this->etudiants = new ArrayCollection();
         $this->professionelles = new ArrayCollection();
     }
-    
+
     public function getId(): ?int
     {
         return $this->id;

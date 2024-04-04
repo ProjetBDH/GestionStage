@@ -81,7 +81,7 @@ class RoleController extends AbstractController
      */
     public function delete(Request $request, Role $role, RoleRepository $roleRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$role->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $role->getId(), $request->request->get('_token'))) {
             $roleRepository->remove($role, true);
         }
 

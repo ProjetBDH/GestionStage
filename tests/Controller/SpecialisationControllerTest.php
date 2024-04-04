@@ -13,16 +13,6 @@ class SpecialisationControllerTest extends WebTestCase
     private SpecialisationRepository $repository;
     private string $path = '/specialisation/';
 
-    protected function setUp(): void
-    {
-        $this->client = static::createClient();
-        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Specialisation::class);
-
-        foreach ($this->repository->findAll() as $object) {
-            $this->repository->remove($object, true);
-        }
-    }
-
     public function testIndex(): void
     {
         $crawler = $this->client->request('GET', $this->path);
@@ -113,5 +103,15 @@ class SpecialisationControllerTest extends WebTestCase
 
         self::assertSame($originalNumObjectsInRepository, count($this->repository->findAll()));
         self::assertResponseRedirects('/specialisation/');
+    }
+
+    protected function setUp(): void
+    {
+        $this->client = static::createClient();
+        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Specialisation::class);
+
+        foreach ($this->repository->findAll() as $object) {
+            $this->repository->remove($object, true);
+        }
     }
 }

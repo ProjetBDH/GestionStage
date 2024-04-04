@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Entreprise;
 use App\Entity\Stage;
 use App\Form\StageType;
 use App\Repository\EntrepriseRepository;
@@ -34,14 +33,14 @@ class StageController extends AbstractController
     {
         $stage = new Stage();
         $id_entreprise = $request->query->get('id_entreprise');
-        if($id_entreprise) {
+        if ($id_entreprise) {
             $stage->setEntreprise($entrepriseRepository->find($id_entreprise));
         }
-        
+
         $form = $this->createForm(StageType::class, $stage);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {            
+        if ($form->isSubmitted() && $form->isValid()) {
             $stageRepository->add($stage, true);
 
             return $this->redirectToRoute('app_stage_index', [], Response::HTTP_SEE_OTHER);
@@ -88,7 +87,7 @@ class StageController extends AbstractController
      */
     public function delete(Request $request, Stage $stage, StageRepository $stageRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$stage->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $stage->getId(), $request->request->get('_token'))) {
             $stageRepository->remove($stage, true);
         }
 

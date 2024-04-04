@@ -81,7 +81,7 @@ class ProfessionelleController extends AbstractController
      */
     public function delete(Request $request, Professionelle $professionelle, ProfessionelleRepository $professionelleRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$professionelle->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $professionelle->getId(), $request->request->get('_token'))) {
             $professionelleRepository->remove($professionelle, true);
         }
 

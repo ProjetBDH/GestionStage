@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
-use App\Repository\ProfessionelleRepository;
 use App\Repository\StageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,7 +83,7 @@ class EntrepriseController extends AbstractController
      */
     public function delete(Request $request, Entreprise $entreprise, EntrepriseRepository $entrepriseRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$entreprise->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $entreprise->getId(), $request->request->get('_token'))) {
             $entrepriseRepository->remove($entreprise, true);
         }
 

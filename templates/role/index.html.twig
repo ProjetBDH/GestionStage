@@ -7,11 +7,11 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Labelle</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Labelle</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for role in roles %}
@@ -19,7 +19,7 @@
                 <td>{{ role.id }}</td>
                 <td>{{ role.labelle }}</td>
                 <td>
-                    {{ include('role/_delete_form.html.twig') }}    
+                    {{ include('role/_delete_form.html.twig') }}
                     <a href="{{ path('app_role_edit', {'id': role.id}) }}">edit</a>
                 </td>
             </tr>

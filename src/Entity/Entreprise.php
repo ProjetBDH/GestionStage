@@ -215,5 +215,5 @@ class Entreprise
 
         return $this;
     }
-    
+
 }

@@ -12,8 +12,7 @@ class RoleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('labelle')
-        ;
+            ->add('labelle');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

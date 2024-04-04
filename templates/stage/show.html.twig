@@ -7,22 +7,22 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ stage.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ stage.date }}</td>
-            </tr>
-            <tr>
-                <th>Niveau</th>
-                <td>{{ stage.niveau }}</td>
-            </tr>
-            <tr>
-                <th>Entreprise</th>
-                <td>{{ stage.entreprise.nom }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ stage.id }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ stage.date }}</td>
+        </tr>
+        <tr>
+            <th>Niveau</th>
+            <td>{{ stage.niveau }}</td>
+        </tr>
+        <tr>
+            <th>Entreprise</th>
+            <td>{{ stage.entreprise.nom }}</td>
+        </tr>
         </tbody>
     </table>
 
@@ -30,13 +30,13 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Spécialisation</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Spécialisation</th>
+        </tr>
         </thead>
         <tbody>
         {% for etu in stage.etudiants %}

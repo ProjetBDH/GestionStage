@@ -8,7 +8,6 @@ use App\Entity\Specialisation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,18 +18,18 @@ class EntrepriseType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class)
-            ->add('rue',TextType::class)
-            ->add('ville',TextType::class)
-            ->add('pays',TextType::class)
-            ->add('cp',TextType::class)
-            ->add('num_rue',TextType::class)
+            ->add('rue', TextType::class)
+            ->add('ville', TextType::class)
+            ->add('pays', TextType::class)
+            ->add('cp', TextType::class)
+            ->add('num_rue', TextType::class)
             ->add('activite', EntityType::class, [
                 'class' => Activite::class,
                 'choice_label' => 'labelle',
                 'placeholder' => 'Sélectionner une activité',
             ])
-            ->add('ajout_activite',ButtonType::class,[
-                'attr'=>['onclick'=>'window.location.href="/activite/new"']
+            ->add('ajout_activite', ButtonType::class, [
+                'attr' => ['onclick' => 'window.location.href="/activite/new"']
             ])
             ->add('specialisations', EntityType::class, [
                 'class' => Specialisation::class,
@@ -39,8 +38,7 @@ class EntrepriseType extends AbstractType
                 'expanded' => true,
                 'by_reference' => false,
                 'placeholder' => 'Sélectionner des spécialisations',
-            ]);
-        ;
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

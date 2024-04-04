@@ -81,7 +81,7 @@ class SpecialisationController extends AbstractController
      */
     public function delete(Request $request, Specialisation $specialisation, SpecialisationRepository $specialisationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$specialisation->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $specialisation->getId(), $request->request->get('_token'))) {
             $specialisationRepository->remove($specialisation, true);
         }
 

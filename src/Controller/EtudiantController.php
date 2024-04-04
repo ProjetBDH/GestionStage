@@ -81,7 +81,7 @@ class EtudiantController extends AbstractController
      */
     public function delete(Request $request, Etudiant $etudiant, EtudiantRepository $etudiantRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$etudiant->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $etudiant->getId(), $request->request->get('_token'))) {
             $etudiantRepository->remove($etudiant, true);
         }
 

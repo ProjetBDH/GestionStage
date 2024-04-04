@@ -13,16 +13,6 @@ class ActiviteControllerTest extends WebTestCase
     private ActiviteRepository $repository;
     private string $path = '/activite/';
 
-    protected function setUp(): void
-    {
-        $this->client = static::createClient();
-        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Activite::class);
-
-        foreach ($this->repository->findAll() as $object) {
-            $this->repository->remove($object, true);
-        }
-    }
-
     public function testIndex(): void
     {
         $crawler = $this->client->request('GET', $this->path);
@@ -107,5 +97,15 @@ class ActiviteControllerTest extends WebTestCase
 
         self::assertSame($originalNumObjectsInRepository, count($this->repository->findAll()));
         self::assertResponseRedirects('/activite/');
+    }
+
+    protected function setUp(): void
+    {
+        $this->client = static::createClient();
+        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Activite::class);
+
+        foreach ($this->repository->findAll() as $object) {
+            $this->repository->remove($object, true);
+        }
     }
 }
