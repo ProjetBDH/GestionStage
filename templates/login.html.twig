@@ -2,27 +2,37 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }} {# Inclut les feuilles de style du modèle de base #}
+    <link rel="stylesheet" href="style/login.css">
 {% endblock %}
 
 {% block body %}
 	<main>
-	<div class="content-center">
-		<h1>Connexion</h1>
+	<div class="content-center section-login">
+		<section class="titre-login">
+			<h1>Bienvenue</h1>
+			<p>Connectez-vous pour pouvoir pointer vos honoraires.</p>
+		</section>
+		<section class="formulaire-login">
+			{% if error %}
+				<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-		{% if error %}
-			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
-
-		<form method="post" action="{{ path('check_login') }}">
-			<label for="username">Nom d'utilisateur :</label>
-			<input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
-
-			<label for="password">Mot de passe :</label>
-			<input type="password" id="password" name="_password" required>
-
-			<button type="submit">Connexion</button>
-		</form>
+			<form method="post" action="{{ path('check_login') }}">
+			<div class="text-input">
+				<label for="username">Nom d'utilisateur :</label>
+				<input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
+			</div>
+			<div class="text-input">
+				<label for="password">Mot de passe :</label>
+				<input type="password" id="password" name="_password" required>
+			</div>
+				<button class="bt-main" type="submit">Connexion</button>
+			</form>
+		</section>
 		</div>
 	</main>
 {% endblock %}

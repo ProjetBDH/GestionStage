@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 28 mars 2024 à 14:32
+-- Généré le : mar. 02 avr. 2024 à 07:38
 -- Version du serveur : 8.2.0
 -- Version de PHP : 7.4.33
 
@@ -39,27 +39,6 @@ INSERT INTO `activite` (`id`,`labelle`) VALUES
 (1, 'Ventre Produit Electroménager'),
 (2, 'Agence Web'),
 (3, 'Industrie Automobile');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `doctrine_migration_versions`
---
-
-DROP TABLE IF EXISTS `doctrine_migration_versions`;
-CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `executed_at` datetime DEFAULT NULL,
-  `execution_time` int DEFAULT NULL,
-  PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-
---
--- Déchargement des données de la table `doctrine_migration_versions`
---
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20240326081605', '2024-03-26 08:16:14', 1744);
 
 -- --------------------------------------------------------
 
