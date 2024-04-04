@@ -37,7 +37,7 @@ class ProfessionelleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $professionelleRepository->add($professionelle, true);
 
-            return $this->redirectToRoute('app_professionelle_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_stage_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('professionelle/new.html.twig', [

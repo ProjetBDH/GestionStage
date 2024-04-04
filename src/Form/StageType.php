@@ -8,6 +8,7 @@ use App\Entity\Professionelle;
 use App\Entity\Stage;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -36,6 +37,9 @@ class StageType extends AbstractType
                 'required' => true,
                 'by_reference' => false,
             ])
+            ->add('ajout_etudiant',ButtonType::class,[
+                'attr'=>['onclick'=>'window.location.href="/etudiant/new"']
+            ])
             ->add('professionelles',EntityType::class, [
                 'class' => Professionelle::class,
                 'choice_label' => 'nom',
@@ -43,6 +47,9 @@ class StageType extends AbstractType
                 'expanded' => true,
                 'required' => true,
                 'by_reference' => false,
+            ])
+            ->add('ajout_professionelle',ButtonType::class,[
+                'attr'=>['onclick'=>'window.location.href="/professionelle/new"']
             ])
         ;
     }

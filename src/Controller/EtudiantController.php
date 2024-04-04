@@ -37,7 +37,7 @@ class EtudiantController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $etudiantRepository->add($etudiant, true);
 
-            return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_stage_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('etudiant/new.html.twig', [
