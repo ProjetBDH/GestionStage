@@ -19,6 +19,60 @@
                 <th>Niveau</th>
                 <td>{{ stage.niveau }}</td>
             </tr>
+            <tr>
+                <th>Entreprise</th>
+                <td>{{ stage.entreprise.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Stagiaire</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Spécialisation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etu in stage.etudiants %}
+            <tr>
+                <td>{{ etu.id }}</td>
+                <td>{{ etu.nom }}</td>
+                <td>{{ etu.prenom }}</td>
+                <td>{{ etu.email }}</td>
+                <td>{{ etu.specialisation }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Professionnelles</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Métier</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pro in stage.professionelles %}
+            <tr>
+                <td>{{ pro.id }}</td>
+                <td>{{ pro.nom }}</td>
+                <td>{{ pro.prenom }}</td>
+                <td>{{ pro.email }}</td>
+                <td>{{ pro.metier }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 

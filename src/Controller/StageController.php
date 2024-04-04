@@ -34,7 +34,7 @@ class StageController extends AbstractController
         $form = $this->createForm(StageType::class, $stage);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {            
             $stageRepository->add($stage, true);
 
             return $this->redirectToRoute('app_stage_index', [], Response::HTTP_SEE_OTHER);

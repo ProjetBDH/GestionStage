@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
+use App\Repository\ProfessionelleRepository;
+use App\Repository\StageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,10 +51,11 @@ class EntrepriseController extends AbstractController
     /**
      * @Route("/{id}", name="app_entreprise_show", methods={"GET"})
      */
-    public function show(Entreprise $entreprise): Response
+    public function show(Entreprise $entreprise, StageRepository $stageRepository): Response
     {
         return $this->render('entreprise/show.html.twig', [
             'entreprise' => $entreprise,
+            'stages' => $stageRepository->findBy(['entreprise' => $entreprise->getId()]),
         ]);
     }
 
