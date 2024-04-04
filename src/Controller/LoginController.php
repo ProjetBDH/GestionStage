@@ -49,7 +49,7 @@ class LoginController extends AbstractController
         // Vérifier le mot de passe
         if (password_verify($password, $user->getPassword())) {
             // Mot de passe correct, vous pouvez autoriser la connexion de l'utilisateur
-            return $this->redirectToRoute('app_base');
+            return $this->redirectToRoute('app_entreprise_index');
         } else {
             // Mot de passe incorrect, gérer l'échec de connexion
             echo "Error";
