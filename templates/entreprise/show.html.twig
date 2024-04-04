@@ -7,50 +7,84 @@
 
     <table class="table">
         <tbody>
-        
-        
-        
-            <tr>
-                <th>Id</th>
-                <td>{{ entreprise.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entreprise.nom }}</td>
-            </tr>
-            <tr>
-                <th>Rue</th>
-                <td>{{ entreprise.rue }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ entreprise.ville }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ entreprise.pays }}</td>
-            </tr>
-            <tr>
-                <th>Cp</th>
-                <td>{{ entreprise.cp }}</td>
-            </tr>
-            <tr>
-                <th>Num_rue</th>
-                <td>{{ entreprise.numRue }}</td>
-            </tr>
-            <tr>
-                <th>Activite</th>
-                <td>{{ entreprise.activite.labelle }}</td>
-            </tr>
-            <tr>
-                <th>Specialisation</th>
-                <td>
-                    {% for spe in entreprise.specialisations %}
+        <tr>
+            <th>Id</th>
+            <td>{{ entreprise.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ entreprise.nom }}</td>
+        </tr>
+        <tr>
+            <th>Rue</th>
+            <td>{{ entreprise.rue }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ entreprise.ville }}</td>
+        </tr>
+        <tr>
+            <th>Pays</th>
+            <td>{{ entreprise.pays }}</td>
+        </tr>
+        <tr>
+            <th>Cp</th>
+            <td>{{ entreprise.cp }}</td>
+        </tr>
+        <tr>
+            <th>Num_rue</th>
+            <td>{{ entreprise.numRue }}</td>
+        </tr>
+        <tr>
+            <th>Activite</th>
+            <td>{{ entreprise.activite.labelle }}</td>
+        </tr>
+        <tr>
+            <th>Specialisation</th>
+            <td>
+                {% for spe in entreprise.specialisations %}
                     {{ spe.labelle }},
-                    {% endfor %}
-                </td>
-               
-            </tr>
+                {% endfor %}
+            </td>
+
+        </tr>
+        <tr>
+            <th>Stages</th>
+            <td>
+                <a href="{{ path('app_stage_new', {'id_entreprise':entreprise.id}) }}">Create new</a>
+                {% for sta in stages %}
+                    {% if sta.etudiants.count == 1 %}
+                    {{ sta.date }} - Stagiaire : <a href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par : <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
+                    {% else %}
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Stagiaire</th>
+                                <th>Niveau</th>
+                                <th>Gérer par</th>
+                            </thead>
+                           <tbody>
+                            <tr>
+                                <td>{{ sta.date }}</td>
+                                <td>
+                                    {% for etu in sta.etudiants %}
+                                        <a href="{{ path('app_etudiant_show', {'id': etu.id}) }}">{{ etu.nom }} {{ etu.prenom }}</a><br/>,
+                                    {% endfor %}
+                                </td>
+                                <td>{{ sta.niveau }}</td>
+                                <td><a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a></td>
+                            </tr>
+                           </tbody>
+                        </table>
+                    {% endif %}
+                {% else %}
+                    no records found
+
+                {% endfor %}
+            </td>
+
+        </tr>
         </tbody>
     </table>
 

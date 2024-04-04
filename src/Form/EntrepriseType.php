@@ -7,6 +7,7 @@ use App\Entity\Entreprise;
 use App\Entity\Specialisation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +28,9 @@ class EntrepriseType extends AbstractType
                 'class' => Activite::class,
                 'choice_label' => 'labelle',
                 'placeholder' => 'Sélectionner une activité',
+            ])
+            ->add('ajout_activite',ButtonType::class,[
+                'attr'=>['onclick'=>'window.location.href="/activite/new"']
             ])
             ->add('specialisations', EntityType::class, [
                 'class' => Specialisation::class,

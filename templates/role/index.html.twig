@@ -19,7 +19,7 @@
                 <td>{{ role.id }}</td>
                 <td>{{ role.labelle }}</td>
                 <td>
-                    <a href="{{ path('app_role_show', {'id': role.id}) }}">show</a>
+                    {{ include('role/_delete_form.html.twig') }}    
                     <a href="{{ path('app_role_edit', {'id': role.id}) }}">edit</a>
                 </td>
             </tr>

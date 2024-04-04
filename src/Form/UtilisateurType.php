@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Role;
 use App\Entity\Utilisateur;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -20,7 +21,7 @@ class UtilisateurType extends AbstractType
             ->add('password')
             ->add('email', EmailType::class)
             ->add('role', EntityType::class, [
-                'class' => 'App\Entity\Role',
+                'class' => Role::class,
                 'choice_label' => 'labelle',
                 'placeholder' => 'Sélectionner un rôle',
             ]);

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Entreprise;
 use App\Entity\Stage;
 use App\Form\StageType;
+use App\Repository\EntrepriseRepository;
 use App\Repository\StageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,13 +30,18 @@ class StageController extends AbstractController
     /**
      * @Route("/new", name="app_stage_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, StageRepository $stageRepository): Response
+    public function new(Request $request, StageRepository $stageRepository, EntrepriseRepository $entrepriseRepository): Response
     {
         $stage = new Stage();
+        $id_entreprise = $request->query->get('id_entreprise');
+        if($id_entreprise) {
+            $stage->setEntreprise($entrepriseRepository->find($id_entreprise));
+        }
+        
         $form = $this->createForm(StageType::class, $stage);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {            
             $stageRepository->add($stage, true);
 
             return $this->redirectToRoute('app_stage_index', [], Response::HTTP_SEE_OTHER);

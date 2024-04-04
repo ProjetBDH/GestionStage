@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Etudiant;
+use App\Entity\Specialisation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +18,11 @@ class EtudiantType extends AbstractType
             ->add('prenom')
             ->add('email')
             ->add('numTel')
-            ->add('specialisation')
+            ->add('specialisation',EntityType::class, [
+                'class' => Specialisation::class,
+                'choice_label' => 'labelle',
+                'by_reference' => false,
+            ])
         ;
     }
 

@@ -19,7 +19,7 @@
                 <td>{{ activite.id }}</td>
                 <td>{{ activite.labelle }}</td>
                 <td>
-                    <a href="{{ path('app_activite_show', {'id': activite.id}) }}">show</a>
+                    {{ include('activite/_delete_form.html.twig') }}
                     <a href="{{ path('app_activite_edit', {'id': activite.id}) }}">edit</a>
                 </td>
             </tr>

@@ -37,7 +37,7 @@ class ActiviteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $activiteRepository->add($activite, true);
 
-            return $this->redirectToRoute('app_activite_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_entreprise_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('activite/new.html.twig', [

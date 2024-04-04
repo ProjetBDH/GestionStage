@@ -19,7 +19,7 @@
                 <td>{{ specialisation.id }}</td>
                 <td>{{ specialisation.labelle }}</td>
                 <td>
-                    <a href="{{ path('app_specialisation_show', {'id': specialisation.id}) }}">show</a>
+                    {{ include('specialisation/_delete_form.html.twig') }}
                     <a href="{{ path('app_specialisation_edit', {'id': specialisation.id}) }}">edit</a>
                 </td>
             </tr>
