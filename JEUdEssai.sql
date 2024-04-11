@@ -32,13 +32,6 @@ INSERT INTO `activite` (`id`, `labelle`) VALUES
                                              (4, 'dsqdqs');
 
 --
--- Déchargement des données de la table `doctrine_migration_versions`
---
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-    ('DoctrineMigrations\\Version20240328161707', '2024-03-28 16:17:25', 2075);
-
---
 -- Déchargement des données de la table `entreprise`
 --
 
@@ -54,15 +47,6 @@ INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `email`, `num_tel`, `specialisati
                                                                                          (1, 'Etudiant1', 'Etudiant1', 'Etudiant1@localhost', '0123456789', 'Etudiant'),
                                                                                          (2, 'Bob', 'Dylan', 'dd@localhost', '0658781165', 'SLam');
 
---
--- Déchargement des données de la table `etudiant_stage`
---
-
-INSERT INTO `etudiant_stage` (`etudiant_id`, `stage_id`) VALUES
-                                                             (1, 2),
-                                                             (2, 1),
-                                                             (2, 2),
-                                                             (2, 3);
 
 --
 -- Déchargement des données de la table `jury`
@@ -72,13 +56,6 @@ INSERT INTO `jury` (`id`, `date`) VALUES
                                       (1, '2024'),
                                       (2, '2024');
 
---
--- Déchargement des données de la table `jury_professionelle`
---
-
-INSERT INTO `jury_professionelle` (`jury_id`, `professionelle_id`) VALUES
-                                                                       (1, 1),
-                                                                       (2, 1);
 
 --
 -- Déchargement des données de la table `professionelle`
@@ -87,14 +64,6 @@ INSERT INTO `jury_professionelle` (`jury_id`, `professionelle_id`) VALUES
 INSERT INTO `professionelle` (`id`, `nom`, `prenom`, `email`, `num_tel`, `metier`) VALUES
     (1, 'Professionelle1', 'Professionelle1', 'Professionelle1@localhost', '0123456789', '0123456789');
 
---
--- Déchargement des données de la table `professionelle_stage`
---
-
-INSERT INTO `professionelle_stage` (`professionelle_id`, `stage_id`) VALUES
-                                                                         (1, 1),
-                                                                         (1, 2),
-                                                                         (1, 3);
 
 --
 -- Déchargement des données de la table `role`
@@ -114,15 +83,6 @@ INSERT INTO `specialisation` (`id`, `labelle`) VALUES
                                                    (2, 'Specialisation2'),
                                                    (3, 'Specialisation3');
 
---
--- Déchargement des données de la table `specialisation_entreprise`
---
-
-INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`) VALUES
-                                                                                   (1, 1),
-                                                                                   (1, 2),
-                                                                                   (2, 1),
-                                                                                   (2, 2);
 
 --
 -- Déchargement des données de la table `stage`
@@ -142,12 +102,6 @@ INSERT INTO `statut` (`id`, `labelle`) VALUES
                                            (2, 'Boss'),
                                            (3, 'Esclave');
 
---
--- Déchargement des données de la table `statut_professionelle`
---
-
-INSERT INTO `statut_professionelle` (`statut_id`, `professionelle_id`) VALUES
-    (1, 1);
 
 --
 -- Déchargement des données de la table `utilisateur`
