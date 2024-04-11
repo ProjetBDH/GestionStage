@@ -2,21 +2,32 @@
 
 namespace App\Controller;
 
+use App\Controller\MainController;
+
 use App\Entity\Utilisateur;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack; // pour la variable section
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LoginController extends AbstractController
-{
 
+class LoginController extends MainController
+{
     /**
      * @Route("/", name="app_login")
      */
     public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
     {
+        // deja logger
+        $session = $request->getSession();
+
+        if ($session->get('utilisateur_ok', [false])[0])
+        {
+            return $this->redirectToRoute('app_entreprise_index');
+        }
+
+
         // Récupérer l'erreur de connexion s'il y en a une
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -34,6 +45,7 @@ class LoginController extends AbstractController
      */
     public function checkLogin(Request $request): Response
     {
+        $session = $request->getSession();
         $username = $request->request->get('_username');
         $password = $request->request->get('_password');
 
@@ -48,6 +60,8 @@ class LoginController extends AbstractController
 
         // Vérifier le mot de passe
         if (password_verify($password, $user->getPassword())) {
+            $session->set('utilisateur_ok', [true, 'admin']);
+
             // Mot de passe correct, vous pouvez autoriser la connexion de l'utilisateur
             return $this->redirectToRoute('app_entreprise_index');
         } else {
@@ -57,11 +71,5 @@ class LoginController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/principal", name="app_base")
-     */
-    public function base(Request $request, AuthenticationUtils $authenticationUtils): Response
-    {
-        return $this->render('base.html.twig');
-    }
+    
 }

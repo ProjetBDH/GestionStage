@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\MainController;
 
-class DefaultController extends AbstractController
+class DefaultController extends MainController
 {
 //    /**
 //     * @Route("/", name="app_default")

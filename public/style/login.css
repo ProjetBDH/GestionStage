@@ -1,10 +1,4 @@
-main {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .bt-main {
     background-color: var(--main-color);

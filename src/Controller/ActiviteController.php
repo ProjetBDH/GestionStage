@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Controller\MainController;
+
 use App\Entity\Activite;
 use App\Form\ActiviteType;
 use App\Repository\ActiviteRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/activite")
  */
-class ActiviteController extends AbstractController
+class ActiviteController extends MainController
 {
     /**
      * @Route("/", name="app_activite_index", methods={"GET"})
