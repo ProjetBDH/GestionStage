@@ -64,11 +64,16 @@ class UtilisateurController extends AbstractController
      */
     public function edit(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
     {
+        $utilisateur->setPassword('');
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            if($utilisateur->getPassword() != '') {
+                $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
+            } else {
+                $utilisateur->setPassword($utilisateurRepository->find($utilisateur->getId())->getPassword());
+            }
             $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
 
             $utilisateurRepository->add($utilisateur, true);
