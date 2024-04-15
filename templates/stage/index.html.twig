@@ -3,7 +3,7 @@
 {% block title %}Stage index{% endblock %}
 
 {% block body %}
-    <h1>Stage index</h1>
+    <h1>Stage</h1>
 
     <table class="table">
         <thead>
@@ -11,7 +11,7 @@
             <th>Id</th>
             <th>Date</th>
             <th>Niveau</th>
-            <th>actions</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ stage.date }}</td>
                 <td>{{ stage.niveau }}</td>
                 <td>
-                    <a href="{{ path('app_stage_show', {'id': stage.id}) }}">show</a>
-                    <a href="{{ path('app_stage_edit', {'id': stage.id}) }}">edit</a>
+                    <a href="{{ path('app_stage_show', {'id': stage.id}) }}" class="boutton">Voir</a>
+                    <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucune donnée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_stage_new') }}">Create new</a>
+    <a href="{{ path('app_stage_new') }}" class="boutton">Créer un nouveau stage</a>
 {% endblock %}
