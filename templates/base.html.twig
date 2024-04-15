@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-    <link rel="stylesheet" href="/style/global.css">
-    <link
-            rel="stylesheet" href="/style/menu.css">
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		<link rel="stylesheet" href="/style/global.css">
+		<link
+		rel="stylesheet" href="/style/menu.css">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-</head>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
 
-<body>
-{% block navbar %}
-    <header>
-        <section class="top">
-            <div class="top-p-img">
-                <img src="/img/Logo-Chataigneraie.png" alt="" srcset=""/>
-            </div>
-            <div class="top-p-text">
-                <div class="t-bienvenue">
-                    <strong>Bienvenue</strong>
-                </div>
-                <div class="t-user">
-                    <strong class="user-name">NomDeLaPersonne</strong>
-                    <strong class="user-role">Administrateur</strong>
-                </div>
-            </div>
-        </section>
-        <nav class="menu">
-            <div class="fil-ariane"></div>
-            <div class="menu-nav">
-                <ul>
-                    <li><a href="{{ path('app_entreprise_index') }}">Entreprise</a></li>
-                    <li><a href="{{ path('app_utilisateur_index') }}">Utilisateur</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-{% endblock %}
-{% block body %}{% endblock %}
-</body>
+	<body>
+			{% block navbar %}
+				<header>
+					<section class="top">
+						<div class="top-p-img">
+							<img src="/img/Logo-Chataigneraie.png" alt="" srcset=""/>
+						</div>
+						<div class="top-p-text">
+							<div class="t-bienvenue">
+								<strong>Bienvenue</strong>
+							</div>
+							<div class="t-user">
+								<strong class="user-name">NomDeLaPersonne</strong>
+								<strong class="user-role">Administrateur</strong>
+							</div>
+						</div>
+					</section>
+					<nav class="menu">
+						<div class="fil-ariane"></div>
+						<div class="menu-nav">
+							<ul>
+								<li><a href="{{ path('app_entreprise_index') }}">Entreprise</a></li>
+								<li><a href="{{ path('app_utilisateur_index') }}">Utilisateur</a></li>
+							</ul>
+						</div>
+					</nav>
+				</header>
+			{% endblock %}
+		{% block body %}{% endblock %}
+	</body>
 </html>

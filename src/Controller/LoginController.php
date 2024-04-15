@@ -22,7 +22,7 @@ class LoginController extends MainController
         // deja logger
         $session = $request->getSession();
 
-        if ($session->get('utilisateur_ok', [false])[0])
+        if ($session->get('user_authentication', ['is_authenticated' => false])['is_authenticated'])
         {
             return $this->redirectToRoute('app_entreprise_index');
         }
@@ -60,8 +60,11 @@ class LoginController extends MainController
 
         // Vérifier le mot de passe
         if (password_verify($password, $user->getPassword())) {
-            $session->set('utilisateur_ok', [true, 'admin']);
 
+            $session->set('user_authentication', [
+                'is_authenticated' => true,
+                'role' => 'admin'
+            ]);
             // Mot de passe correct, vous pouvez autoriser la connexion de l'utilisateur
             return $this->redirectToRoute('app_entreprise_index');
         } else {
