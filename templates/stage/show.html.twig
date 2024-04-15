@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <th>Entreprise</th>
-            <td>{{ stage.entreprise.nom }}</td>
+            <td><a href="{{ path('app_entreprise_show',{'id':stage.entreprise.id}) }}">{{ stage.entreprise.nom }}</a></td>
         </tr>
         </tbody>
     </table>
@@ -36,6 +36,7 @@
             <th>Prenom</th>
             <th>Email</th>
             <th>Spécialisation</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -46,6 +47,8 @@
                 <td>{{ etu.prenom }}</td>
                 <td>{{ etu.email }}</td>
                 <td>{{ etu.specialisation }}</td>
+                <td><a href="{{ path('app_etudiant_show', {'id':etu.id}) }}">Show</a></td>
+                
             </tr>
         {% endfor %}
         </tbody>
@@ -61,6 +64,7 @@
             <th>Prenom</th>
             <th>Email</th>
             <th>Métier</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -71,6 +75,7 @@
                 <td>{{ pro.prenom }}</td>
                 <td>{{ pro.email }}</td>
                 <td>{{ pro.metier }}</td>
+                <td><a href="{{ path('app_professionelle_show', {'id':pro.id}) }}">Show</a></td>
             </tr>
         {% endfor %}
         </tbody>

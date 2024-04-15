@@ -10,12 +10,10 @@
         <tr>
             <th>Id</th>
             <th>Nom</th>
-            <th>Rue</th>
             <th>Ville</th>
-            <th>Pays</th>
             <th>Cp</th>
-            <th>Num_rue</th>
-            <th>actions</th>
+            <th>Pays</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -23,11 +21,9 @@
             <tr>
                 <td>{{ entreprise.id }}</td>
                 <td>{{ entreprise.nom }}</td>
-                <td>{{ entreprise.rue }}</td>
                 <td>{{ entreprise.ville }}</td>
-                <td>{{ entreprise.pays }}</td>
                 <td>{{ entreprise.cp }}</td>
-                <td>{{ entreprise.numRue }}</td>
+                <td>{{ entreprise.pays }}</td>
                 <td>
                     <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
                 </td>

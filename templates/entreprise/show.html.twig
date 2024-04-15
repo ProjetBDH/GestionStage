@@ -16,16 +16,8 @@
             <td>{{ entreprise.nom }}</td>
         </tr>
         <tr>
-            <th>Numéro Adresse</th>
-            <td>{{ entreprise.numRue }}</td>
-        </tr>
-        <tr>
-            <th>Rue</th>
-            <td>{{ entreprise.rue }}</td>
-        </tr>
-        <tr>
-            <th>Cp</th>
-            <td>{{ entreprise.cp }}</td>
+            <th>Adresse</th>
+            <td>{{ entreprise.numRue }} {{ entreprise.rue }}, {{ entreprise.cp }} {{ entreprise.ville }}</td>
         </tr>
         <tr>
             <th>Ville</th>
@@ -55,7 +47,7 @@
                 {% for sta in stages %}
                     {% if sta.etudiants.count == 1 %}
                         {{ sta.date }} - Stagiaire : <a
-                            href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par :
+                            href="{{ path('app_etudiant_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par :
                         <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
                     {% else %}
                         <table>
