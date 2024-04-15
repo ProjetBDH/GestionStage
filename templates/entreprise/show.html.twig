@@ -16,8 +16,8 @@
             <td>{{ entreprise.nom }}</td>
         </tr>
         <tr>
-            <th>Rue</th>
-            <td>{{ entreprise.rue }}</td>
+            <th>Adresse</th>
+            <td>{{ entreprise.numRue }} {{ entreprise.rue }}, {{ entreprise.cp }} {{ entreprise.ville }}</td>
         </tr>
         <tr>
             <th>Ville</th>
@@ -26,14 +26,6 @@
         <tr>
             <th>Pays</th>
             <td>{{ entreprise.pays }}</td>
-        </tr>
-        <tr>
-            <th>Cp</th>
-            <td>{{ entreprise.cp }}</td>
-        </tr>
-        <tr>
-            <th>Num_rue</th>
-            <td>{{ entreprise.numRue }}</td>
         </tr>
         <tr>
             <th>Activite</th>
