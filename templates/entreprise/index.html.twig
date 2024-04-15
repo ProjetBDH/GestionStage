@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise index{% endblock %}
+{% block title %}Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
+    <h1>Entreprise</h1>
 
     <table class="table">
         <thead>
@@ -25,16 +25,16 @@
                 <td>{{ entreprise.cp }}</td>
                 <td>{{ entreprise.pays }}</td>
                 <td>
-                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
+                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"  class="boutton">Voir</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Aucune donnée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_entreprise_new') }}">Create new</a>
+    <a href="{{ path('app_entreprise_new') }}"  class="boutton">Créer une nouvelle entreprise</a>
 {% endblock %}
