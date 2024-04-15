@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Stage{% endblock %}
+{% block title %}Stage Informations{% endblock %}
 
 {% block body %}
-    <h1>Stage</h1>
+    <h1>Informations Stage</h1>
 
     <table class="table">
         <tbody>
@@ -82,7 +82,7 @@
     </table>
 
     <br>
-    
+
     <a href="{{ path('app_stage_index') }}" class="boutton">Retour à la liste</a>
 
     <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer le stage</a>
