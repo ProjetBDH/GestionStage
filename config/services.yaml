@@ -24,6 +24,6 @@ services:
   # please note that last definitions always *replace* previous ones
 
   # Ajout un l'événement avant chaque controller 
-  App\EventListener\ControllerListener:
+  App\EventListener\ControllerAccesPage:
     tags:
       - { name: kernel.event_listener, event: kernel.controller }

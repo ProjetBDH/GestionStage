@@ -1,6 +1,6 @@
 <?php
 
-// src/EventListener/BeforeControllerListener.php
+// src/EventListener/BeforeControllerAccesPage
 namespace App\EventListener; 
 
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
@@ -8,9 +8,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use App\Controller\LoginController; // Import du LoginController
+/*
 
-class ControllerListener
+Execution :  Avant chaque contrôleur (non ignoré), déclaré dans "services.yaml"
+Rôle : vérifie que l'utilisateur s'est bien connecté
+
+*/
+
+class ControllerAccesPage
 {
     private $urlGenerator;
     private $requestStack;
