@@ -36,9 +36,6 @@ class StageType extends AbstractType
                 'required' => true,
                 'by_reference' => false,
             ])
-            ->add('ajout_etudiant', ButtonType::class, [
-                'attr' => ['onclick' => 'window.location.href="/etudiant/new"']
-            ])
             ->add('professionelles', EntityType::class, [
                 'class' => Professionelle::class,
                 'choice_label' => 'nom',
@@ -46,9 +43,6 @@ class StageType extends AbstractType
                 'expanded' => true,
                 'required' => true,
                 'by_reference' => false,
-            ])
-            ->add('ajout_professionelle', ButtonType::class, [
-                'attr' => ['onclick' => 'window.location.href="/professionelle/new"']
             ]);
     }
 
