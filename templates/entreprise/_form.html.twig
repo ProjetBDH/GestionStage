@@ -1,4 +1,52 @@
-{{ form_start(form) }}
+{#{{ form_start(form) }}
     {{ form_widget(form) }}
 <button class="boutton">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+{# Formulaire d'entreprise #}
+<form method="POST" action="{{ path('app_entreprise_new') }}" class="container mt-4">
+    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.rue) }}
+        {{ form_widget(form.rue, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.rue) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.ville) }}
+        {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.ville) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.pays) }}
+        {{ form_widget(form.pays, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.pays) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.cp) }}
+        {{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.cp) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.num_rue) }}
+        {{ form_widget(form.num_rue, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.num_rue) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.activite) }}
+        {{ form_widget(form.activite, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.activite) }}
+    </div>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/activite/new'">Ajouter une activité</button>
+    <div class="form-group">
+        {{ form_label(form.specialisations) }}
+        {{ form_widget(form.specialisations, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.specialisations) }}
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    {{ form_end(form) }}
+</form>
