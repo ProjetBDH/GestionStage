@@ -53,9 +53,13 @@ header .user-role {
     font-weight: 600;
 }
 
+.fil-ariane {
+    width: 43%;
+}
 
 .menu-nav {
     width: 57%;
+    background-color: rgba(202, 202, 202, 1);
 }
 
 .menu-nav ul {

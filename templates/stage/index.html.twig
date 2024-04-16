@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Stage{% endblock %}
+{% block title %}Stage index{% endblock %}
 
 {% block body %}
-    <h1>Stage</h1>
+    <h1>Stage index</h1>
 
     <table class="table">
         <thead>
@@ -11,7 +11,7 @@
             <th>Id</th>
             <th>Date</th>
             <th>Niveau</th>
-            <th>Actions</th>
+            <th>actions</th>
         </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ stage.date }}</td>
                 <td>{{ stage.niveau }}</td>
                 <td>
-                    <a href="{{ path('app_stage_show', {'id': stage.id}) }}" class="boutton">Voir</a>
-                    <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
+                    <a href="{{ path('app_stage_show', {'id': stage.id}) }}">show</a>
+                    <a href="{{ path('app_stage_edit', {'id': stage.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">Aucune donnée</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_stage_new') }}" class="boutton">Créer un nouveau stage</a>
+    <a href="{{ path('app_stage_new') }}">Create new</a>
 {% endblock %}
