@@ -21,33 +21,38 @@
 	</head>
 
 	<body>
-			{% block navbar %}
-				<header>
-					<section class="top">
-						<div class="top-p-img">
-							<img src="/img/Logo-Chataigneraie.png" alt="" srcset=""/>
+		{% block navbar %}
+			<header>
+				<section class="top">
+					<div class="top-p-img">
+						<img src="/img/Logo-Chataigneraie.png" alt="" srcset=""/>
+					</div>
+					<div class="top-p-text">
+						<div class="t-bienvenue">
+							<strong>Bienvenue</strong>
 						</div>
-						<div class="top-p-text">
-							<div class="t-bienvenue">
-								<strong>Bienvenue</strong>
-							</div>
-							<div class="t-user">
-								<strong class="user-name">NomDeLaPersonne</strong>
-								<strong class="user-role">Administrateur</strong>
-							</div>
+						<div class="t-user">
+							<strong class="user-name">NomDeLaPersonne</strong>
+							<strong class="user-role">Administrateur</strong>
 						</div>
-					</section>
-					<nav class="menu">
-						<div class="fil-ariane"></div>
-						<div class="menu-nav">
-							<ul>
-								<li><a href="{{ path('app_entreprise_index') }}">Entreprise</a></li>
-								<li><a href="{{ path('app_utilisateur_index') }}">Utilisateur</a></li>
-							</ul>
-						</div>
-					</nav>
-				</header>
-			{% endblock %}
+					</div>
+				</section>
+				<nav class="menu">
+					<div class="fil-ariane"></div>
+					<div class="menu-nav">
+						<ul>
+							<li>
+								<a href="{{ path('app_entreprise_index') }}">Entreprise</a>
+							</li>
+							<li>
+								<a href="{{ path('app_utilisateur_index') }}">Utilisateur</a>
+							</li>
+							<a class="ico ico-exit-content" href="{{ path('exit_login') }}"><img class="ico" src="/img/icone/ico_loginExit.png" alt="Exit"/></a>
+						</ul>
+					</div>
+				</nav>
+			</header>
+		{% endblock %}
 		{% block body %}{% endblock %}
 	</body>
 </html>

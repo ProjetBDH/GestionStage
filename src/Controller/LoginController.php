@@ -73,5 +73,19 @@ class LoginController extends AbstractController
         }
     }
 
+
+    /**
+     * @Route("/exit-login", name="exit_login")
+     */
+    public function exitLogin(Request $request): Response
+    {
+        $session = $request->getSession();
+        $session->set('user_authentication', [
+            'is_authenticated' => false,
+            'role' => ''
+        ]);
+
+        return $this->redirectToRoute('app_entreprise_index');
+    }
     
 }

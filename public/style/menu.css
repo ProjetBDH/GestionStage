@@ -73,3 +73,14 @@ header .user-role {
 .menu-nav ul li {
     padding: 0 30px;
 }
+
+.ico-exit-content
+{
+    margin-left: auto;
+}
+
+
+.ico-exit-content:hover
+{
+    background-color: rgb(170, 169, 169);
+}
