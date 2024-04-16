@@ -72,14 +72,14 @@ h1 {
 p {
     font-size: clamp(1.5em, min(5vh, 2.5vw), 1.75em);
 }
-
+/*
 button {
     background-color: transparent;
     padding: 10px 30px;
     border-radius: 10px;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, .2), 0px 6px 10px 0px rgba(0, 0, 0, .14), 0px 1px 18px 0px rgba(0, 0, 0, .12);
 }
-
+*/
 a, button {
     transition: color 0.3s;
 }
@@ -87,6 +87,7 @@ a, button {
 a:hover, button:hover {
     color: rgba(21, 165, 165, 1)
 }
+
 
 main {
     height: 100vh;
@@ -99,4 +100,12 @@ main {
 main>*
 {
     width: 1400px;
+}
+/* Style bouton d'action */
+.boutton { 
+    background-color: transparent;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, .2), 0px 6px 10px 0px rgba(0, 0, 0, .14), 0px 1px 18px 0px rgba(0, 0, 0, .12);
+    text-decoration: none;
 }
