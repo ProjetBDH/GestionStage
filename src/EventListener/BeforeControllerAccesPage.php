@@ -15,7 +15,7 @@ Rôle : vérifie que l'utilisateur s'est bien connecté
 
 */
 
-class ControllerAccesPage
+class BeforeControllerAccesPage
 {
     private $urlGenerator;
     private $requestStack;

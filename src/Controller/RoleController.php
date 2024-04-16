@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Role;
 use App\Form\RoleType;
 use App\Repository\RoleRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/role")
  */
-class RoleController extends MainController
+class RoleController extends AbstractController
 {
     /**
      * @Route("/", name="app_role_index", methods={"GET"})

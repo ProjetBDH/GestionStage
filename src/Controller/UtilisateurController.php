@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
 use App\Repository\UtilisateurRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/utilisateur")
  */
-class UtilisateurController extends MainController
+class UtilisateurController extends AbstractController
 {
     /**
      * @Route("/", name="app_utilisateur_index", methods={"GET"})

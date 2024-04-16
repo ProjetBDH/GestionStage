@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Statut;
 use App\Form\StatutType;
 use App\Repository\StatutRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/statut")
  */
-class StatutController extends MainController
+class StatutController extends AbstractController
 {
     /**
      * @Route("/", name="app_statut_index", methods={"GET"})

@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Specialisation;
 use App\Form\SpecialisationType;
 use App\Repository\SpecialisationRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/specialisation")
  */
-class SpecialisationController extends MainController
+class SpecialisationController extends AbstractController
 {
     /**
      * @Route("/", name="app_specialisation_index", methods={"GET"})

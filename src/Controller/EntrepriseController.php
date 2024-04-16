@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
@@ -15,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/entreprise")
  */
-class EntrepriseController extends MainController
+class EntrepriseController extends AbstractController
 {
     /**
      * @Route("/", name="app_entreprise_index", methods={"GET"})

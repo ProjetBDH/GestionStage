@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Stage;
 use App\Form\StageType;
 use App\Repository\EntrepriseRepository;
@@ -15,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/stage")
  */
-class StageController extends MainController
+class StageController extends AbstractController
 {
     /**
      * @Route("/", name="app_stage_index", methods={"GET"})

@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Professionelle;
 use App\Form\ProfessionelleType;
 use App\Repository\ProfessionelleRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/professionelle")
  */
-class ProfessionelleController extends MainController
+class ProfessionelleController extends AbstractController
 {
     /**
      * @Route("/", name="app_professionelle_index", methods={"GET"})

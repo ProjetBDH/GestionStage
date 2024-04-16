@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Etudiant;
 use App\Form\EtudiantType;
 use App\Repository\EtudiantRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/etudiant")
  */
-class EtudiantController extends MainController
+class EtudiantController extends AbstractController
 {
     /**
      * @Route("/", name="app_etudiant_index", methods={"GET"})

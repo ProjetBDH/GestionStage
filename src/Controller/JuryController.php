@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\MainController;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Jury;
 use App\Form\JuryType;
 use App\Repository\JuryRepository;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/jury")
  */
-class JuryController extends MainController
+class JuryController extends AbstractController
 {
     /**
      * @Route("/", name="app_jury_index", methods={"GET"})
