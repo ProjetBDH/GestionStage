@@ -9,6 +9,8 @@ use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/utilisateur")
@@ -22,7 +24,7 @@ class UtilisateurController extends AbstractController
     {
         return $this->render('utilisateur/index.html.twig', [
             'utilisateurs' => $utilisateurRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -46,7 +48,7 @@ class UtilisateurController extends AbstractController
         return $this->renderForm('utilisateur/new.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -56,7 +58,7 @@ class UtilisateurController extends AbstractController
     {
         return $this->render('utilisateur/show.html.twig', [
             'utilisateur' => $utilisateur,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -79,7 +81,7 @@ class UtilisateurController extends AbstractController
         return $this->renderForm('utilisateur/edit.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

@@ -9,6 +9,8 @@ use App\Repository\ActiviteRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/activite")
@@ -22,7 +24,7 @@ class ActiviteController extends AbstractController
     {
         return $this->render('activite/index.html.twig', [
             'activites' => $activiteRepository->findAll(),
-        ]);
+        ]+ EtatMenu::getMenuData() );
     }
 
     /**
@@ -43,7 +45,7 @@ class ActiviteController extends AbstractController
         return $this->renderForm('activite/new.html.twig', [
             'activite' => $activite,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class ActiviteController extends AbstractController
     {
         return $this->render('activite/show.html.twig', [
             'activite' => $activite,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class ActiviteController extends AbstractController
         return $this->renderForm('activite/edit.html.twig', [
             'activite' => $activite,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

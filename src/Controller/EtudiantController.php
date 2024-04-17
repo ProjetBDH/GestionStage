@@ -9,6 +9,8 @@ use App\Repository\EtudiantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/etudiant")
@@ -22,7 +24,7 @@ class EtudiantController extends AbstractController
     {
         return $this->render('etudiant/index.html.twig', [
             'etudiants' => $etudiantRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,7 +45,7 @@ class EtudiantController extends AbstractController
         return $this->renderForm('etudiant/new.html.twig', [
             'etudiant' => $etudiant,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class EtudiantController extends AbstractController
     {
         return $this->render('etudiant/show.html.twig', [
             'etudiant' => $etudiant,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class EtudiantController extends AbstractController
         return $this->renderForm('etudiant/edit.html.twig', [
             'etudiant' => $etudiant,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

@@ -47,7 +47,6 @@ class LoginController extends AbstractController
         $session = $request->getSession();
         $username = $request->request->get('_username');
         $password = $request->request->get('_password');
-
         // Rechercher l'utilisateur dans la base de données
         $user = $this->getDoctrine()->getRepository(Utilisateur::class)->findOneBy(['username' => $username]);
 
@@ -60,15 +59,19 @@ class LoginController extends AbstractController
         // Vérifier le mot de passe
         if (password_verify($password, $user->getPassword())) {
 
+            $role = $user->getRole()->getLabelle();
+            $name = $user->getUsername();
+            
             $session->set('user_authentication', [
                 'is_authenticated' => true,
-                'role' => 'admin'
+                'name' => $name,
+                'role' => $role
             ]);
             // Mot de passe correct, vous pouvez autoriser la connexion de l'utilisateur
             return $this->redirectToRoute('app_entreprise_index');
         } else {
             // Mot de passe incorrect, gérer l'échec de connexion
-            echo "Error";
+            
             return $this->redirectToRoute('app_login', ['error' => 'Mot de passe incorrect']);
         }
     }

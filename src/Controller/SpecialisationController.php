@@ -9,6 +9,8 @@ use App\Repository\SpecialisationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/specialisation")
@@ -22,7 +24,7 @@ class SpecialisationController extends AbstractController
     {
         return $this->render('specialisation/index.html.twig', [
             'specialisations' => $specialisationRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,7 +45,7 @@ class SpecialisationController extends AbstractController
         return $this->renderForm('specialisation/new.html.twig', [
             'specialisation' => $specialisation,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class SpecialisationController extends AbstractController
     {
         return $this->render('specialisation/show.html.twig', [
             'specialisation' => $specialisation,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class SpecialisationController extends AbstractController
         return $this->renderForm('specialisation/edit.html.twig', [
             'specialisation' => $specialisation,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

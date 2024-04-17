@@ -9,6 +9,8 @@ use App\Repository\JuryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/jury")
@@ -22,7 +24,7 @@ class JuryController extends AbstractController
     {
         return $this->render('jury/index.html.twig', [
             'juries' => $juryRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,7 +45,7 @@ class JuryController extends AbstractController
         return $this->renderForm('jury/new.html.twig', [
             'jury' => $jury,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class JuryController extends AbstractController
     {
         return $this->render('jury/show.html.twig', [
             'jury' => $jury,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class JuryController extends AbstractController
         return $this->renderForm('jury/edit.html.twig', [
             'jury' => $jury,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
