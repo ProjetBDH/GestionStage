@@ -3,9 +3,20 @@
 {% block title %}New Etudiant{% endblock %}
 
 {% block body %}
-    <h1>Creer un nouvelle etudiant</h1>
+    <h1>Créer un nouveau étudiant</h1>
 
     {{ include('etudiant/_form.html.twig') }}
 
-    <a href="{{ path('app_entreprise_new') }}" class="boutton">Retour à la liste</a>
+    {# Déterminer la page d'origine de la requête #}
+    {% set referer = app.request.headers.get('referer') %}
+    {# Si l'utilisateur vient de la page création de stage, rediriger vers la page création de stage  #}
+    {% if '/stage/new' in referer %}
+        <a href="{{ path('app_stage_new') }}" class="boutton">Retour à la liste</a>
+    {# Si l'utilisateur vient de l'édition d'un stage, rediriger vers la page édition du stage #}
+    {% elseif '/stage/edit' in referer %}
+        <a  href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}" class="boutton">Retour à la liste</a>
+    {# Sinon, rediriger vers la page stage #}
+    {% else %}
+        <a href="{{ path('app_stage_index') }}" class="boutton">Retour à la liste</a>
+    {% endif %}
 {% endblock %}
