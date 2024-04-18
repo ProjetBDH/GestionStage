@@ -7,47 +7,154 @@
 
     {{ form_start(searchForm) }}
     {{ form_row(searchForm.search) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="boutton">{{ button_label|default('Valider') }}</button>
     {{ form_end(searchForm) }}
     
-
+    <br>
+    <br>
+    <br>
     {% if results %}
         <h2>Résultats de la recherche</h2>
-
+        <br>
+        <br>
         {% if results['entreprises'] is not empty %}
             <h3>Entreprises</h3>
-            <ul>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Rue</th>
+                    <th>Ville</th>
+                    <th>Cp</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
                 {% for entreprise in results['entreprises'] %}
-                    <li><a href="{{ path('app_entreprise_show',{'id':entreprise.id}) }}">{{ entreprise.nom }}</a></li>
+                <tr>
+                    <td>{{ entreprise.id }}</td>
+                    <td>{{ entreprise.nom }}</td>
+                    <td>{{ entreprise.rue }}</td>
+                    <td>{{ entreprise.ville }}</td>
+                    <td>{{ entreprise.cp }}</td>
+                    <td>
+                        <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}" class="boutton">Voir</a>
+                    </td>
+                </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">Aucune donnée</td>
+                    </tr>
                 {% endfor %}
-            </ul>
+                </tbody>
+            </table>
         {% endif %}
 
         {% if results['stages'] is not empty %}
             <h3>Stages</h3>
-            <ul>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Niveau</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
                 {% for stage in results['stages'] %}
-                    <li><a href="{{ path('app_stage_show',{'id':stage.id}) }}">{{ stage.date }}</a></li>
+                    <tr>
+                        <td>{{ stage.id }}</td>
+                        <td>{{ stage.date }}</td>
+                        <td>{{ stage.niveau }}</td>
+                        <td>
+                            <a href="{{ path('app_stage_show', {'id': stage.id}) }}" class="boutton">Voir</a>
+                            <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune donnée</td>
+                    </tr>
                 {% endfor %}
-            </ul>
+                </tbody>
+            </table>
         {% endif %}
 
         {% if results['etudiants'] is not empty %}
             <h3>Étudiants</h3>
-            <ul>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>NumTel</th>
+                        <th>Specialisation</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {% for etudiant in results['etudiants'] %}
-                    <li><a href="{{ path('app_etudiant_show',{'id':etudiant.id}) }}">{{ etudiant.nom }} {{ etudiant.prenom }}</a></li>
+                    <tr>
+                        <td>{{ etudiant.id }}</td>
+                        <td>{{ etudiant.nom }}</td>
+                        <td>{{ etudiant.prenom }}</td>
+                        <td>{{ etudiant.email }}</td>
+                        <td>{{ etudiant.numTel }}</td>
+                        <td>{{ etudiant.specialisation }}</td>
+                        <td>
+                            <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}" class="boutton">Voir</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">Aucune donnée</td>
+                    </tr>
                 {% endfor %}
-            </ul>
+                </tbody>
+            </table>
         {% endif %}
 
         {% if results['professionnels'] is not empty %}
             <h3>Professionnels</h3>
-            <ul>
-                {% for professionnel in results['professionnels'] %}
-                    <li><a href="{{ path('app_professionelle_show',{'id':professionnel.id}) }}">{{ professionnel.nom }} {{ professionnel.prenom }}</a></li>
-                {% endfor %}
-            </ul>
+           <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>NumTel</th>
+            <th>Metier</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for professionelle in results['professionnels'] %}
+            <tr>
+                <td>{{ professionelle.id }}</td>
+                <td>{{ professionelle.nom }}</td>
+                <td>{{ professionelle.prenom }}</td>
+                <td>{{ professionelle.email }}</td>
+                <td>{{ professionelle.numTel }}</td>
+                <td>{{ professionelle.metier }}</td>
+                <td>
+                    <a href="{{ path('app_professionelle_show', {'id': professionelle.id}) }}" class="boutton">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune donnée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
         {% endif %}
     {% endif %}
 {% endblock %}
