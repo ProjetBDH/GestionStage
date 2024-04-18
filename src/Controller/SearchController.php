@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\FonctionStatic\EtatMenu;
 use App\Form\SearchFormType;
 use App\Form\SearchType;
 use App\Repository\EntrepriseRepository;
@@ -42,6 +43,6 @@ class SearchController extends AbstractController
         return $this->render('search/index.html.twig', [
             'searchForm' => $searchForm->createView(),
             'results' => $results,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 }

@@ -23,14 +23,9 @@ class UtilisateurController extends AbstractController
      */
     public function index(UtilisateurRepository $utilisateurRepository): Response
     {
-        $autorise = AutorisationAccesPage::autoriserRedirectToRoute([], function() use ($utilisateurRepository) {
-            return $this->render('utilisateur/index.html.twig', [
+        return $this->render('utilisateur/index.html.twig', [
                 'utilisateurs' => $utilisateurRepository->findAll(),
             ] + EtatMenu::getMenuData());
-        }, $this->urlGenerator); // Passez $this->urlGenerator comme troisième argument
-    
-        // Si l'utilisateur est autorisé, la fonction retournera une réponse de rendu, sinon une redirection
-        return $autorise();
     }
 
     /**
@@ -72,6 +67,7 @@ class UtilisateurController extends AbstractController
      */
     public function edit(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
     {
+        $utilisateur= $utilisateur->setPassword('');
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
