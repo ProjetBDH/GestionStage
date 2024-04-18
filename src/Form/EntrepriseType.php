@@ -28,9 +28,6 @@ class EntrepriseType extends AbstractType
                 'choice_label' => 'labelle',
                 'placeholder' => 'Sélectionner une activité',
             ])
-            ->add('ajout_activite', ButtonType::class, [
-                'attr' => ['onclick' => 'window.location.href="/activite/new"']
-            ])
             ->add('specialisations', EntityType::class, [
                 'class' => Specialisation::class,
                 'choice_label' => 'labelle',

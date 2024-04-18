@@ -63,4 +63,23 @@ class EntrepriseRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function search(string $criteria)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        if (!empty($criteria)) {
+            $qb->andWhere('p.nom LIKE :nom')
+                ->orWhere('p.cp LIKE :cp')
+                ->orWhere('p.ville LIKE :ville')
+                ->orWhere('p.num_rue LIKE :num_rue')
+                ->orWhere('p.rue LIKE :rue')
+                ->setParameter('nom', '%'.$criteria.'%')
+                ->setParameter('cp', '%'.$criteria.'%')
+                ->setParameter('ville', '%'.$criteria.'%')
+                ->setParameter('num_rue', '%'.$criteria.'%')
+                ->setParameter('rue', '%'.$criteria.'%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

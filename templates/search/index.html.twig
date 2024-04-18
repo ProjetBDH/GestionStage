@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche{% endblock %}
+
+{% block body %}
+    <h1>Recherche</h1>
+
+    {{ form_start(searchForm) }}
+    {{ form_row(searchForm.search) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(searchForm) }}
+    
+
+    {% if results %}
+        <h2>Résultats de la recherche</h2>
+
+        {% if results['entreprises'] is not empty %}
+            <h3>Entreprises</h3>
+            <ul>
+                {% for entreprise in results['entreprises'] %}
+                    <li><a href="{{ path('app_entreprise_show',{'id':entreprise.id}) }}">{{ entreprise.nom }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if results['stages'] is not empty %}
+            <h3>Stages</h3>
+            <ul>
+                {% for stage in results['stages'] %}
+                    <li><a href="{{ path('app_stage_show',{'id':stage.id}) }}">{{ stage.date }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if results['etudiants'] is not empty %}
+            <h3>Étudiants</h3>
+            <ul>
+                {% for etudiant in results['etudiants'] %}
+                    <li><a href="{{ path('app_etudiant_show',{'id':etudiant.id}) }}">{{ etudiant.nom }} {{ etudiant.prenom }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if results['professionnels'] is not empty %}
+            <h3>Professionnels</h3>
+            <ul>
+                {% for professionnel in results['professionnels'] %}
+                    <li><a href="{{ path('app_professionelle_show',{'id':professionnel.id}) }}">{{ professionnel.nom }} {{ professionnel.prenom }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}

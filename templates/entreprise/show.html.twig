@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise{% endblock %}
+{% block title %}Informations Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Entreprise</h1>
+    <h1>Informations Entreprise</h1>
 
     <table class="table">
         <tbody>
@@ -16,8 +16,8 @@
             <td>{{ entreprise.nom }}</td>
         </tr>
         <tr>
-            <th>Rue</th>
-            <td>{{ entreprise.rue }}</td>
+            <th>Adresse</th>
+            <td>{{ entreprise.numRue }} {{ entreprise.rue }}, {{ entreprise.cp }} {{ entreprise.ville }}</td>
         </tr>
         <tr>
             <th>Ville</th>
@@ -26,14 +26,6 @@
         <tr>
             <th>Pays</th>
             <td>{{ entreprise.pays }}</td>
-        </tr>
-        <tr>
-            <th>Cp</th>
-            <td>{{ entreprise.cp }}</td>
-        </tr>
-        <tr>
-            <th>Num_rue</th>
-            <td>{{ entreprise.numRue }}</td>
         </tr>
         <tr>
             <th>Activite</th>
@@ -51,11 +43,11 @@
         <tr>
             <th>Stages</th>
             <td>
-                <a href="{{ path('app_stage_new', {'id_entreprise':entreprise.id}) }}">Create new</a>
+                <a href="{{ path('app_stage_new', {'id_entreprise':entreprise.id}) }}" class="boutton">Creer un nouveau stage</a>
                 {% for sta in stages %}
                     {% if sta.etudiants.count == 1 %}
                         {{ sta.date }} - Stagiaire : <a
-                            href="{{ path('app_professionelle_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par :
+                            href="{{ path('app_etudiant_show', {'id': sta.etudiants.first.id}) }}">{{ sta.etudiants.first.nom }} {{ sta.etudiants.first.prenom }}</a> - {{ sta.niveau }} - Gérer par :
                         <a href="{{ path('app_professionelle_show', {'id': sta.professionelles.first.id}) }}">{{ sta.professionelles.first.nom }} {{ sta.professionelles.first.prenom }}</a>,
                     {% else %}
                         <table>
@@ -84,7 +76,7 @@
                         </table>
                     {% endif %}
                 {% else %}
-                    no records found
+                    Aucune donnée
 
                 {% endfor %}
             </td>
@@ -93,9 +85,13 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_entreprise_index') }}">back to list</a>
+    <a href="{{ path('app_entreprise_index') }}" class="boutton">Retour à la liste</a>
 
-    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}" class="boutton">Editer l'entreprise</a>
+
+    <br>
+    <br>
 
     {{ include('entreprise/_delete_form.html.twig') }}
+
 {% endblock %}

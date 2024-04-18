@@ -63,4 +63,18 @@ class StageRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function search(string $criteria)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        if (!empty($criteria)) {
+            $qb->andWhere('p.date LIKE :date')
+                ->orWhere('p.niveau LIKE :niveau')
+                ->setParameter('date', '%'.$criteria.'%')
+                ->setParameter('niveau', '%'.$criteria.'%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+    
 }
