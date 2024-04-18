@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 //PERSO
 use App\FonctionStatic\EtatMenu;
+use App\FonctionStatic\AutorisationAccesPage;
 
 /**
  * @Route("/utilisateur")
@@ -23,8 +24,8 @@ class UtilisateurController extends AbstractController
     public function index(UtilisateurRepository $utilisateurRepository): Response
     {
         return $this->render('utilisateur/index.html.twig', [
-            'utilisateurs' => $utilisateurRepository->findAll(),
-        ] + EtatMenu::getMenuData());
+                'utilisateurs' => $utilisateurRepository->findAll(),
+            ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -66,6 +67,7 @@ class UtilisateurController extends AbstractController
      */
     public function edit(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
     {
+        $utilisateur= $utilisateur->setPassword('');
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 

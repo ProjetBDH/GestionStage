@@ -125,7 +125,7 @@ INSERT INTO `professionelle_stage` (`professionelle_id`, `stage_id`) VALUES
 
 INSERT INTO `role` (`id`, `labelle`) VALUES
 (1, 'Administrateur'),
-(2, 'Enseignent');
+(2, 'Enseignant');
 
 INSERT INTO `specialisation` (`id`, `labelle`) VALUES
 (1, 'Développement logiciel'),
