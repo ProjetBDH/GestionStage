@@ -63,4 +63,21 @@ class ProfessionelleRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function search(string $criteria)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        if (!empty($criteria)) {
+            $qb->andWhere('p.nom LIKE :nom')
+                ->orWhere('p.prenom LIKE :prenom')
+                ->orWhere('p.email LIKE :email')
+                ->orWhere('p.numTel LIKE :telephone')
+                ->setParameter('nom', '%'.$criteria.'%')
+                ->setParameter('prenom', '%'.$criteria.'%')
+                ->setParameter('email', '%'.$criteria.'%')
+                ->setParameter('telephone', '%'.$criteria.'%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
