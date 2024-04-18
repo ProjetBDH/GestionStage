@@ -53,9 +53,13 @@ header .user-role {
     font-weight: 600;
 }
 
+.fil-ariane {
+    width: 43%;
+}
 
 .menu-nav {
     width: 57%;
+    background-color: rgba(202, 202, 202, 1);
 }
 
 .menu-nav ul {
@@ -68,4 +72,15 @@ header .user-role {
 
 .menu-nav ul li {
     padding: 0 30px;
+}
+
+.ico-exit-content
+{
+    margin-left: auto;
+}
+
+
+.ico-exit-content:hover
+{
+    background-color: rgb(170, 169, 169);
 }

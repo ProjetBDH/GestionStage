@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Role;
 use App\Form\RoleType;
 use App\Repository\RoleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/role")
@@ -22,7 +24,7 @@ class RoleController extends AbstractController
     {
         return $this->render('role/index.html.twig', [
             'roles' => $roleRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,7 +45,7 @@ class RoleController extends AbstractController
         return $this->renderForm('role/new.html.twig', [
             'role' => $role,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class RoleController extends AbstractController
     {
         return $this->render('role/show.html.twig', [
             'role' => $role,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class RoleController extends AbstractController
         return $this->renderForm('role/edit.html.twig', [
             'role' => $role,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

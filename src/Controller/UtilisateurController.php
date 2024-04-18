@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
 use App\Repository\UtilisateurRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/utilisateur")
@@ -22,7 +24,7 @@ class UtilisateurController extends AbstractController
     {
         return $this->render('utilisateur/index.html.twig', [
             'utilisateurs' => $utilisateurRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -46,7 +48,7 @@ class UtilisateurController extends AbstractController
         return $this->renderForm('utilisateur/new.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -56,7 +58,7 @@ class UtilisateurController extends AbstractController
     {
         return $this->render('utilisateur/show.html.twig', [
             'utilisateur' => $utilisateur,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -64,16 +66,11 @@ class UtilisateurController extends AbstractController
      */
     public function edit(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
     {
-        $utilisateur->setPassword('');
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if($utilisateur->getPassword() != '') {
-                $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
-            } else {
-                $utilisateur->setPassword($utilisateurRepository->find($utilisateur->getId())->getPassword());
-            }
+
             $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
 
             $utilisateurRepository->add($utilisateur, true);
@@ -84,7 +81,7 @@ class UtilisateurController extends AbstractController
         return $this->renderForm('utilisateur/edit.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

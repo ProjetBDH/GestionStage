@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
 use App\Repository\StageRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RequestStack;
+//PERSO
+use App\FonctionStatic\EtatMenu;
+
 
 /**
  * @Route("/entreprise")
@@ -23,7 +27,7 @@ class EntrepriseController extends AbstractController
     {
         return $this->render('entreprise/index.html.twig', [
             'entreprises' => $entrepriseRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,8 +47,8 @@ class EntrepriseController extends AbstractController
 
         return $this->renderForm('entreprise/new.html.twig', [
             'entreprise' => $entreprise,
-            'form' => $form,
-        ]);
+            'form' => $form
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -55,7 +59,7 @@ class EntrepriseController extends AbstractController
         return $this->render('entreprise/show.html.twig', [
             'entreprise' => $entreprise,
             'stages' => $stageRepository->findBy(['entreprise' => $entreprise->getId()]),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -75,7 +79,7 @@ class EntrepriseController extends AbstractController
         return $this->renderForm('entreprise/edit.html.twig', [
             'entreprise' => $entreprise,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

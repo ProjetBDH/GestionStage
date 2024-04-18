@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Professionelle;
 use App\Form\ProfessionelleType;
 use App\Repository\ProfessionelleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/professionelle")
@@ -22,7 +24,7 @@ class ProfessionelleController extends AbstractController
     {
         return $this->render('professionelle/index.html.twig', [
             'professionelles' => $professionelleRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,7 +45,7 @@ class ProfessionelleController extends AbstractController
         return $this->renderForm('professionelle/new.html.twig', [
             'professionelle' => $professionelle,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class ProfessionelleController extends AbstractController
     {
         return $this->render('professionelle/show.html.twig', [
             'professionelle' => $professionelle,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class ProfessionelleController extends AbstractController
         return $this->renderForm('professionelle/edit.html.twig', [
             'professionelle' => $professionelle,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**

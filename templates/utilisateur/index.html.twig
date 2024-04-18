@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateur{% endblock %}
+{% block title %}Utilisateur index{% endblock %}
 
 {% block body %}
-    <h1>Utilisateur</h1>
+    <h1>Utilisateur index</h1>
 
     <table class="table">
         <thead>
@@ -22,17 +22,16 @@
                 <td>{{ utilisateur.email }}</td>
                 <td>
                     {{ include('utilisateur/_delete_form.html.twig') }}
-                    <br>
-                    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}" class="boutton">Editer</a>
+                    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">Aucune donnée</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_utilisateur_new') }}" class="boutton">Créer un utilisateur</a>
+    <a href="{{ path('app_utilisateur_new') }}">Create new</a>
 {% endblock %}

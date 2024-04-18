@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise{% endblock %}
+{% block title %}Entreprise index{% endblock %}
 
 {% block body %}
-    <h1>Entreprise</h1>
+    <h1>Entreprise index</h1>
 
     <table class="table">
         <thead>
         <tr>
             <th>Id</th>
             <th>Nom</th>
+            <th>Rue</th>
             <th>Ville</th>
-            <th>Cp</th>
             <th>Pays</th>
-            <th>Actions</th>
+            <th>Cp</th>
+            <th>Num_rue</th>
+            <th>actions</th>
         </tr>
         </thead>
         <tbody>
@@ -21,20 +23,22 @@
             <tr>
                 <td>{{ entreprise.id }}</td>
                 <td>{{ entreprise.nom }}</td>
+                <td>{{ entreprise.rue }}</td>
                 <td>{{ entreprise.ville }}</td>
-                <td>{{ entreprise.cp }}</td>
                 <td>{{ entreprise.pays }}</td>
+                <td>{{ entreprise.cp }}</td>
+                <td>{{ entreprise.numRue }}</td>
                 <td>
-                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"  class="boutton">Voir</a>
+                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">Aucune donnée</td>
+                <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_entreprise_new') }}"  class="boutton">Créer une nouvelle entreprise</a>
+    <a href="{{ path('app_entreprise_new') }}">Create new</a>
 {% endblock %}

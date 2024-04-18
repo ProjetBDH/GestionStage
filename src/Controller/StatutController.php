@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Statut;
 use App\Form\StatutType;
 use App\Repository\StatutRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//PERSO
+use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/statut")
@@ -22,7 +24,7 @@ class StatutController extends AbstractController
     {
         return $this->render('statut/index.html.twig', [
             'statuts' => $statutRepository->findAll(),
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -43,7 +45,7 @@ class StatutController extends AbstractController
         return $this->renderForm('statut/new.html.twig', [
             'statut' => $statut,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -53,7 +55,7 @@ class StatutController extends AbstractController
     {
         return $this->render('statut/show.html.twig', [
             'statut' => $statut,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
@@ -73,7 +75,7 @@ class StatutController extends AbstractController
         return $this->renderForm('statut/edit.html.twig', [
             'statut' => $statut,
             'form' => $form,
-        ]);
+        ] + EtatMenu::getMenuData());
     }
 
     /**
