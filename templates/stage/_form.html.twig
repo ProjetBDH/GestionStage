@@ -21,14 +21,18 @@
         {{ form_widget(form.etudiants, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.etudiants) }}
     </div>
+    <br>
     <button type="button" class="btn btn-primary" onclick="window.location.href='/etudiant/new'">Ajouter un étudiant</button>
+    <br>
+    <br>
     <div class="form-group">
         {{ form_label(form.professionelles) }}
         {{ form_widget(form.professionelles, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.professionelles) }}
     </div>
+    <br>
     <button type="button" class="btn btn-primary" onclick="window.location.href='/professionelle/new'">Ajouter un professionnel</button>
-    <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
     {{ form_end(form) }}
 </form>
 
