@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 //PERSO
 use App\FonctionStatic\EtatMenu;
+use App\FonctionStatic\AutorisationAccesPage;
 
 /**
  * @Route("/utilisateur")
@@ -22,9 +23,14 @@ class UtilisateurController extends AbstractController
      */
     public function index(UtilisateurRepository $utilisateurRepository): Response
     {
-        return $this->render('utilisateur/index.html.twig', [
-            'utilisateurs' => $utilisateurRepository->findAll(),
-        ] + EtatMenu::getMenuData());
+        $autorise = AutorisationAccesPage::autoriserRedirectToRoute([], function() use ($utilisateurRepository) {
+            return $this->render('utilisateur/index.html.twig', [
+                'utilisateurs' => $utilisateurRepository->findAll(),
+            ] + EtatMenu::getMenuData());
+        }, $this->urlGenerator); // Passez $this->urlGenerator comme troisième argument
+    
+        // Si l'utilisateur est autorisé, la fonction retournera une réponse de rendu, sinon une redirection
+        return $autorise();
     }
 
     /**
