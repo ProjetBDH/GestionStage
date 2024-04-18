@@ -36,16 +36,17 @@
 						</div>
 					</div>
 				</section>
-				<nav class="menu">
-					<div class="fil-ariane"></div>
-					<div class="menu-nav">
-                        <ul class="navbar-nav">
+				<nav class="navbar navbar-expand-lg bg-body-tertiary">
+					<div class="container-fluid">
+						<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+							<ul class="navbar-nav">
                             <li class="nav-item"><a class="nav-link" href="{{ path('app_entreprise_index') }}">Entreprise</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ path('app_stage_index') }}">Stage</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ path('app_utilisateur_index') }}">Utilisateur</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ path('app_search') }}">Search (LIEN PROVISOIRE)</a></li>
-                            <a class="ico ico-exit-content" href="{{ path('exit_login') }}"><img class="ico" src="/img/icone/ico_loginExit.png" alt="Exit"/></a>
-                        </ul>
+                            <li class=""><a class="ico ico-exit-content" href="{{ path('exit_login') }}"><img class="ico" src="/img/icone/ico_loginExit.png" alt="Exit"/></a></li>
+							</ul>
+						</div>
 					</div>
 				</nav>
 			</header>
