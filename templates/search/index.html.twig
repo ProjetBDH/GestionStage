@@ -5,14 +5,15 @@
 {% block body %}
     <h1>Recherche</h1>
 
-    {{ form_start(searchForm) }}
-    {{ form_row(searchForm.search) }}
-    <button class="boutton">{{ button_label|default('Valider') }}</button>
-    {{ form_end(searchForm) }}
     
-    <br>
-    <br>
-    <br>
+        {{ form_start(searchForm) }}
+    <div class="form-group" style="width: 250px;padding-left: 15px;">
+        {{ form_row(searchForm.search) }}
+        <button class="boutton">{{ button_label|default('Valider') }}</button>
+    </div>
+        {{ form_end(searchForm) }}
+ 
+
     {% if results %}
         <h2>Résultats de la recherche</h2>
         <br>
@@ -33,16 +34,16 @@
                 </thead>
                 <tbody>
                 {% for entreprise in results['entreprises'] %}
-                <tr>
-                    <td>{{ entreprise.id }}</td>
-                    <td>{{ entreprise.nom }}</td>
-                    <td>{{ entreprise.rue }}</td>
-                    <td>{{ entreprise.ville }}</td>
-                    <td>{{ entreprise.cp }}</td>
-                    <td>
-                        <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}" class="boutton">Voir</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>{{ entreprise.id }}</td>
+                        <td>{{ entreprise.nom }}</td>
+                        <td>{{ entreprise.rue }}</td>
+                        <td>{{ entreprise.ville }}</td>
+                        <td>{{ entreprise.cp }}</td>
+                        <td>
+                            <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}" class="boutton">Voir</a>
+                        </td>
+                    </tr>
                 {% else %}
                     <tr>
                         <td colspan="8">Aucune donnée</td>
@@ -89,15 +90,15 @@
 
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Email</th>
-                        <th>NumTel</th>
-                        <th>Specialisation</th>
-                        <th>Action</th>
-                    </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>NumTel</th>
+                    <th>Specialisation</th>
+                    <th>Action</th>
+                </tr>
                 </thead>
                 <tbody>
                 {% for etudiant in results['etudiants'] %}
@@ -123,38 +124,38 @@
 
         {% if results['professionnels'] is not empty %}
             <h3>Professionnels</h3>
-           <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Email</th>
-            <th>NumTel</th>
-            <th>Metier</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for professionelle in results['professionnels'] %}
-            <tr>
-                <td>{{ professionelle.id }}</td>
-                <td>{{ professionelle.nom }}</td>
-                <td>{{ professionelle.prenom }}</td>
-                <td>{{ professionelle.email }}</td>
-                <td>{{ professionelle.numTel }}</td>
-                <td>{{ professionelle.metier }}</td>
-                <td>
-                    <a href="{{ path('app_professionelle_show', {'id': professionelle.id}) }}" class="boutton">Voir</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">Aucune donnée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>NumTel</th>
+                    <th>Metier</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for professionelle in results['professionnels'] %}
+                    <tr>
+                        <td>{{ professionelle.id }}</td>
+                        <td>{{ professionelle.nom }}</td>
+                        <td>{{ professionelle.prenom }}</td>
+                        <td>{{ professionelle.email }}</td>
+                        <td>{{ professionelle.numTel }}</td>
+                        <td>{{ professionelle.metier }}</td>
+                        <td>
+                            <a href="{{ path('app_professionelle_show', {'id': professionelle.id}) }}" class="boutton">Voir</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">Aucune donnée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         {% endif %}
     {% endif %}
 {% endblock %}
