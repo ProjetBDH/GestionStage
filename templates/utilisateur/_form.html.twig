@@ -6,7 +6,11 @@
 #}
 
 {# Formulaire Utilisateur #}
-<form method="POST" action="{{ path('app_utilisateur_new') }}" class="container mt-4">
+<form method="POST" action="{% if button_label == 'Update' %}
+    {{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}
+    {% else %}
+        {{ path('app_utilisateur_new') }}
+    {% endif %}" class="container mt-4">
     {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
     <div class="form-group">
         {{ form_label(form.username) }}

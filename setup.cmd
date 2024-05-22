@@ -15,8 +15,8 @@ if not exist composer.json (
     exit /b 1
 )
 
-echo Fichier composer.json existe.
-echo Installation des dependances via Composer...
+rem echo Fichier composer.json existe.
+rem echo Installation des dependances via Composer...
 rem Installation des dependances via Composer
 rem composer install
 
@@ -45,5 +45,7 @@ if %errorlevel% neq 0 (
 )
 
 echo Configuration du projet Symfony terminee.
+echo Faite un 'composer install' pour installer les dependances.
+echo Puis faite un 'php bin/console server:run' pour lancer le serveur.
 
 pause

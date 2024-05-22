@@ -1,10 +1,15 @@
-{#{{ form_start(form) }}
+{# {{ form_start(form) }}
     {{ form_widget(form) }}
 <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 
 {# Formulaire d'entreprise #}
-<form method="POST" action="{{ path('app_entreprise_new') }}" class="container mt-4">
+<form method="POST" action="{% if button_label == 'Update' %}
+    {{ path('app_entreprise_edit', {'id': entreprise.id}) }}
+    {% else %}
+        {{ path('app_entreprise_new') }}
+    {% endif %}"
+      class="container mt-4">
     {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
     <div class="form-group">
         {{ form_label(form.nom) }}
@@ -26,7 +31,7 @@
         {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.ville) }}
     </div>
-        <div class="form-group">
+    <div class="form-group">
         {{ form_label(form.cp) }}
         {{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.cp) }}
@@ -42,7 +47,8 @@
         {{ form_errors(form.activite) }}
     </div>
     <br>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/activite/new'">Ajouter une activité</button>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/activite/new'">Ajouter une activité
+    </button>
     <br>
     <br>
     <div class="form-group">
