@@ -4,7 +4,7 @@
 {{ form_end(form) }}
 
 {# Formulaire de professionnel #}
-<form method="POST" action="{% if button_label == 'Update' %}
+<form method="POST" action="{% if button_label is defined and  button_label == 'Update' %}
     {{ path('app_professionelle_edit', {'id': professionelle.id}) }}
     {% else %}
         {{ path('app_professionelle_new') }}

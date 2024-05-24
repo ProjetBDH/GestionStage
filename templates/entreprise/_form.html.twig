@@ -4,11 +4,11 @@
 {{ form_end(form) }}
 
 {# Formulaire d'entreprise #}
-<form method="POST" action="{% if button_label == 'Update' %}
+<form method="POST" action="{% if button_label is defined and button_label == 'Update' %}
     {{ path('app_entreprise_edit', {'id': entreprise.id}) }}
-    {% else %}
-        {{ path('app_entreprise_new') }}
-    {% endif %}"
+{% else %}
+    {{ path('app_entreprise_new') }}
+{% endif %}"
       class="container mt-4">
     {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
     <div class="form-group">

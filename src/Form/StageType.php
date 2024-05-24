@@ -30,7 +30,9 @@ class StageType extends AbstractType
             ])
             ->add('etudiants', EntityType::class, [
                 'class' => Etudiant::class,
-                'choice_label' => 'nom',
+                'choice_label' => function ($etudiant) {
+                    return $etudiant->getNom() . ' ' . $etudiant->getPrenom();
+                },
                 'multiple' => true,
                 'expanded' => true,
                 'required' => true,
@@ -38,7 +40,9 @@ class StageType extends AbstractType
             ])
             ->add('professionelles', EntityType::class, [
                 'class' => Professionelle::class,
-                'choice_label' => 'nom',
+                'choice_label' => function ($professionelle) {
+                    return $professionelle->getNom() . ' ' . $professionelle->getPrenom();
+                },
                 'multiple' => true,
                 'expanded' => true,
                 'required' => true,

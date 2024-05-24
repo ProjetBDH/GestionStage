@@ -1,193 +1,425 @@
-DELETE FROM `activite`;
-DELETE FROM `etudiant`;
-DELETE FROM `etudiant_stage`;
-DELETE FROM `jury`;
-DELETE FROM `jury_professionelle`;
-DELETE FROM `personne`;
-DELETE FROM `professionelle`;
-DELETE FROM `professionelle_stage`;
-DELETE FROM `role`;
-DELETE FROM `specialisation`;
-DELETE FROM `specialisation_entreprise`;
-DELETE FROM `stage`;
-DELETE FROM `statut`;
-DELETE FROM `statut_professionelle`;
-DELETE FROM `utilisateur`;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : ven. 24 mai 2024 à 18:43
+-- Version du serveur : 8.0.31
+-- Version de PHP : 7.4.33
 
----------- JEUX ESSAIS ----------------------------
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-INSERT INTO `activite` (`id`,`labelle`) VALUES
-(1, 'Ventre Produit Electrom�nager'),
-(2, 'Agence Web'),
-(3, 'Industrie Automobile');
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `gestionstagebdh`
+--
+
+--
+-- Déchargement des données de la table `activite`
+--
+
+INSERT INTO `activite` (`id`, `labelle`) VALUES
+(3, 'Non Renseigné'),
+(4, 'Agence Web'),
+(5, 'Intégrateur d\'ERP : Codial (windev) + développement'),
+(8, 'Médico-Social'),
+(9, 'Métallerie'),
+(10, 'Prestataire Informatique'),
+(11, 'Production produits pétroliers'),
+(12, 'Transport Urbain de Voyageurs');
+
+--
+-- Déchargement des données de la table `doctrine_migration_versions`
+--
+
+INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20240420135429', '2024-04-20 13:54:36', 2704),
+('DoctrineMigrations\\Version20240522162944', '2024-05-22 16:31:25', 182),
+('DoctrineMigrations\\Version20240522163457', '2024-05-22 16:35:10', 133);
+
+--
+-- Déchargement des données de la table `entreprise`
+--
 
 INSERT INTO `entreprise` (`id`, `activite_id`, `nom`, `rue`, `ville`, `pays`, `cp`, `num_rue`) VALUES
-(1, 1, 'Tech Solutions Inc.', '123 Rue de l\'Innovation', 'Paris', 'France', '75001', '123'),
-(2, 2, 'Data Experts Ltd.', '456 Data Drive', 'London', 'United Kingdom', 'EC1A ', '456'),
-(3, 3, 'CyberGuard Technologies', '789 Cybersecurity Street', 'New York', 'United States', '10001', '789'),
-(4, 1, 'WebSolutions SA', '101 Web Avenue', 'Geneva', 'Switzerland', '1201', '101'),
-(5, 2, 'Cloud Innovations GmbH', '555 Cloud Way', 'Berlin', 'Germany', '10115', '555'),
-(6, 3, 'Software Creations Corp.', '777 Software Street', 'San Francisco', 'United States', '94105', '777'),
-(7, 1, 'Data Systems Ltd.', '888 Data Plaza', 'Sydney', 'Australia', '2000', '888'),
-(8, 2, 'TechNet Solutions', '999 Tech Road', 'Tokyo', 'Japan', '100-0', '999'),
-(9, 3, 'InnovaTech Inc.', '321 Innovation Boulevard', 'Toronto', 'Canada', 'M5J 2', '321'),
-(10, 1, 'Digital Dynamics AG', '444 Digital Street', 'Zurich', 'Switzerland', '8001', '444');
+(8, 8, 'Association Le Pré de la Bataille', 'rue du pré de la bataille', 'Rouen', 'France', '76000', '39'),
+(9, 3, '3D DENTAL STORE', 'route de Lyons la Forêt', 'Rouen', 'France', '76000', '75'),
+(10, 3, 'ALTITUDE INFRA EXPLOITATION', 'Voie de l\'Orée', 'Val-de-Reuil', 'France', '27100', '2247'),
+(11, 9, 'ANOXA (METALLERIE NORMANDE ) / YESKA Group', 'Rue de la coulée verte', 'Val-de-Reuil', 'France', '27400', '0'),
+(12, 3, 'ATTINEOS Cybersécurité', 'Bd Ferdinand de Lesseps', 'Rouen', 'France', '76000', '20'),
+(13, 3, 'ATTINEOS', 'Bd Ferdinand de Lesseps', 'Rouen', 'France', '76000', '20'),
+(14, 3, 'Carrier Transicold industrie', 'Route de Paris', 'Franqueville Saint Pierre', 'France', '76520', '810'),
+(15, 3, 'CARSAT Normandie', 'Avenue du Grand Cours – CS 36028', 'Rouen', 'France', '76028', '5'),
+(16, 3, 'CCI Productions', 'ZA des Patis', 'ACQUIGNY', 'France', '27400', '0'),
+(17, 3, 'Centre Henri-Becquerel', 'Rue d’Amiens - CS 11516', 'Rouen', 'France', '76038', '0'),
+(18, 3, 'CESI', 'Avenue Edmund Halley', 'SAINT ETIENNE DU ROUVRAY', 'France', '76800', '80'),
+(19, 3, 'CMA Normandie', 'rue Claude Boch', 'CAEN', 'France', '14000', '2'),
+(20, 3, 'CS-LANE', 'rue de la république', 'ELBEUF', 'France', '76500', '16'),
+(21, 3, 'De Rijke Normandie', 'Quai des Roches', 'Dieppalle Croiset', 'France', '76380', '37'),
+(22, 3, 'Département de la Seine-Maritime', 'Quai Jean Moulin', 'Rouen', 'France', '76101', '0'),
+(23, 3, 'DIGIACTIF', 'route de Neufchâtel', 'BOIS GUILLAUME', 'France', '76230', '1207'),
+(24, 3, 'DOCAPOSTE', 'Rue Antoine Laurent de Lavoisier', 'SOTTEVILLE LES ROUEN', 'France', '76300', '1-2bis'),
+(25, 3, 'ENOVEA', 'rue Jacques Monod', 'Mont-Saint-Aignan', 'France', '76130', '16'),
+(26, 3, 'ESI ROUEN DGFIP', 'rue des mouettes', 'Mont Saint Aignan', 'France', '76130', '4'),
+(27, 3, 'HELPEVIA', 'avenue de Bretagne', 'Rouen', 'France', '76000', '98'),
+(28, 3, 'Hoki-Doki XEFI ROUEN', 'route de Paris', 'Franqueville Saint Pierre', 'France', '76520', '833'),
+(29, 5, 'IAD INFORMATIQUE', 'Gare d\'Acquigny B.P. 9', 'Acquigny', 'France', '27400', '0'),
+(30, 3, 'IFA Marcel Sauvage', 'rue du Tronquet', 'Mont Saint Aignan', 'France', '76130', '11'),
+(31, 3, 'Interfas SAS', 'Rue Charles CROS', 'Louviers', 'France', '27400', '0'),
+(32, 3, 'Mairie de Darnétal', 'Place du général de Gaulle', 'Darnétal', 'France', '76000', '0'),
+(33, 3, 'Mairie de Rouen', 'Place du Général de GAULLE', 'ROUEN', 'France', '76000', '0'),
+(34, 3, 'Marie de Franquiville Saint Pierre', 'rue de la République', 'Franqueville Saint Pierre', 'France', '76520', '331'),
+(35, 3, 'MSA Haute Normandie', 'Cité de l\'agriculture chemin de la Bretèque', 'Bois Guillaume', 'France', '76230', '0'),
+(36, 3, 'N-CyP', 'Odyssée F – Avenue de Cambridge HEROUVILLE SAINT CLAIR Ou ou 82 Avenue de Thiès', 'CAEN', 'France', '76000', '4'),
+(37, 3, 'Overspeed sarl', 'boulevard des Belges', 'Rouen', 'France', '76000', '53 bis'),
+(38, 3, 'PEP 76', 'rue du four', 'Rouen', 'France', '76100', '3'),
+(39, 3, 'Proxiad Axe Seine', 'Passage de la Luciline Immeuble A – Le Vauban', 'Rouen', 'France', '76000', '4'),
+(40, 3, 'RENAULT Cléon', 'Usine Renault de Cléon Zone d’activité du Moulin 3', 'Cléon', 'France', '76410', '0'),
+(41, 3, 'SAFRAN Nacelles', 'Route du Pont VIII', 'GONFREVILLE L’ORCHER', 'France', '76700', '0'),
+(42, 3, 'SEGC Ouvrez l\'œil', 'Ancienne route de Duclair', 'Canteleu', 'France', '76000', '0'),
+(43, 3, 'SEMINOR', 'place du Général Leclerc', 'FECAMP', 'France', '76000', '16'),
+(44, 3, 'SGA Mobility ou industries', 'Rue Jean philippe Rameau B6 Pôle Delta', 'Rouen', 'France', '76000', '27'),
+(45, 3, 'SOWEBO', 'rue Jean Jaurès', 'Brionne', 'France', '27800', '31'),
+(46, 3, 'TELLUX', 'Rue Aristide Briand', 'PETIT-COURONNE', 'France', '27800', '72'),
+(47, 10, 'TIMAX', 'rue eustache de la queriere', 'Rouen', 'France', '76000', '31'),
+(48, 3, 'Toshiba TEC Europe Imaging Systems', 'Rue Louis Berliot Neuville Les Dieppe', 'Dieppe', 'France', '76000', '0'),
+(49, 11, 'TOTAL ENERGIES', 'Voie industrielle', 'Gonfreville L’Orcher', 'France', '76700', '0'),
+(50, 12, 'TRANSDEV (Ex TCAR)', 'rue de la Petite Chartreuse CS 60099 76 002 ROUEN Cedex 1', 'ROUEN', 'France', '76002', '15'),
+(51, 3, 'YETIC', 'rue Jeanne d\'Arc', 'Rouen', 'France', '76000', '77');
 
-INSERT INTO `etudiant` (`id`, `personne_id`, `specialisation`) VALUES
-(1, 1, 'SLAM'),
-(2, 2, 'SISR'),
-(3, 3, 'SLAM'),
-(4, 4, 'SISR'),
-(5, 5, 'SLAM'),
-(6, 6, 'SISR'),
-(7, 7, 'SLAM'),
-(8, 8, 'SISR'),
-(9, 9, 'SLAM'),
-(10, 10, 'SISR');
+--
+-- Déchargement des données de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `email`, `num_tel`, `specialisation`) VALUES
+(1, 'MERAT', 'Guillaume', 'NULL', 'NULL', ''),
+(2, 'SODOYER', 'Killian', 'NULL', 'NULL', ''),
+(3, 'Lavigne', 'Alexis', 'NULL', 'NULL', ''),
+(4, 'MOREL', 'Thomas', 'NULL', 'NULL', ''),
+(5, 'PONS', 'Tristan', 'NULL', 'NULL', ''),
+(6, 'PUNTILLO', 'Anthony', 'NULL', 'NULL', ''),
+(7, 'GRANDSIRE', 'Martin', 'NULL', 'NULL', ''),
+(8, 'BOUKHORISSA', 'Bilal', 'NULL', 'NULL', ''),
+(9, 'PETIT', 'Tom', 'NULL', 'NULL', ''),
+(10, 'PEDOUSSANT', 'Timéo', 'NULL', 'NULL', ''),
+(11, 'GODON', 'Corentin', 'NULL', 'NULL', ''),
+(12, 'COEURDOUX', 'Carl', 'NULL', 'NULL', ''),
+(13, 'DELATTRE', 'Louis', 'NULL', 'NULL', ''),
+(14, 'Billet', 'Tom', 'NULL', 'NULL', ''),
+(15, 'TAFFIN', 'Enzo', 'NULL', 'NULL', ''),
+(16, 'MORAND', 'Anthony', 'NULL', 'NULL', ''),
+(17, 'HAMOUDI', 'Noé', 'NULL', 'NULL', ''),
+(18, 'FERRAND', 'Robin', 'NULL', 'NULL', ''),
+(19, 'HOUZET', 'William', 'NULL', 'NULL', ''),
+(20, 'PIETRZAK', 'Tom', 'NULL', 'NULL', ''),
+(21, 'DELAPLACE', 'Hugo', 'NULL', 'NULL', ''),
+(22, 'Jean', 'Mathéo', 'NULL', 'NULL', ''),
+(23, 'Gougeon-Petit', 'Emile', 'NULL', 'NULL', ''),
+(24, 'ROULAND', 'Joryce', 'NULL', 'NULL', ''),
+(25, 'PERICA', 'Quentin', 'NULL', 'NULL', ''),
+(26, 'LEBERQUIER', 'Dorian', 'NULL', 'NULL', ''),
+(27, 'AUBRIL', 'Melvin', 'NULL', 'NULL', ''),
+(28, 'Billet', 'Tom', 'NULL', 'NULL', ''),
+(29, 'Philippe', 'Julien', 'NULL', 'NULL', ''),
+(30, 'LEDUC', 'Noam', 'NULL', 'NULL', ''),
+(31, 'PIRES BETO', 'Carlos', 'NULL', 'NULL', ''),
+(32, 'Boutin', 'Thomas', 'NULL', 'NULL', ''),
+(33, 'Rabbi', 'Omayma', 'NULL', 'NULL', ''),
+(34, 'Tirard', 'Lucas', 'NULL', 'NULL', ''),
+(35, 'Sodoyer', 'Killian', 'NULL', 'NULL', ''),
+(36, 'De Brabander', 'Hugo', 'NULL', 'NULL', ''),
+(37, 'Pires Beito', 'Carlos', 'NULL', 'NULL', ''),
+(38, 'Vievielle', 'Ethan', 'NULL', 'NULL', ''),
+(39, 'MARY', 'Killian', 'NULL', 'NULL', ''),
+(40, 'GARCIN', 'Thomas', 'NULL', 'NULL', ''),
+(41, 'DEROEUX', 'Gabriel', 'NULL', 'NULL', ''),
+(42, 'MOREL', 'Mathias', 'NULL', 'NULL', ''),
+(43, 'FOLLET', 'Yaroslav', 'NULL', 'NULL', ''),
+(44, 'LEFRANCOIS', 'Timothée', 'NULL', 'NULL', ''),
+(45, 'Martins Ribeiro', 'Paolo', 'NULL', 'NULL', ''),
+(46, 'LIMA', 'Yohan', 'NULL', 'NULL', 'SLAM');
+
+--
+-- Déchargement des données de la table `etudiant_stage`
+--
 
 INSERT INTO `etudiant_stage` (`etudiant_id`, `stage_id`) VALUES
 (1, 1),
-(1, 11),
 (2, 2),
-(2, 12),
-(3, 3),
-(3, 13),
-(4, 4),
-(4, 14),
+(3, 2),
+(4, 3),
 (5, 5),
-(5, 15),
-(6, 6),
-(6, 16),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
+(6, 4),
+(7, 6),
+(8, 7),
+(9, 8),
+(10, 9),
+(11, 10),
+(11, 11),
+(12, 12);
 
-INSERT INTO `jury` (`id`, `date`) VALUES
-(1, '2024'),
-(2, '2023');
+--
+-- Déchargement des données de la table `professionelle`
+--
 
-INSERT INTO `jury_professionelle` (`jury_id`, `professionelle_id`) VALUES
-(1, 2),
-(2, 1);
+INSERT INTO `professionelle` (`id`, `nom`, `prenom`, `email`, `num_tel`, `metier`) VALUES
+(43, 'Jourdan', 'Sophie', 'sjourdan@3ddentalstore.fr', '0230322403', 'DRH'),
+(44, 'Marcotte', 'Guillaume', 'gmarcotte3ds@3ddentalstore.fr', '0230322403', 'NULL'),
+(45, 'Vernier', 'Sebastien', 'sebastien.vernier@altitudeinfra.fr', '0636456737', 'CP SI'),
+(46, 'LEPETIT', 'Coralie', 'clepetit@yeska.fr', '0788220848', 'Chargée de recrutement'),
+(47, 'TROUVE', 'Florian', 'ftrouve@yeska.fr', '0232095784', 'Responsable Supply Chain'),
+(48, 'MAZE', 'Kévin', 'kevin.maze@lepredelabataille.fr', '0630377810', 'Technicien informatique'),
+(49, 'Henry', 'Frédéric', 'f.henry-cs@attineos.com', '0235764739', 'Directeur de projets'),
+(50, 'LUTHIN', 'Sébastien', 's.lhutin@attineos.com', '0695600011', 'Resp du centre de service'),
+(51, 'Chaloine', 'Marion', 'm.chaloine@attineos.com', 'NULL', 'Resp RH'),
+(52, 'BAZIN', 'Nikhil', 'n.bazin@attineos-cyber.com', '0235641016', 'Directeur Technique'),
+(53, 'Leonard', 'Mr', 'NULL', '0637412053', 'NULL'),
+(54, 'SAVIO', 'Mikaël', 'NULL', 'NULL', 'Directeur'),
+(55, 'ALVES', 'David', 'david.alves@carsat-normandie.fr', '0235036059', 'Tuteur Responsable Adjoint Informatique Régionale'),
+(56, 'RICOUARD', 'Hubert', 'hubert.ricouard@carsat-normandie.fr', '0235035801', 'MSSI'),
+(57, 'DEMARLY', 'Antoine', 'ademarly@cciproductions.fr', '0232094218', 'Développeur'),
+(58, 'LE DENMAT', 'Jean-Marc', 'jean-marc.le-denmat@chb.unicancer.fr', '0232082209', 'Directeur des Systèmes d’Information'),
+(59, 'BENATIA', 'Mohamed Amin', 'mbenatia@cesi.fr', '0763499411', 'Enseignant chercheur'),
+(60, 'BORGIALI', 'M.', 'dborgiali@cma-normandie.fr', '0231532580', 'NULL'),
+(61, 'BELLANGER', 'Bertrand', 'NULL', 'NULL', 'Président'),
+(62, 'CANU', 'Philippe', 'philippe.canu@seinemaritime.fr', 'NULL', 'NULL'),
+(63, 'DELIME', 'Jean', 'jean.delime@seinemaritime.fr', 'NULL', 'NULL'),
+(64, 'MAUGER', 'Dominique', 'dominique,mauger@seinemaritime.fr', '0276516524', 'NULL'),
+(65, 'LACROIX', 'Christophe', 'christophe.lacroix@seinemaritime.fr', '0235035574', 'Chef de Projet'),
+(66, 'LETOUIT', 'Johan', 'johan.l@digiactif.fr', '0278770337', 'NULL'),
+(67, 'BERNIERE', 'Vincent', 'vincent.berniere@docaposte.fr', '0672511824', 'Développeur'),
+(68, 'Vauzelle', 'Sarah', 'sarah.vauzelle@enovea.net', '0232182200', 'Chef de projet'),
+(69, 'Neel', 'Thibault', 'thibault.neel@enovea.net', 'NULL', 'NULL'),
+(70, 'DETROIS', 'Mme', 'laurence.detrois@dgfip.finances.gouv.fr', 'NULL', 'NULL'),
+(71, 'DALMONT', 'Jean marc', 'jean_marc.dalmont@dgfip.finances.gouv.fr', '0622353750', 'Inspecteur divisionnaire'),
+(72, 'FOULON', 'Mickael', 'mickael.foulon@dgfip.finances.gouv.fr', '0235523591', 'NULL'),
+(73, 'DESCHAMPS', 'Nicolas', 'Nicolas.DESCHAMPS@helpevia.fr', '0232818092', 'CP'),
+(74, 'Hojnacki', 'Mr', 's.hojnacki@xefi.fr', '0232877348', 'NULL'),
+(75, 'Hojnacki', 'Mme', 'valerie@hokidoki.fr', 'NULL', 'NULL'),
+(76, 'AUZOU', 'Nicolas', 'n.auzou@iad-bat.com', '0232507888', 'NULL'),
+(77, 'CORDIER', 'Magalie', 'administratif@iad-bat.com', '0677686191', 'Assistante de direction'),
+(78, 'WILLEMS', 'Gautier', 'g.willems@iad-bat.com', '0232507888', 'Responsable Pole logiciel'),
+(79, 'LEPAGNOL', 'Mr Olivier', 'olivier.lepagnol@ifa-rouen.fr', 'NULL', 'Administrateur Système et Réseau'),
+(80, 'Vatelier', 'Catherine', 'catherine.vatelier@darnetal.fr', '0235082937', 'Responsable Service Informatique'),
+(81, 'BISSON', 'Mr Frédéric', 'frederic.bisson@rouen.fr', '0235086942', 'webMaster'),
+(82, 'DEDIEU', 'M. Pierre', 'pierre.dedieu@rouen.fr', '0235088637', 'NULL'),
+(83, 'Goulay', 'Christophe', 'info.tel@franquevillesaintpierre.com', '0235802039', 'Resp info et téléphonie informatique'),
+(84, 'HICHOUR', 'Khalid', 'hichour@khalid@hautenormandie.msa.fr', '0232987240', 'Responsable Informatique'),
+(85, 'FELIX', 'Emmanuelle', 'emmanuelle.felix@totalenergies.com', '0235116062', 'Adjointe département maintenance'),
+(86, 'HENRY', 'Arnaud', 'arnaud.henry@transdev.com', 'NULL', 'Chargé d\'Exploitation du SI Tcar'),
+(87, 'LOUIS', 'Florent', 'Florent.louis@transdev.com', '0235525244', 'Responsable Support Utilisateurs'),
+(88, 'MOREL', 'Stéphane', 'NULL', '0620430560', 'Resp. Infra numérique'),
+(89, 'Bonnet', 'Fabrice', 'fabrice.bonnet@yetic.org', '0627343906', 'CEO'),
+(90, 'RAMMACH', 'Hassan', 'h.rammach@proxiad.com', '0232081141', 'Ingénieur Etudes et Développements'),
+(91, 'LAMY', 'Julien', 'j.lamy@proxiad.com', '0232081141', 'Ingénieur Etudes et Développements'),
+(92, 'ROUDAUT', 'François-Joseph', 'francois-joseph.roudaut@tellux.fr', 'NULL', 'Ingénieur DATA'),
+(93, 'Lherminier', 'Vincent', 'v.lherminier@timax-sig.fr', '0479490404', 'NULL'),
+(94, 'BOUDEREAUX', 'Alexis', 'aboudereaux@toshiba-teis.com', '0235061035', 'Responsable maintenance'),
+(95, 'Lerouly', 'Thierry', 'thierry.lerouy@totalenergies.com', '0235116346', 'NULL'),
+(96, 'FELIX', 'Emmanuelle', 'emmanuelle.felix@totalenergies.com', '0235116062', 'Adjointe département maintenance'),
+(97, 'HENRY', 'Arnaud', 'arnaud.henry@transdev.com', 'NULL', 'Chargé d\'Exploitation du SI Tcar'),
+(98, 'LOUIS', 'Florent', 'Florent.louis@transdev.com', '0235525244', 'Responsable Support Utilisateurs'),
+(99, 'MOREL', 'Stéphane', 'NULL', '0620430560', 'Resp. Infra numérique'),
+(100, 'Bonnet', 'Fabrice', 'fabrice.bonnet@yetic.org', '0627343906', 'CEO');
 
-INSERT INTO `personne` (`id`, `nom`, `prenom`, `email`, `num_tel`) VALUES
-(1, 'Dupont', 'Jean', 'jean.dupont@example.com', '0123456789'),
-(2, 'Martin', 'Sophie', 'sophie.martin@example.com', '0987654321'),
-(3, 'Leclerc', 'Pierre', 'pierre.leclerc@example.com', '0666666666'),
-(4, 'Dubois', 'Marie', 'marie.dubois@example.com', '0712345678'),
-(5, 'Lefevre', 'Thomas', 'thomas.lefevre@example.com', '0654321098'),
-(6, 'Moreau', 'Emma', 'emma.moreau@example.com', '0956781234'),
-(7, 'Garcia', 'Lucas', 'lucas.garcia@example.com', '0765432109'),
-(8, 'Petit', 'L�a', 'lea.petit@example.com', '0823456789'),
-(9, 'Robert', 'Anna', 'anna.robert@example.com', '0667891234'),
-(10, 'Roux', 'Louis', 'louis.roux@example.com', '0978563412'),
-(11, 'Nom1', 'Prenom1', 'email1@example.com', '0123456789'),
-(12, 'Nom2', 'Prenom2', 'email2@example.com', '0123456789'),
-(13, 'Nom3', 'Prenom3', 'email3@example.com', '0123456789'),
-(14, 'Nom4', 'Prenom4', 'email4@example.com', '0123456789'),
-(15, 'Nom5', 'Prenom5', 'email5@example.com', '0123456789'),
-(16, 'Nom6', 'Prenom6', 'email6@example.com', '0123456789'),
-(17, 'Nom7', 'Prenom7', 'email7@example.com', '0123456789'),
-(18, 'Nom8', 'Prenom8', 'email8@example.com', '0123456789'),
-(19, 'Nom9', 'Prenom9', 'email9@example.com', '0123456789'),
-(20, 'Nom10', 'Prenom10', 'email10@example.com', '0123456789');
-
-INSERT INTO `professionelle` (`id`, `personne_id`, `metier`) VALUES
-(1, 11, 'D�veloppeur logiciel'),
-(2, 12, 'Administrateur syst�me'),
-(3, 13, 'Analyste de donn�es'),
-(4, 14, 'Ing�nieur en s�curit� informatique'),
-(5, 15, 'Administrateur de base de donn�es'),
-(6, 16, 'Analyste en cybers�curit�'),
-(7, 17, 'Architecte cloud'),
-(8, 18, 'Ing�nieur r�seau'),
-(9, 19, 'D�veloppeur web'),
-(10, 20, 'Consultant en informatique');
+--
+-- Déchargement des données de la table `professionelle_stage`
+--
 
 INSERT INTO `professionelle_stage` (`professionelle_id`, `stage_id`) VALUES
-(1, 10),
-(2, 9),
-(3, 8),
-(4, 7),
-(5, 6),
-(5, 16),
-(6, 5),
-(6, 15),
-(7, 4),
-(7, 14),
-(8, 3),
-(8, 13),
-(9, 2),
-(9, 12),
-(10, 1),
-(10, 11);
+(45, 1),
+(45, 2),
+(46, 3),
+(47, 3),
+(49, 5),
+(50, 5),
+(51, 5),
+(52, 4),
+(53, 4),
+(54, 6),
+(55, 6),
+(56, 6),
+(57, 7),
+(58, 8),
+(58, 9),
+(59, 10),
+(59, 11),
+(60, 12);
+
+--
+-- Déchargement des données de la table `role`
+--
 
 INSERT INTO `role` (`id`, `labelle`) VALUES
 (1, 'Administrateur'),
 (2, 'Enseignant');
 
+--
+-- Déchargement des données de la table `specialisation`
+--
+
 INSERT INTO `specialisation` (`id`, `labelle`) VALUES
-(1, 'D�veloppement logiciel'),
-(2, 'Administration syst�me'),
-(3, 'Intelligence artificielle'),
-(4, 'Analyse de donn�es'),
-(5, 'Cryptographie'),
-(6, 'Ing�nierie r�seau'),
-(7, 'G�nie logiciel avanc� avec focus sur les m�thodologies Agile et DevOps'),
-(8, 'S�curit� informatique avec sp�cialisation en tests d\'intrusion et audit de s�curit�');
+(3, '1SIO SLAM'),
+(4, '2SIO SLAM'),
+(5, '1SIO SISR'),
+(6, '2SIO SISR'),
+(7, 'Alternant');
+
+--
+-- Déchargement des données de la table `specialisation_entreprise`
+--
 
 INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`) VALUES
-(1, 1),
-(1, 7),
-(2, 2),
-(2, 8),
-(3, 3),
 (3, 9),
-(4, 4),
+(3, 11),
+(3, 12),
+(3, 15),
+(3, 16),
+(3, 18),
+(3, 19),
+(3, 22),
+(3, 23),
+(3, 26),
+(3, 29),
+(3, 33),
+(3, 36),
+(3, 37),
+(3, 41),
+(3, 42),
+(3, 43),
+(3, 44),
+(3, 45),
+(3, 46),
+(3, 48),
+(3, 49),
+(3, 50),
+(4, 9),
 (4, 10),
-(5, 5),
-(6, 6);
+(4, 12),
+(4, 13),
+(4, 15),
+(4, 16),
+(4, 18),
+(4, 19),
+(4, 22),
+(4, 24),
+(4, 25),
+(4, 26),
+(4, 27),
+(4, 29),
+(4, 33),
+(4, 36),
+(4, 37),
+(4, 39),
+(4, 40),
+(4, 41),
+(4, 42),
+(4, 43),
+(4, 44),
+(4, 45),
+(4, 46),
+(4, 48),
+(4, 49),
+(4, 50),
+(4, 51),
+(5, 8),
+(5, 9),
+(5, 11),
+(5, 12),
+(5, 16),
+(5, 17),
+(5, 18),
+(5, 22),
+(5, 23),
+(5, 26),
+(5, 28),
+(5, 29),
+(5, 30),
+(5, 32),
+(5, 33),
+(5, 34),
+(5, 35),
+(5, 42),
+(5, 43),
+(5, 44),
+(5, 45),
+(5, 47),
+(5, 48),
+(5, 49),
+(5, 50),
+(6, 8),
+(6, 9),
+(6, 10),
+(6, 12),
+(6, 16),
+(6, 17),
+(6, 18),
+(6, 22),
+(6, 25),
+(6, 26),
+(6, 27),
+(6, 28),
+(6, 29),
+(6, 30),
+(6, 32),
+(6, 33),
+(6, 34),
+(6, 35),
+(6, 39),
+(6, 40),
+(6, 42),
+(6, 43),
+(6, 44),
+(6, 45),
+(6, 47),
+(6, 48),
+(6, 49),
+(6, 50),
+(7, 9),
+(7, 10),
+(7, 11),
+(7, 17),
+(7, 24),
+(7, 25),
+(7, 36),
+(7, 43),
+(7, 44),
+(7, 51);
 
-INSERT INTO `stage` (`id`, `entreprise_id`, `date`, niveau) VALUES
-(1, 1, '2020-01-01', ),
-(2, 2, '2020-01-01', ),
-(3, 3, '2020-01-01', ),
-(4, 4, '2020-01-01', ),
-(5, 5, '2021-01-01', ),
-(6, 6, '2021-01-01', ),
-(7, 7, '2021-01-01'),
-(8, 8, '2021-01-01'),
-(9, 10, '2022-01-01'),
-(10, 9, '2022-01-01'),
-(11, 5, '2022-01-01'),
-(12, 2, '2022-01-01'),
-(13, 1, '2023-01-01'),
-(14, 7, '2023-01-01'),
-(15, 8, '2023-01-01'),
-(16, 10, '2023-01-01'),
-(17, 4, '2024-01-01'),
-(18, 3, '2024-01-01'),
-(19, 6, '2024-01-01'),
-(20, 5, '2024-01-01');
+--
+-- Déchargement des données de la table `stage`
+--
 
-INSERT INTO `statut` (`id`, `labelle`) VALUES
-(1, 'Personne � contacter pour envoi CV'),
-(2, 'Tuteur');
+INSERT INTO `stage` (`id`, `entreprise_id`, `date`, `niveau`) VALUES
+(1, 10, '2022', 'SLAM'),
+(2, 10, '2024', 'SLAM'),
+(3, 8, '2024', 'SISR'),
+(4, 12, '2023', 'SISR'),
+(5, 13, '2023', 'SLAM'),
+(6, 15, '2024', 'SLAM'),
+(7, 16, '2023', 'SLAM'),
+(8, 17, '2023', 'SISR'),
+(9, 17, '2024', 'SISR'),
+(10, 18, '2023', 'SLAM'),
+(11, 18, '2024', 'SLAM'),
+(12, 19, '2023', 'SISR');
 
-INSERT INTO `statut_professionelle` (`statut_id`, `professionelle_id`) VALUES
-(1, 1),
-(1, 10),
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10);
+--
+-- Déchargement des données de la table `utilisateur`
+--
 
 INSERT INTO `utilisateur` (`id`, `role_id`, `username`, `password`, `email`) VALUES
-(1, 1, 'admin', '$2y$10$1rqfAZizmHtZ1ZwBFmna4OIPvhKTJ.T03wNh1TkohaUzteWJk95mS', 'admin@localhost.fr');
+(1, 1, 'admin', '$2y$10$FeDWfRDrhdStJ6i0KCxSSurYtlKOtaaOmPchtkyDt/DvhLbV1oVm6', 'admin@localhost'),
+(2, 2, 'ens', '$2y$10$oIbDsZRi1cZ6WLSOkvTOyOmbETS.eSzFXVTvFHnK4Im.PJ4i8rZZW', 'ens@localhost');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

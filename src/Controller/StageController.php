@@ -45,7 +45,11 @@ class StageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $stageRepository->add($stage, true);
 
-            return $this->redirectToRoute('app_stage_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('stage/new.html.twig', [
@@ -75,7 +79,11 @@ class StageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $stageRepository->add($stage, true);
 
-            return $this->redirectToRoute('app_stage_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('stage/edit.html.twig', [

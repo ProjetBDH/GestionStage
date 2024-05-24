@@ -39,7 +39,11 @@ class RoleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $roleRepository->add($role, true);
 
-            return $this->redirectToRoute('app_role_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('role/new.html.twig', [
@@ -69,7 +73,11 @@ class RoleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $roleRepository->add($role, true);
 
-            return $this->redirectToRoute('app_role_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+        $referer = $request->headers->get('referer');
+
+        // Rediriger vers l'URL de la page précédente
+        return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('role/edit.html.twig', [

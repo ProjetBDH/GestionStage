@@ -4,7 +4,7 @@
 {{ form_end(form) }}
 
 {# Formulaire d'étudiant #}
-<form method="POST" action="{% if button_label == 'Update' %}
+<form method="POST" action="{% if button_label is defined and  button_label == 'Update' %}
     {{ path('app_etudiant_edit', {'id': etudiant.id}) }}
     {% else %}
         {{ path('app_etudiant_new') }}

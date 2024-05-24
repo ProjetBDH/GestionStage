@@ -18,11 +18,7 @@ class EtudiantType extends AbstractType
             ->add('prenom')
             ->add('email')
             ->add('numTel')
-            ->add('specialisation', EntityType::class, [
-                'class' => Specialisation::class,
-                'choice_label' => 'labelle',
-                'by_reference' => false,
-            ]);
+            ->add('specialisation');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

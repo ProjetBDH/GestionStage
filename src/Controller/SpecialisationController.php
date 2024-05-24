@@ -39,7 +39,11 @@ class SpecialisationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $specialisationRepository->add($specialisation, true);
 
-            return $this->redirectToRoute('app_specialisation_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('specialisation/new.html.twig', [
@@ -69,7 +73,11 @@ class SpecialisationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $specialisationRepository->add($specialisation, true);
 
-            return $this->redirectToRoute('app_specialisation_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('specialisation/edit.html.twig', [

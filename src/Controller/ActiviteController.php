@@ -39,7 +39,11 @@ class ActiviteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $activiteRepository->add($activite, true);
 
-            return $this->redirectToRoute('app_entreprise_new', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('activite/new.html.twig', [
@@ -69,7 +73,11 @@ class ActiviteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $activiteRepository->add($activite, true);
 
-            return $this->redirectToRoute('app_activite_index', [], Response::HTTP_SEE_OTHER);
+            // Récupérer l'URL de la page précédente
+            $referer = $request->headers->get('referer');
+
+            // Rediriger vers l'URL de la page précédente
+            return $this->redirect($referer, Response::HTTP_FOUND);
         }
 
         return $this->renderForm('activite/edit.html.twig', [

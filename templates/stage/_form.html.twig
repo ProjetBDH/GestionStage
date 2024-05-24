@@ -1,9 +1,5 @@
 {# Formulaire de stage #}
-<form method="POST" action="{% if button_label == 'Update' %}
-    {{ path('app_stage_edit', {'id': stage.id}) }}
-    {% else %}
-        {{ path('app_stage_new') }}
-    {% endif %}" class="container mt-4">
+<form method="POST" action="{{ path('app_stage_new') }}" class="container mt-4">
     {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
     <div class="form-group">
         {{ form_label(form.date) }}
@@ -26,7 +22,7 @@
         {{ form_errors(form.etudiants) }}
     </div>
     <br>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/etudiant/new'">Ajouter un étudiant</button>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='{{ path('app_etudiant_new',{'button_label': 'Update'}) }}'">Ajouter un étudiant</button>
     <br>
     <br>
     <div class="form-group">
@@ -35,7 +31,7 @@
         {{ form_errors(form.professionelles) }}
     </div>
     <br>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/professionelle/new'">Ajouter un professionnel</button>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='{{ path('app_professionelle_new',{'button_label': 'Update'}) }}'">Ajouter un professionnel</button>
     <button type="submit" class="btn btn-primary">Enregistrer</button>
     {{ form_end(form) }}
 </form>

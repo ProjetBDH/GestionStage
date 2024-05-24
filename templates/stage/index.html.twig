@@ -11,6 +11,8 @@
             <th>Id</th>
             <th>Date</th>
             <th>Niveau</th>
+            <th>Entreprise</th>
+            <th>Etudiants</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -20,6 +22,10 @@
                 <td>{{ stage.id }}</td>
                 <td>{{ stage.date }}</td>
                 <td>{{ stage.niveau }}</td>
+                <td>{{ stage.entreprise.nom }}</td>
+                <td>
+                    {% for etu in stage.etudiants %}{{ etu.nom }} {{ etu.prenom }}, {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('app_stage_show', {'id': stage.id}) }}" class="boutton">Voir</a>
                     <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
