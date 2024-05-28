@@ -89,72 +89,54 @@ INSERT INTO `entreprise` (`id`, `activite_id`, `nom`, `rue`, `ville`, `pays`, `c
 -- Déchargement des données de la table `etudiant`
 --
 
-INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `email`, `num_tel`, `specialisation`) VALUES
-(1, 'MERAT', 'Guillaume', 'NULL', 'NULL', ''),
-(2, 'SODOYER', 'Killian', 'NULL', 'NULL', ''),
-(3, 'Lavigne', 'Alexis', 'NULL', 'NULL', ''),
-(4, 'MOREL', 'Thomas', 'NULL', 'NULL', ''),
-(5, 'PONS', 'Tristan', 'NULL', 'NULL', ''),
-(6, 'PUNTILLO', 'Anthony', 'NULL', 'NULL', ''),
-(7, 'GRANDSIRE', 'Martin', 'NULL', 'NULL', ''),
-(8, 'BOUKHORISSA', 'Bilal', 'NULL', 'NULL', ''),
-(9, 'PETIT', 'Tom', 'NULL', 'NULL', ''),
-(10, 'PEDOUSSANT', 'Timéo', 'NULL', 'NULL', ''),
-(11, 'GODON', 'Corentin', 'NULL', 'NULL', ''),
-(12, 'COEURDOUX', 'Carl', 'NULL', 'NULL', ''),
-(13, 'DELATTRE', 'Louis', 'NULL', 'NULL', ''),
-(14, 'Billet', 'Tom', 'NULL', 'NULL', ''),
-(15, 'TAFFIN', 'Enzo', 'NULL', 'NULL', ''),
-(16, 'MORAND', 'Anthony', 'NULL', 'NULL', ''),
-(17, 'HAMOUDI', 'Noé', 'NULL', 'NULL', ''),
-(18, 'FERRAND', 'Robin', 'NULL', 'NULL', ''),
-(19, 'HOUZET', 'William', 'NULL', 'NULL', ''),
-(20, 'PIETRZAK', 'Tom', 'NULL', 'NULL', ''),
-(21, 'DELAPLACE', 'Hugo', 'NULL', 'NULL', ''),
-(22, 'Jean', 'Mathéo', 'NULL', 'NULL', ''),
-(23, 'Gougeon-Petit', 'Emile', 'NULL', 'NULL', ''),
-(24, 'ROULAND', 'Joryce', 'NULL', 'NULL', ''),
-(25, 'PERICA', 'Quentin', 'NULL', 'NULL', ''),
-(26, 'LEBERQUIER', 'Dorian', 'NULL', 'NULL', ''),
-(27, 'AUBRIL', 'Melvin', 'NULL', 'NULL', ''),
-(28, 'Billet', 'Tom', 'NULL', 'NULL', ''),
-(29, 'Philippe', 'Julien', 'NULL', 'NULL', ''),
-(30, 'LEDUC', 'Noam', 'NULL', 'NULL', ''),
-(31, 'PIRES BETO', 'Carlos', 'NULL', 'NULL', ''),
-(32, 'Boutin', 'Thomas', 'NULL', 'NULL', ''),
-(33, 'Rabbi', 'Omayma', 'NULL', 'NULL', ''),
-(34, 'Tirard', 'Lucas', 'NULL', 'NULL', ''),
-(35, 'Sodoyer', 'Killian', 'NULL', 'NULL', ''),
-(36, 'De Brabander', 'Hugo', 'NULL', 'NULL', ''),
-(37, 'Pires Beito', 'Carlos', 'NULL', 'NULL', ''),
-(38, 'Vievielle', 'Ethan', 'NULL', 'NULL', ''),
-(39, 'MARY', 'Killian', 'NULL', 'NULL', ''),
-(40, 'GARCIN', 'Thomas', 'NULL', 'NULL', ''),
-(41, 'DEROEUX', 'Gabriel', 'NULL', 'NULL', ''),
-(42, 'MOREL', 'Mathias', 'NULL', 'NULL', ''),
-(43, 'FOLLET', 'Yaroslav', 'NULL', 'NULL', ''),
-(44, 'LEFRANCOIS', 'Timothée', 'NULL', 'NULL', ''),
-(45, 'Martins Ribeiro', 'Paolo', 'NULL', 'NULL', ''),
-(46, 'LIMA', 'Yohan', 'NULL', 'NULL', 'SLAM');
+INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `specialisation`) VALUES
+(1, 'MERAT', 'Guillaume', ''),
+(2, 'SODOYER', 'Killian', ''),
+(3, 'Lavigne', 'Alexis', ''),
+(4, 'MOREL', 'Thomas', ''),
+(5, 'PONS', 'Tristan', ''),
+(6, 'PUNTILLO', 'Anthony', ''),
+(7, 'GRANDSIRE', 'Martin', ''),
+(8, 'BOUKHORISSA', 'Bilal', ''),
+(9, 'PETIT', 'Tom',''),
+(10, 'PEDOUSSANT', 'Timéo',''),
+(11, 'GODON', 'Corentin',''),
+(12, 'COEURDOUX', 'Carl',''),
+(13, 'DELATTRE', 'Louis',''),
+(14, 'Billet', 'Tom',''),
+(15, 'TAFFIN', 'Enzo',''),
+(16, 'MORAND', 'Anthony',''),
+(17, 'HAMOUDI', 'Noé',''),
+(18, 'FERRAND', 'Robin',''),
+(19, 'HOUZET', 'William',''),
+(20, 'PIETRZAK', 'Tom',''),
+(21, 'DELAPLACE', 'Hugo',''),
+(22, 'Jean', 'Mathéo',''),
+(23, 'Gougeon-Petit', 'Emile',''),
+(24, 'ROULAND', 'Joryce',''),
+(25, 'PERICA', 'Quentin',''),
+(26, 'LEBERQUIER', 'Dorian',''),
+(27, 'AUBRIL', 'Melvin',''),
+(28, 'Billet', 'Tom',''),
+(29, 'Philippe', 'Julien',''),
+(30, 'LEDUC', 'Noam',''),
+(31, 'PIRES BETO', 'Carlos',''),
+(32, 'Boutin', 'Thomas',''),
+(33, 'Rabbi', 'Omayma',''),
+(34, 'Tirard', 'Lucas',''),
+(35, 'Sodoyer', 'Killian',''),
+(36, 'De Brabander', 'Hugo',''),
+(37, 'Pires Beito', 'Carlos',''),
+(38, 'Vievielle', 'Ethan',''),
+(39, 'MARY', 'Killian',''),
+(40, 'GARCIN', 'Thomas',''),
+(41, 'DEROEUX', 'Gabriel',''),
+(42, 'MOREL', 'Mathias',''),
+(43, 'FOLLET', 'Yaroslav',''),
+(44, 'LEFRANCOIS', 'Timothée',''),
+(45, 'Martins Ribeiro', 'Paolo',''),
+(46, 'LIMA', 'Yohan', 'SLAM');
 
---
--- Déchargement des données de la table `etudiant_stage`
---
-
-INSERT INTO `etudiant_stage` (`etudiant_id`, `stage_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 2),
-(4, 3),
-(5, 5),
-(6, 4),
-(7, 6),
-(8, 7),
-(9, 8),
-(10, 9),
-(11, 10),
-(11, 11),
-(12, 12);
 
 --
 -- Déchargement des données de la table `professionelle`
@@ -221,6 +203,62 @@ INSERT INTO `professionelle` (`id`, `nom`, `prenom`, `email`, `num_tel`, `metier
 (100, 'Bonnet', 'Fabrice', 'fabrice.bonnet@yetic.org', '0627343906', 'CEO');
 
 --
+-- Déchargement des données de la table `role`
+--
+
+INSERT INTO `role` (`id`, `labelle`) VALUES
+(1, 'Administrateur'),
+(2, 'Enseignant');
+
+--
+-- Déchargement des données de la table `specialisation`
+--
+
+INSERT INTO `specialisation` (`id`, `labelle`) VALUES
+(3, '1SIO SLAM'),
+(4, '2SIO SLAM'),
+(5, '1SIO SISR'),
+(6, '2SIO SISR'),
+(7, 'Alternant');
+
+--
+-- Déchargement des données de la table `stage`
+--
+
+INSERT INTO `stage` (`id`, `entreprise_id`, `date`, `niveau`) VALUES
+(1, 10, '2022', 'SLAM'),
+(2, 10, '2024', 'SLAM'),
+(3, 8, '2024', 'SISR'),
+(4, 12, '2023', 'SISR'),
+(5, 13, '2023', 'SLAM'),
+(6, 15, '2024', 'SLAM'),
+(7, 16, '2023', 'SLAM'),
+(8, 17, '2023', 'SISR'),
+(9, 17, '2024', 'SISR'),
+(10, 18, '2023', 'SLAM'),
+(11, 18, '2024', 'SLAM'),
+(12, 19, '2023', 'SISR');
+
+--
+-- Déchargement des données de la table `etudiant_stage`
+--
+
+INSERT INTO `etudiant_stage` (`etudiant_id`, `stage_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 2),
+(4, 3),
+(5, 5),
+(6, 4),
+(7, 6),
+(8, 7),
+(9, 8),
+(10, 9),
+(11, 10),
+(11, 11),
+(12, 12);
+
+--
 -- Déchargement des données de la table `professionelle_stage`
 --
 
@@ -243,25 +281,6 @@ INSERT INTO `professionelle_stage` (`professionelle_id`, `stage_id`) VALUES
 (59, 10),
 (59, 11),
 (60, 12);
-
---
--- Déchargement des données de la table `role`
---
-
-INSERT INTO `role` (`id`, `labelle`) VALUES
-(1, 'Administrateur'),
-(2, 'Enseignant');
-
---
--- Déchargement des données de la table `specialisation`
---
-
-INSERT INTO `specialisation` (`id`, `labelle`) VALUES
-(3, '1SIO SLAM'),
-(4, '2SIO SLAM'),
-(5, '1SIO SISR'),
-(6, '2SIO SISR'),
-(7, 'Alternant');
 
 --
 -- Déchargement des données de la table `specialisation_entreprise`
@@ -383,24 +402,6 @@ INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`) V
 (7, 43),
 (7, 44),
 (7, 51);
-
---
--- Déchargement des données de la table `stage`
---
-
-INSERT INTO `stage` (`id`, `entreprise_id`, `date`, `niveau`) VALUES
-(1, 10, '2022', 'SLAM'),
-(2, 10, '2024', 'SLAM'),
-(3, 8, '2024', 'SISR'),
-(4, 12, '2023', 'SISR'),
-(5, 13, '2023', 'SLAM'),
-(6, 15, '2024', 'SLAM'),
-(7, 16, '2023', 'SLAM'),
-(8, 17, '2023', 'SISR'),
-(9, 17, '2024', 'SISR'),
-(10, 18, '2023', 'SLAM'),
-(11, 18, '2024', 'SLAM'),
-(12, 19, '2023', 'SISR');
 
 --
 -- Déchargement des données de la table `utilisateur`
