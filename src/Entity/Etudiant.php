@@ -72,30 +72,30 @@ class Etudiant
 
         return $this;
     }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getNumTel(): ?string
-    {
-        return $this->numTel;
-    }
-
-    public function setNumTel(string $numTel): self
-    {
-        $this->numTel = $numTel;
-
-        return $this;
-    }
+//
+//    public function getEmail(): ?string
+//    {
+//        return $this->email;
+//    }
+//
+//    public function setEmail(string $email): self
+//    {
+//        $this->email = $email;
+//
+//        return $this;
+//    }
+//
+//    public function getNumTel(): ?string
+//    {
+//        return $this->numTel;
+//    }
+//
+//    public function setNumTel(string $numTel): self
+//    {
+//        $this->numTel = $numTel;
+//
+//        return $this;
+//    }
 
     public function getSpecialisation(): ?string
     {

@@ -14,8 +14,8 @@ class EtudiantType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('email')
-            ->add('numTel')
+//            ->add('email')
+//            ->add('numTel')
             ->add('specialisation');
     }
 
