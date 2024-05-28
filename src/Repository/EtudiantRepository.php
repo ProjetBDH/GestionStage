@@ -70,12 +70,8 @@ class EtudiantRepository extends ServiceEntityRepository
         if (!empty($criteria)) {
             $qb->andWhere('p.nom LIKE :nom')
                 ->orWhere('p.prenom LIKE :prenom')
-                ->orWhere('p.email LIKE :email')
-                ->orWhere('p.numTel LIKE :telephone')
                 ->setParameter('nom', '%'.$criteria.'%')
-                ->setParameter('prenom', '%'.$criteria.'%')
-                ->setParameter('email', '%'.$criteria.'%')
-                ->setParameter('telephone', '%'.$criteria.'%');
+                ->setParameter('prenom', '%'.$criteria.'%');
         }
 
         return $qb->getQuery()->getResult();
