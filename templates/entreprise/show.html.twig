@@ -43,7 +43,9 @@
         <tr>
             <th>Stages</th>
             <td>
+                {% if userRole != 'Enseignant'  %}
                 <a href="{{ path('app_stage_new', {'id_entreprise':entreprise.id}) }}" class="boutton">Creer un nouveau stage</a>
+                {% endif %}
                 {% for sta in stages %}
                     {% if sta.etudiants.count == 1 %}
                         {{ sta.date }} - Stagiaire : <a
@@ -86,9 +88,9 @@
     </table>
 
     <a href="{{ path('app_entreprise_index') }}" class="boutton">Retour à la liste</a>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}" class="boutton">Editer l'entreprise</a>
-
+    {% endif %}
     <br>
     <br>
 

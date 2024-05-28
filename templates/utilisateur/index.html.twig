@@ -23,7 +23,9 @@
                 <td>
                     {{ include('utilisateur/_delete_form.html.twig') }}
                     <br>
+                    {% if userRole != 'Enseignant'  %}
                     <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}" class="boutton">Editer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -33,6 +35,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_utilisateur_new') }}" class="boutton">Créer un nouveau utilisateur</a>
+    {% endif %}
 {% endblock %}

@@ -4,6 +4,7 @@
 {{ form_end(form) }}
 
 {# Formulaire de professionnel #}
+{% if userRole != 'Enseignant'  %}
 <form method="POST" action="{% if button_label is defined and  button_label == 'Update' %}
     {{ path('app_professionelle_edit', {'id': professionelle.id}) }}
     {% else %}
@@ -44,3 +45,6 @@
     <button type="submit" class="btn btn-primary">Enregistrer</button>
     {{ form_end(form) }}
 </form>
+{% else %}
+    Vous n'avez pas les droits pour effectuer cette action
+{% endif %}#}

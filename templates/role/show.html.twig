@@ -19,8 +19,9 @@
     </table>
 
     <a href="{{ path('app_role_index') }}">back to list</a>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_role_edit', {'id': role.id}) }}">edit</a>
+    {% endif %}
 
     {{ include('role/_delete_form.html.twig') }}
 {% endblock %}

@@ -28,7 +28,9 @@
                 </td>
                 <td>
                     <a href="{{ path('app_stage_show', {'id': stage.id}) }}" class="boutton">Voir</a>
+                    {% if userRole != 'Enseignant'  %}
                     <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -38,6 +40,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_stage_new') }}" class="boutton">Créer un nouveau stage</a>
+    {% endif %}
 {% endblock %}

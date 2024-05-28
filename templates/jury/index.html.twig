@@ -20,7 +20,9 @@
                 <td>{{ jury.date }}</td>
                 <td>
                     {{ include('jury/_delete_form.html.twig') }}
+                    {% if userRole != 'Enseignant'  %}
                     <a href="{{ path('app_jury_edit', {'id': jury.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -30,6 +32,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_jury_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

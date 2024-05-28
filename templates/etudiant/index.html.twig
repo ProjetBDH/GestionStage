@@ -28,7 +28,9 @@
                 <td>{{ etudiant.specialisation }}</td>
                 <td>
                     <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}">show</a>
+                    {% if userRole != 'Enseignant'  %}
                     <a href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -38,6 +40,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_etudiant_new',{'button_label': 'Update'}) }}">Create new</a>
+    {% endif %}
 {% endblock %}

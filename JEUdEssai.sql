@@ -36,15 +36,6 @@ INSERT INTO `activite` (`id`, `labelle`) VALUES
 (12, 'Transport Urbain de Voyageurs');
 
 --
--- Déchargement des données de la table `doctrine_migration_versions`
---
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20240420135429', '2024-04-20 13:54:36', 2704),
-('DoctrineMigrations\\Version20240522162944', '2024-05-22 16:31:25', 182),
-('DoctrineMigrations\\Version20240522163457', '2024-05-22 16:35:10', 133);
-
---
 -- Déchargement des données de la table `entreprise`
 --
 

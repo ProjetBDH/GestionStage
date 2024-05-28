@@ -32,16 +32,6 @@ class Etudiant
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $numTel;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $specialisation;
 
     /**

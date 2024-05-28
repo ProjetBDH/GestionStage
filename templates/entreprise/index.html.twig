@@ -35,6 +35,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_entreprise_new') }}" class="boutton">Créer une nouvelle entreprise</a>
+    {% endif %}
 {% endblock %}

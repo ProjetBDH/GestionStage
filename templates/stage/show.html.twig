@@ -84,9 +84,9 @@
     <br>
 
     <a href="{{ path('app_stage_index') }}" class="boutton">Retour à la liste</a>
-
+    {% if userRole != 'Enseignant'  %}
     <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer le stage</a>
-
+    {% endif %}
     <br>
     <br>
 

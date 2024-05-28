@@ -3,12 +3,14 @@
 <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 
-{# Formulaire d'étudiant #}
+{# Formulaire d'étudiant #} 
+{% if userRole != 'Enseignant'  %}
 <form method="POST" action="{% if button_label is defined and  button_label == 'Update' %}
     {{ path('app_etudiant_edit', {'id': etudiant.id}) }}
     {% else %}
         {{ path('app_etudiant_new') }}
     {% endif %}" class="container mt-4">
+
     {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
     <div class="form-group">
         {{ form_label(form.nom) }}
@@ -39,3 +41,6 @@
     <button type="submit" class="btn btn-primary">Enregistrer</button>
     {{ form_end(form) }}
 </form>
+{% else %}
+Vous n'avez pas les droits pour effectuer cette action
+{% endif %}

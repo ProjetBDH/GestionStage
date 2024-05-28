@@ -6,6 +6,7 @@
 #}
 
 {# Formulaire Utilisateur #}
+{% if userRole != 'Enseignant'  %}
 <form method="POST" action="{% if button_label == 'Update' %}
     {{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}
     {% else %}
@@ -36,4 +37,7 @@
     <button type="submit" class="btn btn-primary">Valider</button>
     {{ form_end(form) }}
 </form>
+{% else %}
+    Vous n'avez pas les droits pour effectuer cette action
+{% endif %}
     

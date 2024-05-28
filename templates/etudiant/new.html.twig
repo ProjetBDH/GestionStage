@@ -7,6 +7,7 @@
 
     {{ include('etudiant/_form.html.twig') }}
 
+    {% if userRole != 'Enseignant'  %}
     {# Déterminer la page d'origine de la requête #}
     {% set referer = app.request.headers.get('referer') %}
     {# Si l'utilisateur vient de la page création de stage, rediriger vers la page création de stage  #}
@@ -18,5 +19,8 @@
     {# Sinon, rediriger vers la page stage #}
     {% else %}
         <a href="{{ path('app_stage_index') }}" class="boutton">Retour à la liste</a>
+    {% endif %}
+    {% else %}
+        <a href="{{ path('app_etudiant_index') }}" class="boutton">Retour à la liste</a>
     {% endif %}
 {% endblock %}
