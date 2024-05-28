@@ -31,6 +31,15 @@
             <th>Specialisation</th>
             <td>{{ etudiant.specialisation }}</td>
         </tr>
+        <tr>
+            <th>Stages</th>
+            <td>
+                {% for stage in etudiant.stages %}
+                    <a href="{{ path('app_stage_show', {'id': stage.id}) }}">{{ stage.date }} - {{ stage.niveau }} chez {{ stage.entreprise.nom}}</a>,
+                {% else %}
+                    Aucune donnée
+                {% endfor %}
+            </td>
         </tbody>
     </table>
 
