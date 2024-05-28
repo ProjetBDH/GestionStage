@@ -74,13 +74,11 @@ header .user-role {
     padding: 0 30px;
 }
 
-.ico-exit-content
-{
+.ico-exit-content {
     margin-left: auto;
 }
 
 
-.ico-exit-content img:hover
-{
+.ico-exit-content img:hover {
     background-color: rgb(170, 169, 169);
 }

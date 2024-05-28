@@ -3,10 +3,10 @@
 // src/EventListener/BeforeControllerAccesPage
 namespace App\EventListener; 
 
-use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /*
 

@@ -28,8 +28,8 @@
                 <td>{{ professionelle.metier }}</td>
                 <td>
                     <a href="{{ path('app_professionelle_show', {'id': professionelle.id}) }}">show</a>
-                    {% if userRole != 'Enseignant'  %}
-                    <a href="{{ path('app_professionelle_edit', {'id': professionelle.id}) }}">edit</a>
+                    {% if userRole != 'Enseignant' %}
+                        <a href="{{ path('app_professionelle_edit', {'id': professionelle.id}) }}">edit</a>
                     {% endif %}
                 </td>
             </tr>

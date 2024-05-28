@@ -1,8 +1,8 @@
-{% if userRole != 'Enseignant'  %}
-{{ form_start(form) }}
+{% if userRole != 'Enseignant' %}
+    {{ form_start(form) }}
     {{ form_widget(form) }}
-<button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
 {% else %}
     Vous n'avez pas les droits pour effectuer cette action
 {% endif %}

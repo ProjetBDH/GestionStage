@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Role;
+use App\FonctionStatic\EtatMenu;
 use App\Form\RoleType;
 use App\Repository\RoleRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 //PERSO
-use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/role")

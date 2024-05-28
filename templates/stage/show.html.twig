@@ -21,7 +21,8 @@
         </tr>
         <tr>
             <th>Entreprise</th>
-            <td><a href="{{ path('app_entreprise_show',{'id':stage.entreprise.id}) }}">{{ stage.entreprise.nom }}</a></td>
+            <td><a href="{{ path('app_entreprise_show',{'id':stage.entreprise.id}) }}">{{ stage.entreprise.nom }}</a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -34,7 +35,7 @@
             <th>Id</th>
             <th>Nom</th>
             <th>Prenom</th>
-{#            <th>Email</th>#}
+            {#            <th>Email</th> #}
             <th>Spécialisation</th>
             <th>Action</th>
         </tr>
@@ -45,7 +46,7 @@
                 <td>{{ etu.id }}</td>
                 <td>{{ etu.nom }}</td>
                 <td>{{ etu.prenom }}</td>
-{#                <td>{{ etu.email }}</td>#}
+                {#                <td>{{ etu.email }}</td> #}
                 <td>{{ etu.specialisation }}</td>
                 <td><a href="{{ path('app_etudiant_show', {'id':etu.id}) }}" class="boutton">Voir</a></td>
 
@@ -84,8 +85,8 @@
     <br>
 
     <a href="{{ path('app_stage_index') }}" class="boutton">Retour à la liste</a>
-    {% if userRole != 'Enseignant'  %}
-    <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer le stage</a>
+    {% if userRole != 'Enseignant' %}
+        <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer le stage</a>
     {% endif %}
     <br>
     <br>

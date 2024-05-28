@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Statut;
+use App\FonctionStatic\EtatMenu;
 use App\Form\StatutType;
 use App\Repository\StatutRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 //PERSO
-use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/statut")

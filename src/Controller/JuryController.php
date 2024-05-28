@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Jury;
+use App\FonctionStatic\EtatMenu;
 use App\Form\JuryType;
 use App\Repository\JuryRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 //PERSO
-use App\FonctionStatic\EtatMenu;
 
 /**
  * @Route("/jury")

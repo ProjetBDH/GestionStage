@@ -6,39 +6,40 @@
 {% endblock %}
 
 {% block navbar %}
-{#     surcharge la navbar pour la retirer du login #}
+    {#     surcharge la navbar pour la retirer du login #}
 {% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="{{ asset('style/login.css') }}">
 {% endblock %}
 
 {% block body %}
-	<main>
-		<div class="content-center section-login">
-			<section class="titre-login">
-				<h1>Bienvenue</h1>
-				<p>Connectez-vous.</p>
-			</section>
-			<section class="formulaire-login">
-				{% if app.request.query.has('error') %}
-					<script defer>
-						alert("{{ app.request.query.get('error') }}")
-					</script>
-				{% endif %}
+    <main>
+        <div class="content-center section-login">
+            <section class="titre-login">
+                <h1>Bienvenue</h1>
+                <p>Connectez-vous.</p>
+            </section>
+            <section class="formulaire-login">
+                {% if app.request.query.has('error') %}
+                    <script defer>
+                      alert("{{ app.request.query.get('error') }}")
+                    </script>
+                {% endif %}
 
-				<form method="post" action="{{ path('check_login') }}">
-					<div class="text-input">
-						<label for="username">Nom d'utilisateur :</label>
-						<input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
-					</div>
-					<div class="text-input">
-						<label for="password">Mot de passe :</label>
-						<input type="password" id="password" name="_password" required>
-					</div>
-					<button class="bt-main" type="submit">Connexion</button>
-				</form>
-			</section>
-		</div>
-	</main>
+                <form method="post" action="{{ path('check_login') }}">
+                    <div class="text-input">
+                        <label for="username">Nom d'utilisateur :</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" required
+                               autofocus>
+                    </div>
+                    <div class="text-input">
+                        <label for="password">Mot de passe :</label>
+                        <input type="password" id="password" name="_password" required>
+                    </div>
+                    <button class="bt-main" type="submit">Connexion</button>
+                </form>
+            </section>
+        </div>
+    </main>
 {% endblock %}

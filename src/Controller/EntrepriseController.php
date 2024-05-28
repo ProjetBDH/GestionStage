@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Entreprise;
+use App\FonctionStatic\EtatMenu;
 use App\Form\EntrepriseType;
 use App\Repository\EntrepriseRepository;
 use App\Repository\StageRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\RequestStack;
+
 //PERSO
-use App\FonctionStatic\EtatMenu;
 
 
 /**

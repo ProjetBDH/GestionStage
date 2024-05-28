@@ -74,9 +74,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_professionelle_index') }}"  class="boutton">Retour à la liste</a>
-    {% if userRole != 'Enseignant'  %}
-    <a href="{{ path('app_professionelle_edit', {'id': professionelle.id}) }}" class="boutton">Editer</a>
+    <a href="{{ path('app_professionelle_index') }}" class="boutton">Retour à la liste</a>
+    {% if userRole != 'Enseignant' %}
+        <a href="{{ path('app_professionelle_edit', {'id': professionelle.id}) }}" class="boutton">Editer</a>
     {% endif %}
     <br>
     <br>

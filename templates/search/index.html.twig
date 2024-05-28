@@ -5,14 +5,14 @@
 {% block body %}
     <h1>Recherche</h1>
 
-    
-        {{ form_start(searchForm) }}
+
+    {{ form_start(searchForm) }}
     <div class="form-group" style="width: 250px;padding-left: 15px;">
         {{ form_row(searchForm.search) }}
         <button class="boutton">{{ button_label|default('Valider') }}</button>
     </div>
-        {{ form_end(searchForm) }}
- 
+    {{ form_end(searchForm) }}
+
 
     {% if results %}
         <h2>Résultats de la recherche</h2>
@@ -73,8 +73,8 @@
                         <td>{{ stage.niveau }}</td>
                         <td>
                             <a href="{{ path('app_stage_show', {'id': stage.id}) }}" class="boutton">Voir</a>
-                            {% if userRole != 'Enseignant'  %}
-                            <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
+                            {% if userRole != 'Enseignant' %}
+                                <a href="{{ path('app_stage_edit', {'id': stage.id}) }}" class="boutton">Editer</a>
                             {% endif %}
                         </td>
                     </tr>
@@ -96,8 +96,8 @@
                     <th>Id</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-{#                    <th>Email</th>#}
-{#                    <th>NumTel</th>#}
+                    {#                    <th>Email</th> #}
+                    {#                    <th>NumTel</th> #}
                     <th>Specialisation</th>
                     <th>Action</th>
                 </tr>
@@ -108,8 +108,8 @@
                         <td>{{ etudiant.id }}</td>
                         <td>{{ etudiant.nom }}</td>
                         <td>{{ etudiant.prenom }}</td>
-{#                        <td>{{ etudiant.email }}</td>#}
-{#                        <td>{{ etudiant.numTel }}</td>#}
+                        {#                        <td>{{ etudiant.email }}</td> #}
+                        {#                        <td>{{ etudiant.numTel }}</td> #}
                         <td>{{ etudiant.specialisation }}</td>
                         <td>
                             <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}" class="boutton">Voir</a>
