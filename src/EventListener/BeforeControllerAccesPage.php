@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Doctrine\Common\Annotations\AnnotationReader;
-use App\Annotation\AccesPageRole;
+use App\Annotations\AccesPageRole;
 
 /*
 
@@ -35,7 +35,7 @@ class BeforeControllerAccesPage
         $controller = $event->getController();
 
         // ignore si le controller est login ou s'il est un tableau 
-        return;
+        
         if (!is_array($controller) || get_class($controller[0]) === 'App\Controller\LoginController') {
             return;
         }
@@ -61,10 +61,8 @@ class BeforeControllerAccesPage
                 $accesPageRoleAnnotation->access = in_array($accesPageRoleAnnotation->access, ["oui", "yes", "authorise"]); //si dans la liste; $accesP... = true, si non false (par defaut)
             }
         } else {
-            $accesPageRoleAnnotation = ['access' => false, 'exceptedRoles' => []];
+            $accesPageRoleAnnotation = (object) ['access' => false, 'exceptedRoles' => []];
         }
-
-
         // Vérifier si l'utilisateur s'est bien connecter
         if (!($session->get('user_authentication', ['is_authenticated' => false])['is_authenticated'])) {
             
@@ -81,10 +79,9 @@ class BeforeControllerAccesPage
             // Vérifier si l'utilisateur accède a une page non autorisée
         } else {
 
-            //var_dump($session->get('user_authentication')['role']);
-            //var_dump($accesPageRoleAnnotation->exceptedRoles);
-            if (/*$session->get('user_authentication')['role'] )*/false) {
+            if (in_array($session->get('user_authentication')['role'], $accesPageRoleAnnotation->exceptedRoles) == $accesPageRoleAnnotation->access) {
                 // Redirection vers la page d'accueil
+                
                 $url = $this->urlGenerator->generate('app_login'); //( Note : Double redirection, redirige vers la page de connexion, qui redirige ensuite vers la page d'accueil de l'entreprise.)
                 $response = new RedirectResponse($url);
                 $event->setController(function () use ($response) {

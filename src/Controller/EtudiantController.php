@@ -10,8 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/etudiant")
@@ -20,6 +19,7 @@ class EtudiantController extends AbstractController
 {
     /**
      * @Route("/", name="app_etudiant_index", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function index(EtudiantRepository $etudiantRepository): Response
     {
@@ -30,6 +30,7 @@ class EtudiantController extends AbstractController
 
     /**
      * @Route("/new", name="app_etudiant_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, EtudiantRepository $etudiantRepository): Response
     {
@@ -51,6 +52,7 @@ class EtudiantController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_etudiant_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Etudiant $etudiant): Response
     {
@@ -61,6 +63,7 @@ class EtudiantController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_etudiant_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Etudiant $etudiant, EtudiantRepository $etudiantRepository): Response
     {
@@ -81,6 +84,7 @@ class EtudiantController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_etudiant_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Etudiant $etudiant, EtudiantRepository $etudiantRepository): Response
     {

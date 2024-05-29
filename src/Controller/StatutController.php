@@ -10,8 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/statut")
@@ -20,6 +19,7 @@ class StatutController extends AbstractController
 {
     /**
      * @Route("/", name="app_statut_index", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function index(StatutRepository $statutRepository): Response
     {
@@ -30,6 +30,7 @@ class StatutController extends AbstractController
 
     /**
      * @Route("/new", name="app_statut_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, StatutRepository $statutRepository): Response
     {
@@ -55,6 +56,7 @@ class StatutController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_statut_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Statut $statut): Response
     {
@@ -65,6 +67,7 @@ class StatutController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_statut_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Statut $statut, StatutRepository $statutRepository): Response
     {
@@ -89,6 +92,7 @@ class StatutController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_statut_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Statut $statut, StatutRepository $statutRepository): Response
     {

@@ -10,8 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/jury")
@@ -20,6 +19,7 @@ class JuryController extends AbstractController
 {
     /**
      * @Route("/", name="app_jury_index", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function index(JuryRepository $juryRepository): Response
     {
@@ -30,6 +30,7 @@ class JuryController extends AbstractController
 
     /**
      * @Route("/new", name="app_jury_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, JuryRepository $juryRepository): Response
     {
@@ -51,6 +52,7 @@ class JuryController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_jury_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Jury $jury): Response
     {
@@ -61,6 +63,7 @@ class JuryController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_jury_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Jury $jury, JuryRepository $juryRepository): Response
     {
@@ -81,6 +84,7 @@ class JuryController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_jury_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Jury $jury, JuryRepository $juryRepository): Response
     {

@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Annotation\AccesPageRole;
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/entreprise")
@@ -20,7 +20,7 @@ class EntrepriseController extends AbstractController
 {
     /**
      * @Route("/", name="app_entreprise_index", methods={"GET"})
-     * @AccesPageRole(access="authorise", exceptedRoles={"ROLE_ADMIN"})
+     * @AccesPageRole(access="oui", exceptedRoles={""})
      */
     public function index(EntrepriseRepository $entrepriseRepository): Response
     {
@@ -31,6 +31,7 @@ class EntrepriseController extends AbstractController
 
     /**
      * @Route("/new", name="app_entreprise_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, EntrepriseRepository $entrepriseRepository): Response
     {
@@ -52,6 +53,7 @@ class EntrepriseController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_entreprise_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Entreprise $entreprise, StageRepository $stageRepository): Response
     {
@@ -63,6 +65,7 @@ class EntrepriseController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_entreprise_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Entreprise $entreprise, EntrepriseRepository $entrepriseRepository): Response
     {
@@ -83,6 +86,7 @@ class EntrepriseController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_entreprise_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Entreprise $entreprise, EntrepriseRepository $entrepriseRepository): Response
     {

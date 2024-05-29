@@ -13,11 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Annotations\AccesPageRole;
 
 class SearchController extends AbstractController
 {
     /**
      * @Route("/search", name="app_search")
+     * @AccesPageRole(access="oui", exceptedRoles={""})
      */
     public function search(Request $request,
                            EntrepriseRepository $entrepriseRepository,

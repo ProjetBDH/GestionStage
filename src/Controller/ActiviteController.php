@@ -10,8 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/activite")
@@ -20,6 +19,7 @@ class ActiviteController extends AbstractController
 {
     /**
      * @Route("/", name="app_activite_index", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function index(ActiviteRepository $activiteRepository): Response
     {
@@ -30,6 +30,7 @@ class ActiviteController extends AbstractController
 
     /**
      * @Route("/new", name="app_activite_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, ActiviteRepository $activiteRepository): Response
     {
@@ -55,6 +56,7 @@ class ActiviteController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_activite_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Activite $activite): Response
     {
@@ -65,6 +67,7 @@ class ActiviteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_activite_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Activite $activite, ActiviteRepository $activiteRepository): Response
     {
@@ -89,6 +92,7 @@ class ActiviteController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_activite_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Activite $activite, ActiviteRepository $activiteRepository): Response
     {

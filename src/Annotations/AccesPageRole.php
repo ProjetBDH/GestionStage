@@ -1,7 +1,7 @@
 <?php
 // src/Annotation/AccesPageRole.php
 
-namespace App\Annotation;
+namespace App\Annotations;
 
 use Doctrine\Common\Annotations\Annotation;
 
@@ -11,6 +11,6 @@ use Doctrine\Common\Annotations\Annotation;
  */
 final class AccesPageRole extends Annotation
 {
-    public $access;
+    public $access = false;
     public $exceptedRoles = [];
 }

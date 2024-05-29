@@ -10,8 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/specialisation")
@@ -20,6 +19,7 @@ class SpecialisationController extends AbstractController
 {
     /**
      * @Route("/", name="app_specialisation_index", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function index(SpecialisationRepository $specialisationRepository): Response
     {
@@ -30,6 +30,7 @@ class SpecialisationController extends AbstractController
 
     /**
      * @Route("/new", name="app_specialisation_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, SpecialisationRepository $specialisationRepository): Response
     {
@@ -55,6 +56,7 @@ class SpecialisationController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_specialisation_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Specialisation $specialisation): Response
     {
@@ -65,6 +67,7 @@ class SpecialisationController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_specialisation_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Specialisation $specialisation, SpecialisationRepository $specialisationRepository): Response
     {
@@ -89,6 +92,7 @@ class SpecialisationController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_specialisation_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Specialisation $specialisation, SpecialisationRepository $specialisationRepository): Response
     {

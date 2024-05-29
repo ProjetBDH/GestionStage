@@ -10,8 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
+use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/utilisateur")
@@ -20,6 +19,7 @@ class UtilisateurController extends AbstractController
 {
     /**
      * @Route("/", name="app_utilisateur_index", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function index(UtilisateurRepository $utilisateurRepository): Response
     {
@@ -30,6 +30,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * @Route("/new", name="app_utilisateur_new", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function new(Request $request, UtilisateurRepository $utilisateurRepository): Response
     {
@@ -54,6 +55,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_utilisateur_show", methods={"GET"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function show(Utilisateur $utilisateur): Response
     {
@@ -64,6 +66,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_utilisateur_edit", methods={"GET", "POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function edit(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
     {
@@ -88,6 +91,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_utilisateur_delete", methods={"POST"})
+     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
      */
     public function delete(Request $request, Utilisateur $utilisateur, UtilisateurRepository $utilisateurRepository): Response
     {
