@@ -89,7 +89,7 @@ class LoginController extends AbstractController
             'role' => ''
         ]);
 
-        return $this->redirectToRoute('app_entreprise_index');
+        return $this->redirectToRoute('app_login');
     }
     
 }

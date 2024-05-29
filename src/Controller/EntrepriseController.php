@@ -11,9 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-//PERSO
-
+use App\Annotation\AccesPageRole;
 
 /**
  * @Route("/entreprise")
@@ -22,6 +20,7 @@ class EntrepriseController extends AbstractController
 {
     /**
      * @Route("/", name="app_entreprise_index", methods={"GET"})
+     * @AccesPageRole(access="authorise", exceptedRoles={"ROLE_ADMIN"})
      */
     public function index(EntrepriseRepository $entrepriseRepository): Response
     {

@@ -1,12 +1,14 @@
 <?php
-
 // src/EventListener/BeforeControllerAccesPage
-namespace App\EventListener; 
+
+namespace App\EventListener;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Doctrine\Common\Annotations\AnnotationReader;
+use App\Annotation\AccesPageRole;
 
 /*
 
@@ -19,57 +21,54 @@ class BeforeControllerAccesPage
 {
     private $urlGenerator;
     private $requestStack;
-    private $ignoredControllers; // Tableau des contrôleurs à ignorer
-    private $adminRoutes; // Tableau des routes à ignorer
 
     public function __construct(UrlGeneratorInterface $urlGenerator, RequestStack $requestStack)
     {
         $this->urlGenerator = $urlGenerator;
         $this->requestStack = $requestStack;
-        $this->ignoredControllers = [
-            'App\Controller\LoginController',
-        ];
-        $this->adminRoutes = [
-            'app_utilisateur_edit',
-            'app_utilisateur_new',
-            'app_utilisateur_delete',
-            'app_etudiant_edit',
-            'app_etudiant_new',
-            'app_etudiant_delete',
-            'app_entreprise_edit',
-            'app_entreprise_new',
-            'app_entreprise_delete',
-            'app_stage_edit',
-            'app_stage_new',
-            'app_stage_delete',
-            'app_professionnelle_edit',
-            'app_professionnelle_new',
-            'app_professionnelle_delete',
-        ];
     }
+
 
     public function onKernelController(ControllerEvent $event)
     {
-        $request = $this->requestStack->getCurrentRequest();
-        $session = $request->getSession();
+        // Récupérer le contrôleur actuel
+        $controller = $event->getController();
 
-        // Récupérer le nom complet du contrôleur actuel
-        $controllerName = $event->getRequest()->attributes->get('_controller');
-        $controllerClass = explode('::', $controllerName)[0];
-
-        // Vérifier si le contrôleur actuel est dans la liste des contrôleurs à ignorer
-        if (in_array($controllerClass, $this->ignoredControllers)) {
-            // Ne rien faire si le contrôleur est dans la liste des contrôleurs à ignorer
+        // ignore si le controller est login ou s'il est un tableau 
+        return;
+        if (!is_array($controller) || get_class($controller[0]) === 'App\Controller\LoginController') {
             return;
         }
 
-        
-        // Vérifier si l'utilisateur est connecté ou non, si connecté vérifié si l'utilisateur accede à une page autorisée
-        if (!($session->get('user_authentication', ['is_authenticated' => false])['is_authenticated']))
-        {
-            $currentRoute = $event->getRequest()->attributes->get('_route');
+        // Obtenir la méthode de contrôleur actuelle
+        $method = new \ReflectionMethod($controller[0], $controller[1]);
 
-            // Vérifier si l'utilisateur est déjà sur la page de connexion
+        // Obtenir le cookie de session
+        $request = $this->requestStack->getCurrentRequest();
+        $session = $request->getSession();
+
+        // Lire l'annotation @AccesPageRole
+        $reader = new AnnotationReader();
+        $accesPageRoleAnnotation = $reader->getMethodAnnotation($method, AccesPageRole::class);
+
+        // Nom de la route actuel
+        $currentRoute = $event->getRequest()->attributes->get('_route');
+
+
+        // Formatage de l'objet $accesPageRoleAnnotation
+        if ($accesPageRoleAnnotation !== null) {
+            if (!is_bool($accesPageRoleAnnotation->access)) {
+                $accesPageRoleAnnotation->access = in_array($accesPageRoleAnnotation->access, ["oui", "yes", "authorise"]); //si dans la liste; $accesP... = true, si non false (par defaut)
+            }
+        } else {
+            $accesPageRoleAnnotation = ['access' => false, 'exceptedRoles' => []];
+        }
+
+
+        // Vérifier si l'utilisateur s'est bien connecter
+        if (!($session->get('user_authentication', ['is_authenticated' => false])['is_authenticated'])) {
+            
+            // Vérifier si l'utilisateur n'est pas déjà sur la page de connexion
             if ($currentRoute !== 'app_login') {
                 // Redirection vers la page de connexion
                 $url = $this->urlGenerator->generate('app_login');
@@ -78,12 +77,15 @@ class BeforeControllerAccesPage
                     return $response;
                 });
             }
+
+            // Vérifier si l'utilisateur accède a une page non autorisée
         } else {
-            // Vérifier si l'utilisateur accede a une page non autorisée
-            $currentRoute = $event->getRequest()->attributes->get('_route');
-            if ($session->get('user_authentication')['role']!== 'Administrateur' && in_array($currentRoute, $this->adminRoutes)) {
+
+            //var_dump($session->get('user_authentication')['role']);
+            //var_dump($accesPageRoleAnnotation->exceptedRoles);
+            if (/*$session->get('user_authentication')['role'] )*/false) {
                 // Redirection vers la page d'accueil
-                $url = $this->urlGenerator->generate('app_entreprise_index');
+                $url = $this->urlGenerator->generate('app_login'); //( Note : Double redirection, redirige vers la page de connexion, qui redirige ensuite vers la page d'accueil de l'entreprise.)
                 $response = new RedirectResponse($url);
                 $event->setController(function () use ($response) {
                     return $response;
