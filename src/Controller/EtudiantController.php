@@ -52,8 +52,8 @@ class EtudiantController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_etudiant_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Etudiant $etudiant): Response
     {
         return $this->render('etudiant/show.html.twig', [

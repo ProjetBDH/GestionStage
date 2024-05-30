@@ -56,8 +56,8 @@ class RoleController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_role_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Role $role): Response
     {
         return $this->render('role/show.html.twig', [

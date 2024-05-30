@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Annotations\AccesPageRole;
 use App\Entity\Utilisateur;
 use App\FonctionStatic\EtatMenu;
 use App\Form\UtilisateurType;
@@ -10,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Annotations\AccesPageRole;
 
 /**
  * @Route("/utilisateur")
@@ -55,8 +55,8 @@ class UtilisateurController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_utilisateur_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Utilisateur $utilisateur): Response
     {
         return $this->render('utilisateur/show.html.twig', [

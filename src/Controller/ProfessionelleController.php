@@ -52,8 +52,8 @@ class ProfessionelleController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_professionelle_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Professionelle $professionelle): Response
     {
         return $this->render('professionelle/show.html.twig', [

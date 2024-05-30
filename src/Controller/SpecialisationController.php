@@ -56,8 +56,8 @@ class SpecialisationController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_specialisation_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Specialisation $specialisation): Response
     {
         return $this->render('specialisation/show.html.twig', [

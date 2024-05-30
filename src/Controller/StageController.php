@@ -63,8 +63,8 @@ class StageController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_stage_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Stage $stage): Response
     {
         return $this->render('stage/show.html.twig', [

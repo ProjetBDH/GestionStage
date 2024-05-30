@@ -41,7 +41,7 @@ class JuryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $juryRepository->add($jury, true);
 
-            return $this->redirectToRoute('app_jury_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('jury/new.html.twig', [
@@ -52,8 +52,8 @@ class JuryController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_jury_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Jury $jury): Response
     {
         return $this->render('jury/show.html.twig', [
@@ -73,7 +73,7 @@ class JuryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $juryRepository->add($jury, true);
 
-            return $this->redirectToRoute('app_jury_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('jury/edit.html.twig', [
@@ -92,6 +92,6 @@ class JuryController extends AbstractController
             $juryRepository->remove($jury, true);
         }
 
-        return $this->redirectToRoute('app_jury_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
     }
 }

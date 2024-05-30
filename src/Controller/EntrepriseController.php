@@ -53,8 +53,8 @@ class EntrepriseController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_entreprise_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Entreprise $entreprise, StageRepository $stageRepository): Response
     {
         return $this->render('entreprise/show.html.twig', [

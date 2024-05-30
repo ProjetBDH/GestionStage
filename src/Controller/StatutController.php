@@ -56,8 +56,8 @@ class StatutController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_statut_show", methods={"GET"})
-     * @AccesPageRole(access="non", exceptedRoles={"Administrateur"})
-     */
+     * @AccesPageRole(access="oui", exceptedRoles={""})
+ */
     public function show(Statut $statut): Response
     {
         return $this->render('statut/show.html.twig', [
