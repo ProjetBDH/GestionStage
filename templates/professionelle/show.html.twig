@@ -71,6 +71,17 @@
                 {% endfor %}
             </td>
         </tr>
+        <tr>
+            <th>Jury</th>
+            <td>
+                {% for jur in professionelle.juries %}
+                    {{ jur.date }},
+                {% else %}
+                    Aucune donnée
+
+                {% endfor %}
+            </td>
+        </tr>
         </tbody>
     </table>
 

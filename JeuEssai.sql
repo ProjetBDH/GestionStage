@@ -240,6 +240,15 @@ INSERT INTO `stage` (`id`, `entreprise_id`, `date`, `niveau`) VALUES
 (12, 19, '2023', 'SISR');
 
 --
+-- Déchargement des données de la table `jury`
+--
+
+INSERT INTO `jury` (`id`, `date`) VALUES
+(1, '2023'),
+(2, '2024'),
+(3, '2022');
+
+--
 -- Déchargement des données de la table `etudiant_stage`
 --
 
@@ -402,6 +411,40 @@ INSERT INTO `specialisation_entreprise` (`specialisation_id`, `entreprise_id`) V
 (7, 43),
 (7, 44),
 (7, 51);
+
+--
+-- Déchargement des données de la table `jury_professionelle`
+--
+
+INSERT INTO `jury_professionelle` (`jury_id`, `professionelle_id`) VALUES
+(1, 44),
+(1, 50),
+(1, 52),
+(1, 56),
+(1, 57),
+(1, 60),
+(1, 73),
+(1, 79),
+(1, 91),
+(1, 92),
+(1, 95),
+(2, 45),
+(2, 48),
+(2, 56),
+(2, 58),
+(2, 65),
+(2, 66),
+(2, 69),
+(2, 72),
+(2, 78),
+(2, 80),
+(2, 81),
+(2, 88),
+(2, 93),
+(2, 96),
+(2, 99),
+(3, 58),
+(3, 95);
 
 --
 -- Déchargement des données de la table `utilisateur`
