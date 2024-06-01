@@ -15,29 +15,32 @@ if not exist composer.json (
     exit /b 1
 )
 
-rem echo Fichier composer.json existe.
-rem echo Installation des dependances via Composer...
-rem Installation des dependances via Composer
-rem composer install
-
-
-echo Configuration de la base de donnees...
 echo Creation de la base de donnees...
 
-rem Creation de la base de donnees si elle n'existe pas
-php bin/console doctrine:database:create --if-not-exists
-echo %errorlevel%
+rem Creation de la base de donnees si elle n'existe pas 
+php bin/console doctrine:database:create --if-not-exists --no-ansi
 
-echo Base de donnees creee.
-echo Generation des entites...
+echo Generation de la Migrations...
+rem Vérification si le dossier Migration existe et est vide
+if not exist .\migrations\ (
+    echo Dossier Migrations n'existe pas.
+    echo Generation du dossier Migrations...
+    mkdir .\migrations\
+    echo Dossier Migrations cree.
+) else (
+    echo Dossier Migrations existe.
+    echo Suppression des fichiers du dossier Migrations...
+    del /q /s .\migrations\Version*.php
+    echo Fichiers supprimes.
+)
+
+echo Migration en cours...
 rem Generation des migrations
 php bin/console make:migration
 
-echo Entites generees.
-echo Execution des migrations...
+echo Execution de la migration...
 rem Execution des migrations pour mettre à jour la base de donnees
 php bin/console doctrine:migrations:migrate
-echo Migrations executees.
 
 if %errorlevel% neq 0 (
     echo Erreur lors de l'execution des migrations.
@@ -45,7 +48,5 @@ if %errorlevel% neq 0 (
 )
 
 echo Configuration du projet Symfony terminee.
-echo Faite un 'composer install' pour installer les dependances.
-echo Puis faite un 'php bin/console server:run' pour lancer le serveur.
 
 pause
