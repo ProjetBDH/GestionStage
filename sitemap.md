@@ -2,6 +2,10 @@
 - http://127.0.0.1:8000
 - http://127.0.0.1:8000/exit-login
 
+## Username / Password
+- Admin : admin / admin
+- Enseignant : ens /ens
+
 # Partie entreprise
 - http://127.0.0.1:8000/entreprise/
 - http://127.0.0.1:8000/entreprise/{id}
@@ -39,7 +43,7 @@
 > - http://127.0.0.1:8000/activite/new
 
 # Partie recherche
-http://127.0.0.1:8000/search/
+- http://127.0.0.1:8000/search/
 
 # Partie Utilisateur
 > ## Accès restreint a l'administateur
